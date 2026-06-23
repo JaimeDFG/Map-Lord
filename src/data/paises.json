@@ -1,0 +1,1381 @@
+[
+  {
+    "id": "AD",
+    "nombre": "Andorra",
+    "continente": "Europa",
+    "emoji": "🇦🇩",
+    "capital": "Andorra la Vella"
+  },
+  {
+    "id": "AL",
+    "nombre": "Albania",
+    "continente": "Europa",
+    "emoji": "🇦🇱",
+    "capital": "Tirana"
+  },
+  {
+    "id": "AT",
+    "nombre": "Austria",
+    "continente": "Europa",
+    "emoji": "🇦🇹",
+    "capital": "Viena"
+  },
+  {
+    "id": "BA",
+    "nombre": "Bosnia",
+    "continente": "Europa",
+    "emoji": "🇧🇦",
+    "capital": "Sarajevo"
+  },
+  {
+    "id": "BE",
+    "nombre": "Bélgica",
+    "continente": "Europa",
+    "emoji": "🇧🇪",
+    "capital": "Bruselas"
+  },
+  {
+    "id": "BG",
+    "nombre": "Bulgaria",
+    "continente": "Europa",
+    "emoji": "🇧🇬",
+    "capital": "Sofía"
+  },
+  {
+    "id": "BY",
+    "nombre": "Bielorrusia",
+    "continente": "Europa",
+    "emoji": "🇧🇾",
+    "capital": "Minsk"
+  },
+  {
+    "id": "CH",
+    "nombre": "Suiza",
+    "continente": "Europa",
+    "emoji": "🇨🇭",
+    "capital": "Zúrich"
+  },
+  {
+    "id": "CY",
+    "nombre": "Chipre",
+    "continente": "Europa",
+    "emoji": "🇨🇾",
+    "capital": "Nicosia"
+  },
+  {
+    "id": "CZ",
+    "nombre": "Rep. Checa",
+    "continente": "Europa",
+    "emoji": "🇨🇿",
+    "capital": "Praga"
+  },
+  {
+    "id": "DE",
+    "nombre": "Alemania",
+    "continente": "Europa",
+    "emoji": "🇩🇪",
+    "capital": "Berlín"
+  },
+  {
+    "id": "DK",
+    "nombre": "Dinamarca",
+    "continente": "Europa",
+    "emoji": "🇩🇰",
+    "capital": "Copenhague"
+  },
+  {
+    "id": "EE",
+    "nombre": "Estonia",
+    "continente": "Europa",
+    "emoji": "🇪🇪",
+    "capital": "Tallin"
+  },
+  {
+    "id": "ES",
+    "nombre": "España",
+    "continente": "Europa",
+    "emoji": "🇪🇸",
+    "capital": "Madrid"
+  },
+  {
+    "id": "FI",
+    "nombre": "Finlandia",
+    "continente": "Europa",
+    "emoji": "🇫🇮",
+    "capital": "Helsinki"
+  },
+  {
+    "id": "FR",
+    "nombre": "Francia",
+    "continente": "Europa",
+    "emoji": "🇫🇷",
+    "capital": "París"
+  },
+  {
+    "id": "GB",
+    "nombre": "Reino Unido",
+    "continente": "Europa",
+    "emoji": "🇬🇧",
+    "capital": "Londres"
+  },
+  {
+    "id": "GR",
+    "nombre": "Grecia",
+    "continente": "Europa",
+    "emoji": "🇬🇷",
+    "capital": "Atenas"
+  },
+  {
+    "id": "HR",
+    "nombre": "Croacia",
+    "continente": "Europa",
+    "emoji": "🇭🇷",
+    "capital": "Zagreb"
+  },
+  {
+    "id": "HU",
+    "nombre": "Hungría",
+    "continente": "Europa",
+    "emoji": "🇭🇺",
+    "capital": "Budapest"
+  },
+  {
+    "id": "IE",
+    "nombre": "Irlanda",
+    "continente": "Europa",
+    "emoji": "🇮🇪",
+    "capital": "Dublín"
+  },
+  {
+    "id": "IS",
+    "nombre": "Islandia",
+    "continente": "Europa",
+    "emoji": "🇮🇸",
+    "capital": "Reikiavik"
+  },
+  {
+    "id": "IT",
+    "nombre": "Italia",
+    "continente": "Europa",
+    "emoji": "🇮🇹",
+    "capital": "Roma"
+  },
+  {
+    "id": "LI",
+    "nombre": "Liechtenstein",
+    "continente": "Europa",
+    "emoji": "🇱🇮",
+    "capital": "Vaduz"
+  },
+  {
+    "id": "LT",
+    "nombre": "Lituania",
+    "continente": "Europa",
+    "emoji": "🇱🇹",
+    "capital": "Vilna"
+  },
+  {
+    "id": "LU",
+    "nombre": "Luxemburgo",
+    "continente": "Europa",
+    "emoji": "🇱🇺",
+    "capital": "Luxemburgo"
+  },
+  {
+    "id": "LV",
+    "nombre": "Letonia",
+    "continente": "Europa",
+    "emoji": "🇱🇻",
+    "capital": "Riga"
+  },
+  {
+    "id": "MC",
+    "nombre": "Mónaco",
+    "continente": "Europa",
+    "emoji": "🇲🇨",
+    "capital": "Mónaco"
+  },
+  {
+    "id": "MD",
+    "nombre": "Moldavia",
+    "continente": "Europa",
+    "emoji": "🇲🇩",
+    "capital": "Chisináu"
+  },
+  {
+    "id": "ME",
+    "nombre": "Montenegro",
+    "continente": "Europa",
+    "emoji": "🇲🇪",
+    "capital": "Podgorica"
+  },
+  {
+    "id": "MK",
+    "nombre": "Macedonia del N.",
+    "continente": "Europa",
+    "emoji": "🇲🇰",
+    "capital": "Skopie"
+  },
+  {
+    "id": "MT",
+    "nombre": "Malta",
+    "continente": "Europa",
+    "emoji": "🇲🇹",
+    "capital": "La Valeta"
+  },
+  {
+    "id": "NL",
+    "nombre": "Países Bajos",
+    "continente": "Europa",
+    "emoji": "🇳🇱",
+    "capital": "Ámsterdam"
+  },
+  {
+    "id": "NO",
+    "nombre": "Noruega",
+    "continente": "Europa",
+    "emoji": "🇳🇴",
+    "capital": "Oslo"
+  },
+  {
+    "id": "PL",
+    "nombre": "Polonia",
+    "continente": "Europa",
+    "emoji": "🇵🇱",
+    "capital": "Varsovia"
+  },
+  {
+    "id": "PT",
+    "nombre": "Portugal",
+    "continente": "Europa",
+    "emoji": "🇵🇹",
+    "capital": "Lisboa"
+  },
+  {
+    "id": "RO",
+    "nombre": "Rumanía",
+    "continente": "Europa",
+    "emoji": "🇷🇴",
+    "capital": "Bucarest"
+  },
+  {
+    "id": "RS",
+    "nombre": "Serbia",
+    "continente": "Europa",
+    "emoji": "🇷🇸",
+    "capital": "Belgrado"
+  },
+  {
+    "id": "RU",
+    "nombre": "Rusia",
+    "continente": "Europa",
+    "emoji": "🇷🇺",
+    "capital": "Moscú"
+  },
+  {
+    "id": "SE",
+    "nombre": "Suecia",
+    "continente": "Europa",
+    "emoji": "🇸🇪",
+    "capital": "Estocolmo"
+  },
+  {
+    "id": "SI",
+    "nombre": "Eslovenia",
+    "continente": "Europa",
+    "emoji": "🇸🇮",
+    "capital": "Liubliana"
+  },
+  {
+    "id": "SK",
+    "nombre": "Eslovaquia",
+    "continente": "Europa",
+    "emoji": "🇸🇰",
+    "capital": "Bratislava"
+  },
+  {
+    "id": "SM",
+    "nombre": "San Marino",
+    "continente": "Europa",
+    "emoji": "🇸🇲",
+    "capital": "San Marino"
+  },
+  {
+    "id": "TR",
+    "nombre": "Turquía",
+    "continente": "Europa",
+    "emoji": "🇹🇷",
+    "capital": "Estambul"
+  },
+  {
+    "id": "UA",
+    "nombre": "Ucrania",
+    "continente": "Europa",
+    "emoji": "🇺🇦",
+    "capital": "Kiev"
+  },
+  {
+    "id": "VA",
+    "nombre": "Vaticano",
+    "continente": "Europa",
+    "emoji": "🇻🇦",
+    "capital": "Ciudad del Vaticano"
+  },
+  {
+    "id": "XK",
+    "nombre": "Kosovo",
+    "continente": "Europa",
+    "emoji": "🇽🇰",
+    "capital": "Pristina"
+  },
+  {
+    "id": "AG",
+    "nombre": "Antigua y Barbuda",
+    "continente": "América del Norte",
+    "emoji": "🇦🇬",
+    "capital": "Saint John's"
+  },
+  {
+    "id": "BB",
+    "nombre": "Barbados",
+    "continente": "América del Norte",
+    "emoji": "🇧🇧",
+    "capital": "Bridgetown"
+  },
+  {
+    "id": "BL",
+    "nombre": "San Bartolomé",
+    "continente": "América del Norte",
+    "emoji": "🇧🇱",
+    "capital": "San Bartolomé"
+  },
+  {
+    "id": "BZ",
+    "nombre": "Belice",
+    "continente": "América del Norte",
+    "emoji": "🇧🇿",
+    "capital": "Belmopán"
+  },
+  {
+    "id": "CA",
+    "nombre": "Canadá",
+    "continente": "América del Norte",
+    "emoji": "🇨🇦",
+    "capital": "Toronto"
+  },
+  {
+    "id": "CR",
+    "nombre": "Costa Rica",
+    "continente": "América del Norte",
+    "emoji": "🇨🇷",
+    "capital": "San José"
+  },
+  {
+    "id": "CU",
+    "nombre": "Cuba",
+    "continente": "América del Norte",
+    "emoji": "🇨🇺",
+    "capital": "La Habana"
+  },
+  {
+    "id": "DM",
+    "nombre": "Dominica",
+    "continente": "América del Norte",
+    "emoji": "🇩🇲",
+    "capital": "Roseau"
+  },
+  {
+    "id": "DO",
+    "nombre": "Rep. Dominicana",
+    "continente": "América del Norte",
+    "emoji": "🇩🇴",
+    "capital": "Santo Domingo"
+  },
+  {
+    "id": "GD",
+    "nombre": "Granada",
+    "continente": "América del Norte",
+    "emoji": "🇬🇩",
+    "capital": "St. George's"
+  },
+  {
+    "id": "GT",
+    "nombre": "Guatemala",
+    "continente": "América del Norte",
+    "emoji": "🇬🇹",
+    "capital": "Ciudad de Guatemala"
+  },
+  {
+    "id": "HN",
+    "nombre": "Honduras",
+    "continente": "América del Norte",
+    "emoji": "🇭🇳",
+    "capital": "Tegucigalpa"
+  },
+  {
+    "id": "HT",
+    "nombre": "Haití",
+    "continente": "América del Norte",
+    "emoji": "🇭🇹",
+    "capital": "Puerto Príncipe"
+  },
+  {
+    "id": "JM",
+    "nombre": "Jamaica",
+    "continente": "América del Norte",
+    "emoji": "🇯🇲",
+    "capital": "Kingston"
+  },
+  {
+    "id": "KN",
+    "nombre": "San Cristóbal",
+    "continente": "América del Norte",
+    "emoji": "🇰🇳",
+    "capital": "Basseterre"
+  },
+  {
+    "id": "LC",
+    "nombre": "Santa Lucía",
+    "continente": "América del Norte",
+    "emoji": "🇱🇨",
+    "capital": "Castries"
+  },
+  {
+    "id": "MX",
+    "nombre": "México",
+    "continente": "América del Norte",
+    "emoji": "🇲🇽",
+    "capital": "Ciudad de México"
+  },
+  {
+    "id": "NI",
+    "nombre": "Nicaragua",
+    "continente": "América del Norte",
+    "emoji": "🇳🇮",
+    "capital": "Managua"
+  },
+  {
+    "id": "PA",
+    "nombre": "Panamá",
+    "continente": "América del Norte",
+    "emoji": "🇵🇦",
+    "capital": "Ciudad de Panamá"
+  },
+  {
+    "id": "PR",
+    "nombre": "Puerto Rico",
+    "continente": "América del Norte",
+    "emoji": "🇵🇷",
+    "capital": "Puerto Rico"
+  },
+  {
+    "id": "SV",
+    "nombre": "El Salvador",
+    "continente": "América del Norte",
+    "emoji": "🇸🇻",
+    "capital": "San Salvador"
+  },
+  {
+    "id": "TT",
+    "nombre": "Trinidad y Tobago",
+    "continente": "América del Norte",
+    "emoji": "🇹🇹",
+    "capital": "Puerto España"
+  },
+  {
+    "id": "US",
+    "nombre": "Estados Unidos",
+    "continente": "América del Norte",
+    "emoji": "🇺🇸",
+    "capital": "Nueva York"
+  },
+  {
+    "id": "VC",
+    "nombre": "San Vicente",
+    "continente": "América del Norte",
+    "emoji": "🇻🇨",
+    "capital": "Kingstown"
+  },
+  {
+    "id": "AR",
+    "nombre": "Argentina",
+    "continente": "América del Sur",
+    "emoji": "🇦🇷",
+    "capital": "Buenos Aires"
+  },
+  {
+    "id": "BO",
+    "nombre": "Bolivia",
+    "continente": "América del Sur",
+    "emoji": "🇧🇴",
+    "capital": "La Paz"
+  },
+  {
+    "id": "BR",
+    "nombre": "Brasil",
+    "continente": "América del Sur",
+    "emoji": "🇧🇷",
+    "capital": "Río de Janeiro"
+  },
+  {
+    "id": "CL",
+    "nombre": "Chile",
+    "continente": "América del Sur",
+    "emoji": "🇨🇱",
+    "capital": "Santiago"
+  },
+  {
+    "id": "CO",
+    "nombre": "Colombia",
+    "continente": "América del Sur",
+    "emoji": "🇨🇴",
+    "capital": "Bogotá"
+  },
+  {
+    "id": "EC",
+    "nombre": "Ecuador",
+    "continente": "América del Sur",
+    "emoji": "🇪🇨",
+    "capital": "Quito"
+  },
+  {
+    "id": "GY",
+    "nombre": "Guyana",
+    "continente": "América del Sur",
+    "emoji": "🇬🇾",
+    "capital": "Georgetown"
+  },
+  {
+    "id": "PE",
+    "nombre": "Perú",
+    "continente": "América del Sur",
+    "emoji": "🇵🇪",
+    "capital": "Lima"
+  },
+  {
+    "id": "PY",
+    "nombre": "Paraguay",
+    "continente": "América del Sur",
+    "emoji": "🇵🇾",
+    "capital": "Asunción"
+  },
+  {
+    "id": "SR",
+    "nombre": "Surinam",
+    "continente": "América del Sur",
+    "emoji": "🇸🇷",
+    "capital": "Paramaribo"
+  },
+  {
+    "id": "UY",
+    "nombre": "Uruguay",
+    "continente": "América del Sur",
+    "emoji": "🇺🇾",
+    "capital": "Montevideo"
+  },
+  {
+    "id": "VE",
+    "nombre": "Venezuela",
+    "continente": "América del Sur",
+    "emoji": "🇻🇪",
+    "capital": "Caracas"
+  },
+  {
+    "id": "AE",
+    "nombre": "Emiratos Árabes",
+    "continente": "Asia",
+    "emoji": "🇦🇪",
+    "capital": "Dubái"
+  },
+  {
+    "id": "AF",
+    "nombre": "Afganistán",
+    "continente": "Asia",
+    "emoji": "🇦🇫",
+    "capital": "Kabul"
+  },
+  {
+    "id": "AM",
+    "nombre": "Armenia",
+    "continente": "Asia",
+    "emoji": "🇦🇲",
+    "capital": "Ereván"
+  },
+  {
+    "id": "AZ",
+    "nombre": "Azerbaiyán",
+    "continente": "Asia",
+    "emoji": "🇦🇿",
+    "capital": "Bakú"
+  },
+  {
+    "id": "BD",
+    "nombre": "Bangladesh",
+    "continente": "Asia",
+    "emoji": "🇧🇩",
+    "capital": "Daca"
+  },
+  {
+    "id": "BH",
+    "nombre": "Baréin",
+    "continente": "Asia",
+    "emoji": "🇧🇭",
+    "capital": "Manama"
+  },
+  {
+    "id": "BN",
+    "nombre": "Brunéi",
+    "continente": "Asia",
+    "emoji": "🇧🇳",
+    "capital": "Bandar Seri Begawan"
+  },
+  {
+    "id": "BT",
+    "nombre": "Bután",
+    "continente": "Asia",
+    "emoji": "🇧🇹",
+    "capital": "Timbu"
+  },
+  {
+    "id": "CN",
+    "nombre": "China",
+    "continente": "Asia",
+    "emoji": "🇨🇳",
+    "capital": "Pekín"
+  },
+  {
+    "id": "GE",
+    "nombre": "Georgia",
+    "continente": "Asia",
+    "emoji": "🇬🇪",
+    "capital": "Tiflis"
+  },
+  {
+    "id": "ID",
+    "nombre": "Indonesia",
+    "continente": "Asia",
+    "emoji": "🇮🇩",
+    "capital": "Yakarta"
+  },
+  {
+    "id": "IL",
+    "nombre": "Israel",
+    "continente": "Asia",
+    "emoji": "🇮🇱",
+    "capital": "Tel Aviv"
+  },
+  {
+    "id": "IN",
+    "nombre": "India",
+    "continente": "Asia",
+    "emoji": "🇮🇳",
+    "capital": "Nueva Delhi"
+  },
+  {
+    "id": "IQ",
+    "nombre": "Irak",
+    "continente": "Asia",
+    "emoji": "🇮🇶",
+    "capital": "Bagdad"
+  },
+  {
+    "id": "IR",
+    "nombre": "Irán",
+    "continente": "Asia",
+    "emoji": "🇮🇷",
+    "capital": "Teherán"
+  },
+  {
+    "id": "JO",
+    "nombre": "Jordania",
+    "continente": "Asia",
+    "emoji": "🇯🇴",
+    "capital": "Ammán"
+  },
+  {
+    "id": "JP",
+    "nombre": "Japón",
+    "continente": "Asia",
+    "emoji": "🇯🇵",
+    "capital": "Tokio"
+  },
+  {
+    "id": "KG",
+    "nombre": "Kirguistán",
+    "continente": "Asia",
+    "emoji": "🇰🇬",
+    "capital": "Biskek"
+  },
+  {
+    "id": "KH",
+    "nombre": "Camboya",
+    "continente": "Asia",
+    "emoji": "🇰🇭",
+    "capital": "Nom Pen"
+  },
+  {
+    "id": "KP",
+    "nombre": "Corea del Norte",
+    "continente": "Asia",
+    "emoji": "🇰🇵",
+    "capital": "Pyongyang"
+  },
+  {
+    "id": "KR",
+    "nombre": "Corea del Sur",
+    "continente": "Asia",
+    "emoji": "🇰🇷",
+    "capital": "Seúl"
+  },
+  {
+    "id": "KW",
+    "nombre": "Kuwait",
+    "continente": "Asia",
+    "emoji": "🇰🇼",
+    "capital": "Kuwait"
+  },
+  {
+    "id": "KZ",
+    "nombre": "Kazajistán",
+    "continente": "Asia",
+    "emoji": "🇰🇿",
+    "capital": "Astana"
+  },
+  {
+    "id": "LA",
+    "nombre": "Laos",
+    "continente": "Asia",
+    "emoji": "🇱🇦",
+    "capital": "Vientián"
+  },
+  {
+    "id": "LB",
+    "nombre": "Líbano",
+    "continente": "Asia",
+    "emoji": "🇱🇧",
+    "capital": "Beirut"
+  },
+  {
+    "id": "LK",
+    "nombre": "Sri Lanka",
+    "continente": "Asia",
+    "emoji": "🇱🇰",
+    "capital": "Colombo"
+  },
+  {
+    "id": "MM",
+    "nombre": "Myanmar",
+    "continente": "Asia",
+    "emoji": "🇲🇲",
+    "capital": "Naipyidó"
+  },
+  {
+    "id": "MN",
+    "nombre": "Mongolia",
+    "continente": "Asia",
+    "emoji": "🇲🇳",
+    "capital": "Ulán Bator"
+  },
+  {
+    "id": "MY",
+    "nombre": "Malasia",
+    "continente": "Asia",
+    "emoji": "🇲🇾",
+    "capital": "Kuala Lumpur"
+  },
+  {
+    "id": "NP",
+    "nombre": "Nepal",
+    "continente": "Asia",
+    "emoji": "🇳🇵",
+    "capital": "Katmandú"
+  },
+  {
+    "id": "OM",
+    "nombre": "Omán",
+    "continente": "Asia",
+    "emoji": "🇴🇲",
+    "capital": "Mascate"
+  },
+  {
+    "id": "PH",
+    "nombre": "Filipinas",
+    "continente": "Asia",
+    "emoji": "🇵🇭",
+    "capital": "Manila"
+  },
+  {
+    "id": "PK",
+    "nombre": "Pakistán",
+    "continente": "Asia",
+    "emoji": "🇵🇰",
+    "capital": "Islamabad"
+  },
+  {
+    "id": "PS",
+    "nombre": "Palestina",
+    "continente": "Asia",
+    "emoji": "🇵🇸",
+    "capital": "Ramala"
+  },
+  {
+    "id": "QA",
+    "nombre": "Catar",
+    "continente": "Asia",
+    "emoji": "🇶🇦",
+    "capital": "Doha"
+  },
+  {
+    "id": "SA",
+    "nombre": "Arabia Saudí",
+    "continente": "Asia",
+    "emoji": "🇸🇦",
+    "capital": "Riad"
+  },
+  {
+    "id": "SG",
+    "nombre": "Singapur",
+    "continente": "Asia",
+    "emoji": "🇸🇬",
+    "capital": "Singapur"
+  },
+  {
+    "id": "SY",
+    "nombre": "Siria",
+    "continente": "Asia",
+    "emoji": "🇸🇾",
+    "capital": "Damasco"
+  },
+  {
+    "id": "TH",
+    "nombre": "Tailandia",
+    "continente": "Asia",
+    "emoji": "🇹🇭",
+    "capital": "Bangkok"
+  },
+  {
+    "id": "TJ",
+    "nombre": "Tayikistán",
+    "continente": "Asia",
+    "emoji": "🇹🇯",
+    "capital": "Dusambé"
+  },
+  {
+    "id": "TL",
+    "nombre": "Timor Oriental",
+    "continente": "Asia",
+    "emoji": "🇹🇱",
+    "capital": "Dili"
+  },
+  {
+    "id": "TM",
+    "nombre": "Turkmenistán",
+    "continente": "Asia",
+    "emoji": "🇹🇲",
+    "capital": "Asjabad"
+  },
+  {
+    "id": "TW",
+    "nombre": "Taiwán",
+    "continente": "Asia",
+    "emoji": "🇹🇼",
+    "capital": "Taipéi"
+  },
+  {
+    "id": "UZ",
+    "nombre": "Uzbekistán",
+    "continente": "Asia",
+    "emoji": "🇺🇿",
+    "capital": "Taskent"
+  },
+  {
+    "id": "VN",
+    "nombre": "Vietnam",
+    "continente": "Asia",
+    "emoji": "🇻🇳",
+    "capital": "Hanói"
+  },
+  {
+    "id": "YE",
+    "nombre": "Yemen",
+    "continente": "Asia",
+    "emoji": "🇾🇪",
+    "capital": "Saná"
+  },
+  {
+    "id": "AO",
+    "nombre": "Angola",
+    "continente": "África",
+    "emoji": "🇦🇴",
+    "capital": "Luanda"
+  },
+  {
+    "id": "BF",
+    "nombre": "Burkina Faso",
+    "continente": "África",
+    "emoji": "🇧🇫",
+    "capital": "Uagadugú"
+  },
+  {
+    "id": "BI",
+    "nombre": "Burundi",
+    "continente": "África",
+    "emoji": "🇧🇮",
+    "capital": "Buyumbura"
+  },
+  {
+    "id": "BJ",
+    "nombre": "Benín",
+    "continente": "África",
+    "emoji": "🇧🇯",
+    "capital": "Porto Novo"
+  },
+  {
+    "id": "BW",
+    "nombre": "Botsuana",
+    "continente": "África",
+    "emoji": "🇧🇼",
+    "capital": "Gaborone"
+  },
+  {
+    "id": "CD",
+    "nombre": "R.D. del Congo",
+    "continente": "África",
+    "emoji": "🇨🇩",
+    "capital": "Kinshasa"
+  },
+  {
+    "id": "CF",
+    "nombre": "R. Centroafricana",
+    "continente": "África",
+    "emoji": "🇨🇫",
+    "capital": "Bangui"
+  },
+  {
+    "id": "CG",
+    "nombre": "Congo",
+    "continente": "África",
+    "emoji": "🇨🇬",
+    "capital": "Brazzaville"
+  },
+  {
+    "id": "CI",
+    "nombre": "Costa de Marfil",
+    "continente": "África",
+    "emoji": "🇨🇮",
+    "capital": "Yamoussoukro"
+  },
+  {
+    "id": "CM",
+    "nombre": "Camerún",
+    "continente": "África",
+    "emoji": "🇨🇲",
+    "capital": "Yaundé"
+  },
+  {
+    "id": "CV",
+    "nombre": "Cabo Verde",
+    "continente": "África",
+    "emoji": "🇨🇻",
+    "capital": "Praia"
+  },
+  {
+    "id": "DJ",
+    "nombre": "Yibuti",
+    "continente": "África",
+    "emoji": "🇩🇯",
+    "capital": "Yibuti"
+  },
+  {
+    "id": "DZ",
+    "nombre": "Argelia",
+    "continente": "África",
+    "emoji": "🇩🇿",
+    "capital": "Argel"
+  },
+  {
+    "id": "EG",
+    "nombre": "Egipto",
+    "continente": "África",
+    "emoji": "🇪🇬",
+    "capital": "El Cairo"
+  },
+  {
+    "id": "ER",
+    "nombre": "Eritrea",
+    "continente": "África",
+    "emoji": "🇪🇷",
+    "capital": "Asmara"
+  },
+  {
+    "id": "ET",
+    "nombre": "Etiopía",
+    "continente": "África",
+    "emoji": "🇪🇹",
+    "capital": "Addis Abeba"
+  },
+  {
+    "id": "GA",
+    "nombre": "Gabón",
+    "continente": "África",
+    "emoji": "🇬🇦",
+    "capital": "Libreville"
+  },
+  {
+    "id": "GH",
+    "nombre": "Ghana",
+    "continente": "África",
+    "emoji": "🇬🇭",
+    "capital": "Acra"
+  },
+  {
+    "id": "GM",
+    "nombre": "Gambia",
+    "continente": "África",
+    "emoji": "🇬🇲",
+    "capital": "Banjul"
+  },
+  {
+    "id": "GN",
+    "nombre": "Guinea",
+    "continente": "África",
+    "emoji": "🇬🇳",
+    "capital": "Conakri"
+  },
+  {
+    "id": "GQ",
+    "nombre": "Guinea Ecuatorial",
+    "continente": "África",
+    "emoji": "🇬🇶",
+    "capital": "Malabo"
+  },
+  {
+    "id": "GW",
+    "nombre": "Guinea-Bisáu",
+    "continente": "África",
+    "emoji": "🇬🇼",
+    "capital": "Bisáu"
+  },
+  {
+    "id": "KE",
+    "nombre": "Kenia",
+    "continente": "África",
+    "emoji": "🇰🇪",
+    "capital": "Nairobi"
+  },
+  {
+    "id": "KM",
+    "nombre": "Comoras",
+    "continente": "África",
+    "emoji": "🇰🇲",
+    "capital": "Moroni"
+  },
+  {
+    "id": "LR",
+    "nombre": "Liberia",
+    "continente": "África",
+    "emoji": "🇱🇷",
+    "capital": "Monrovia"
+  },
+  {
+    "id": "LS",
+    "nombre": "Lesoto",
+    "continente": "África",
+    "emoji": "🇱🇸",
+    "capital": "Maseru"
+  },
+  {
+    "id": "LY",
+    "nombre": "Libia",
+    "continente": "África",
+    "emoji": "🇱🇾",
+    "capital": "Trípoli"
+  },
+  {
+    "id": "MA",
+    "nombre": "Marruecos",
+    "continente": "África",
+    "emoji": "🇲🇦",
+    "capital": "Rabat"
+  },
+  {
+    "id": "MG",
+    "nombre": "Madagascar",
+    "continente": "África",
+    "emoji": "🇲🇬",
+    "capital": "Antananarivo"
+  },
+  {
+    "id": "ML",
+    "nombre": "Malí",
+    "continente": "África",
+    "emoji": "🇲🇱",
+    "capital": "Bamako"
+  },
+  {
+    "id": "MR",
+    "nombre": "Mauritania",
+    "continente": "África",
+    "emoji": "🇲🇷",
+    "capital": "Nuakchot"
+  },
+  {
+    "id": "MU",
+    "nombre": "Mauricio",
+    "continente": "África",
+    "emoji": "🇲🇺",
+    "capital": "Port Louis"
+  },
+  {
+    "id": "MW",
+    "nombre": "Malaui",
+    "continente": "África",
+    "emoji": "🇲🇼",
+    "capital": "Lilongüe"
+  },
+  {
+    "id": "MZ",
+    "nombre": "Mozambique",
+    "continente": "África",
+    "emoji": "🇲🇿",
+    "capital": "Maputo"
+  },
+  {
+    "id": "NA",
+    "nombre": "Namibia",
+    "continente": "África",
+    "emoji": "🇳🇦",
+    "capital": "Windhoek"
+  },
+  {
+    "id": "NE",
+    "nombre": "Níger",
+    "continente": "África",
+    "emoji": "🇳🇪",
+    "capital": "Niamey"
+  },
+  {
+    "id": "NG",
+    "nombre": "Nigeria",
+    "continente": "África",
+    "emoji": "🇳🇬",
+    "capital": "Abuja"
+  },
+  {
+    "id": "RW",
+    "nombre": "Ruanda",
+    "continente": "África",
+    "emoji": "🇷🇼",
+    "capital": "Kigali"
+  },
+  {
+    "id": "SC",
+    "nombre": "Seychelles",
+    "continente": "África",
+    "emoji": "🇸🇨",
+    "capital": "Victoria"
+  },
+  {
+    "id": "SD",
+    "nombre": "Sudán",
+    "continente": "África",
+    "emoji": "🇸🇩",
+    "capital": "Jartum"
+  },
+  {
+    "id": "SL",
+    "nombre": "Sierra Leona",
+    "continente": "África",
+    "emoji": "🇸🇱",
+    "capital": "Freetown"
+  },
+  {
+    "id": "SN",
+    "nombre": "Senegal",
+    "continente": "África",
+    "emoji": "🇸🇳",
+    "capital": "Dakar"
+  },
+  {
+    "id": "SO",
+    "nombre": "Somalia",
+    "continente": "África",
+    "emoji": "🇸🇴",
+    "capital": "Mogadiscio"
+  },
+  {
+    "id": "SS",
+    "nombre": "Sudán del Sur",
+    "continente": "África",
+    "emoji": "🇸🇸",
+    "capital": "Yuba"
+  },
+  {
+    "id": "ST",
+    "nombre": "Santo Tomé",
+    "continente": "África",
+    "emoji": "🇸🇹",
+    "capital": "Santo Tomé"
+  },
+  {
+    "id": "SZ",
+    "nombre": "Esuatini",
+    "continente": "África",
+    "emoji": "🇸🇿",
+    "capital": "Mbabane"
+  },
+  {
+    "id": "TD",
+    "nombre": "Chad",
+    "continente": "África",
+    "emoji": "🇹🇩",
+    "capital": "Yamena"
+  },
+  {
+    "id": "TG",
+    "nombre": "Togo",
+    "continente": "África",
+    "emoji": "🇹🇬",
+    "capital": "Lomé"
+  },
+  {
+    "id": "TN",
+    "nombre": "Túnez",
+    "continente": "África",
+    "emoji": "🇹🇳",
+    "capital": "Túnez"
+  },
+  {
+    "id": "TZ",
+    "nombre": "Tanzania",
+    "continente": "África",
+    "emoji": "🇹🇿",
+    "capital": "Dodoma"
+  },
+  {
+    "id": "UG",
+    "nombre": "Uganda",
+    "continente": "África",
+    "emoji": "🇺🇬",
+    "capital": "Kampala"
+  },
+  {
+    "id": "ZA",
+    "nombre": "Sudáfrica",
+    "continente": "África",
+    "emoji": "🇿🇦",
+    "capital": "Ciudad del Cabo"
+  },
+  {
+    "id": "ZM",
+    "nombre": "Zambia",
+    "continente": "África",
+    "emoji": "🇿🇲",
+    "capital": "Lusaka"
+  },
+  {
+    "id": "ZW",
+    "nombre": "Zimbabue",
+    "continente": "África",
+    "emoji": "🇿🇼",
+    "capital": "Harare"
+  },
+  {
+    "id": "AU",
+    "nombre": "Australia",
+    "continente": "Oceanía",
+    "emoji": "🇦🇺",
+    "capital": "Sídney"
+  },
+  {
+    "id": "FJ",
+    "nombre": "Fiyi",
+    "continente": "Oceanía",
+    "emoji": "🇫🇯",
+    "capital": "Suva"
+  },
+  {
+    "id": "FM",
+    "nombre": "Micronesia",
+    "continente": "Oceanía",
+    "emoji": "🇫🇲",
+    "capital": "Palikir"
+  },
+  {
+    "id": "KI",
+    "nombre": "Kiribati",
+    "continente": "Oceanía",
+    "emoji": "🇰🇮",
+    "capital": "Tarawa"
+  },
+  {
+    "id": "MH",
+    "nombre": "Islas Marshall",
+    "continente": "Oceanía",
+    "emoji": "🇲🇭",
+    "capital": "Majuro"
+  },
+  {
+    "id": "NR",
+    "nombre": "Nauru",
+    "continente": "Oceanía",
+    "emoji": "🇳🇷",
+    "capital": "Yaren"
+  },
+  {
+    "id": "NZ",
+    "nombre": "Nueva Zelanda",
+    "continente": "Oceanía",
+    "emoji": "🇳🇿",
+    "capital": "Auckland"
+  },
+  {
+    "id": "PG",
+    "nombre": "Papúa N. Guinea",
+    "continente": "Oceanía",
+    "emoji": "🇵🇬",
+    "capital": "Port Moresby"
+  },
+  {
+    "id": "PW",
+    "nombre": "Palaos",
+    "continente": "Oceanía",
+    "emoji": "🇵🇼",
+    "capital": "Ngerulmud"
+  },
+  {
+    "id": "SB",
+    "nombre": "Islas Salomón",
+    "continente": "Oceanía",
+    "emoji": "🇸🇧",
+    "capital": "Honiara"
+  },
+  {
+    "id": "TO",
+    "nombre": "Tonga",
+    "continente": "Oceanía",
+    "emoji": "🇹🇴",
+    "capital": "Nukualofa"
+  },
+  {
+    "id": "TV",
+    "nombre": "Tuvalu",
+    "continente": "Oceanía",
+    "emoji": "🇹🇻",
+    "capital": "Funafuti"
+  },
+  {
+    "id": "VU",
+    "nombre": "Vanuatu",
+    "continente": "Oceanía",
+    "emoji": "🇻🇺",
+    "capital": "Port Vila"
+  },
+  {
+    "id": "WS",
+    "nombre": "Samoa",
+    "continente": "Oceanía",
+    "emoji": "🇼🇸",
+    "capital": "Apia"
+  }
+]
