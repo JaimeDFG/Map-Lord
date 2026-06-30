@@ -1,9 +1,11 @@
 import { useState, useRef } from 'react';
 import {
   View, Text, TouchableOpacity, ScrollView, StyleSheet,
-  SafeAreaView, Modal, TextInput,
+  Modal, TextInput,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import MapView, { Marker } from 'react-native-maps';
+import OsmTileLayer from '../components/OsmTileLayer';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
 import FichaPOI from '../components/FichaPOI';
@@ -12,6 +14,7 @@ import { CATEGORIAS, RELEVANCIA, labelCategoria, labelRelevancia } from '../cons
 export default function PantallaLugares({ ciudad, onAbrirPOI }) {
   const { lang, todosLosPois, poisVisitados, togglePoiVisitado } = useApp();
   const t = useT(lang);
+  const insets = useSafeAreaInsets();
 
   const [poiEnMapa, setPoiEnMapa]   = useState(null);
   const [fichaMapaVisible, setFichaMapaVisible] = useState(false);
@@ -55,7 +58,7 @@ export default function PantallaLugares({ ciudad, onAbrirPOI }) {
 
   return (
     <View style={s.root}>
-        <SafeAreaView style={s.safe}>
+        <View style={[s.safe, { paddingTop: insets.top }]}>
           <View style={s.header}>
             <View style={{ flex: 1 }}>
               <Text style={s.titulo}>📋 {t.lugares}</Text>
@@ -69,7 +72,7 @@ export default function PantallaLugares({ ciudad, onAbrirPOI }) {
               </TouchableOpacity>
             )}
           </View>
-        </SafeAreaView>
+        </View>
 
       {/* Barra de búsqueda */}
       <View style={s.buscadorBox}>
@@ -183,7 +186,7 @@ export default function PantallaLugares({ ciudad, onAbrirPOI }) {
       {/* Modal mapa con filtro */}
       <Modal visible={modalMapa} animationType="slide">
         <View style={{ flex: 1 }}>
-          <SafeAreaView style={{ backgroundColor: '#1a1a2e' }}>
+          <View style={{ backgroundColor: '#1a1a2e', paddingTop: insets.top }}>
             <View style={s.modalMapaHeader}>
               <Text style={s.modalMapaTitulo}>
                 {labelCategoria(categoriaFiltro, lang) ?? t.todosLosLugares} · {poisFiltrados.length}
@@ -192,8 +195,9 @@ export default function PantallaLugares({ ciudad, onAbrirPOI }) {
                 <Text style={{ color: '#fff', fontSize: 16, fontWeight: '700' }}>✕</Text>
               </TouchableOpacity>
             </View>
-          </SafeAreaView>
-          <MapView style={{ flex: 1 }} initialRegion={region}>
+          </View>
+          <MapView style={{ flex: 1 }} initialRegion={region} mapType="none">
+            <OsmTileLayer />
             {/* Pins atenuados: los que NO están en el filtro */}
             {poisDeLaCiudad
               .filter(p => !poisFiltrados.find(f => f.id === p.id))

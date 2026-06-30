@@ -1,6 +1,8 @@
-import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Platform } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function NavBarMapa({ tab, onChange, onVolver, t, lang }) {
+  const insets = useSafeAreaInsets();
   const tabs = [
     { id: 'explorar',    label: t.explorar,                          emoji: '🗺️' },
     { id: 'lugares',     label: t.lugares,                           emoji: '📋' },
@@ -9,7 +11,7 @@ export default function NavBarMapa({ tab, onChange, onVolver, t, lang }) {
   ];
 
   return (
-    <SafeAreaView style={s.safe}>
+    <View style={[s.safe, { paddingBottom: insets.bottom }]}>
       <View style={s.bar}>
         <TouchableOpacity style={s.volverBtn} onPress={onVolver}>
           <Text style={s.volverEmoji}>←</Text>
@@ -32,7 +34,7 @@ export default function NavBarMapa({ tab, onChange, onVolver, t, lang }) {
           })}
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 

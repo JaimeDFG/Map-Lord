@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import {
   View, Text, TouchableOpacity, ScrollView,
-  StyleSheet, SafeAreaView, TextInput, Modal, Alert, Platform, StatusBar,
+  StyleSheet, TextInput, Modal, Alert, Platform,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { StatusBar } from 'expo-status-bar';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
 import { nombrePaisEn } from '../constants/tourism';
@@ -17,11 +19,17 @@ function buscarPaises(query) {
   ).slice(0, 6);
 }
 
-export default function PantallaInicio({ onAbrirMapa, onAbrirPasaporte, vistaInicial = 'inicio' }) {
+export default function PantallaInicio({
+  onAbrirMapa, onAbrirPasaporte, onAbrirMisMapas, onVolverInicio,
+  vistaInicial = 'inicio',
+}) {
   const { lang, setLang, mapas, añadirMapa, borrarMapa, renombrarMapa } = useApp();
   const t = useT(lang);
+  const insets = useSafeAreaInsets();
 
-  const [vista, setVista] = useState(vistaInicial);
+  // 'vista' viene controlada desde App.js vía vistaInicial; cuando estamos
+  // en 'mapas', el botón atrás físico lo gestiona App.js con onVolverInicio.
+  const vista = vistaInicial;
   const [modalCrear, setModalCrear] = useState(false);
   const [nombreCiudad, setNombreCiudad] = useState('');
   const [paisQuery, setPaisQuery] = useState('');
@@ -91,8 +99,8 @@ export default function PantallaInicio({ onAbrirMapa, onAbrirPasaporte, vistaIni
   // ── Pantalla de inicio (hub) ─────────────────────────────────────────────
   if (vista === 'inicio') {
     return (
-      <SafeAreaView style={s.safe}>
-        <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+      <View style={[s.safe, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
+        <StatusBar style="dark" />
 
         {/* Header con idioma */}
         <View style={s.headerHub}>
@@ -108,7 +116,7 @@ export default function PantallaInicio({ onAbrirMapa, onAbrirPasaporte, vistaIni
         {/* Botones principales */}
         <View style={s.hubCont}>
           {/* Mis mapas */}
-          <TouchableOpacity style={s.hubCard} onPress={() => setVista('mapas')}>
+          <TouchableOpacity style={s.hubCard} onPress={onAbrirMisMapas}>
             <Text style={s.hubEmoji}>🗺️</Text>
             <Text style={s.hubTitulo}>{lang === 'en' ? 'My Maps' : 'Mis Mapas'}</Text>
             <Text style={s.hubSub}>
@@ -127,18 +135,18 @@ export default function PantallaInicio({ onAbrirMapa, onAbrirPasaporte, vistaIni
             </Text>
           </TouchableOpacity>
         </View>
-      </SafeAreaView>
+      </View>
     );
   }
 
   // ── Vista de mapas ────────────────────────────────────────────────────────
   return (
-    <SafeAreaView style={s.safe}>
-      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+    <View style={[s.safe, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
+      <StatusBar style="dark" />
 
       {/* Header */}
       <View style={s.header}>
-        <TouchableOpacity onPress={() => setVista('inicio')} style={s.btnBack}>
+        <TouchableOpacity onPress={onVolverInicio} style={s.btnBack}>
           <Text style={s.btnBackT}>← {lang === 'en' ? 'Home' : 'Inicio'}</Text>
         </TouchableOpacity>
         <Text style={s.headerTitulo}>{lang === 'en' ? 'My Maps' : 'Mis Mapas'}</Text>
@@ -194,7 +202,7 @@ export default function PantallaInicio({ onAbrirMapa, onAbrirPasaporte, vistaIni
       </ScrollView>
 
       {/* FAB */}
-      <View style={s.fab}>
+      <View style={[s.fab, { bottom: insets.bottom + 16 }]}>
         <TouchableOpacity style={s.fabBtn} onPress={() => setModalCrear(true)}>
           <Text style={s.fabT}>+ {lang === 'en' ? 'New map' : 'Nuevo mapa'}</Text>
         </TouchableOpacity>
@@ -203,7 +211,7 @@ export default function PantallaInicio({ onAbrirMapa, onAbrirPasaporte, vistaIni
       {/* Modal crear */}
       <Modal visible={modalCrear} animationType="slide" transparent>
         <View style={s.modalFondo}>
-          <View style={s.modalCont}>
+          <View style={[s.modalCont, { paddingBottom: insets.bottom + 16 }]}>
             <View style={s.drag} />
             <Text style={s.modalTitulo}>{lang === 'en' ? '🗺️ New map' : '🗺️ Nuevo mapa'}</Text>
 
@@ -264,7 +272,7 @@ export default function PantallaInicio({ onAbrirMapa, onAbrirPasaporte, vistaIni
       {/* Modal renombrar */}
       <Modal visible={!!modalEditar} animationType="fade" transparent>
         <View style={s.modalFondo}>
-          <View style={[s.modalCont, { paddingBottom: 40 }]}>
+          <View style={[s.modalCont, { paddingBottom: insets.bottom + 40 }]}>
             <View style={s.drag} />
             <Text style={s.modalTitulo}>{lang === 'en' ? '✏️ Rename map' : '✏️ Renombrar mapa'}</Text>
             <TextInput
@@ -283,7 +291,7 @@ export default function PantallaInicio({ onAbrirMapa, onAbrirPasaporte, vistaIni
           </View>
         </View>
       </Modal>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -291,7 +299,7 @@ const s = StyleSheet.create({
   safe:             { flex: 1, backgroundColor: '#f8f9fa' },
 
   // Hub
-  headerHub:        { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, paddingTop: Platform.OS === 'android' ? (StatusBar.currentHeight ?? 0) + 12 : 12, paddingBottom: 12, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#f0f0f0' },
+  headerHub:        { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, paddingTop: 12, paddingBottom: 12, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#f0f0f0' },
   logo:             { fontSize: 22, fontWeight: '800', color: '#1a1a1a' },
   hubCont:          { flex: 1, padding: 20, gap: 16, justifyContent: 'center' },
   hubCard:          { backgroundColor: '#fff', borderRadius: 20, padding: 28, alignItems: 'center', shadowColor: '#000', shadowOpacity: 0.07, shadowRadius: 12, shadowOffset: { width: 0, height: 3 }, elevation: 3 },
@@ -301,7 +309,7 @@ const s = StyleSheet.create({
   hubSub:           { fontSize: 14, color: '#888' },
 
   // Header lista mapas
-  header:           { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingTop: Platform.OS === 'android' ? (StatusBar.currentHeight ?? 0) + 10 : 10, paddingBottom: 12, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#f0f0f0' },
+  header:           { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingTop: 10, paddingBottom: 12, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#f0f0f0' },
   btnBack:          { paddingRight: 12 },
   btnBackT:         { fontSize: 15, color: '#2563eb', fontWeight: '600' },
   headerTitulo:     { flex: 1, fontSize: 18, fontWeight: '800', color: '#1a1a1a', textAlign: 'center' },
@@ -327,7 +335,7 @@ const s = StyleSheet.create({
   separador:        { width: 1, backgroundColor: '#f0f0f0' },
 
   // FAB
-  fab:              { position: 'absolute', bottom: Platform.OS === 'android' ? 16 : 24, left: 20, right: 20 },
+  fab:              { position: 'absolute', left: 20, right: 20 },
   fabBtn:           { backgroundColor: '#2563eb', borderRadius: 16, paddingVertical: 16, alignItems: 'center', shadowColor: '#2563eb', shadowOpacity: 0.4, shadowRadius: 12, shadowOffset: { width: 0, height: 4 }, elevation: 6 },
   fabT:             { color: '#fff', fontSize: 16, fontWeight: '800' },
 

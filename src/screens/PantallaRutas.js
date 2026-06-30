@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import {
   View, Text, TouchableOpacity, ScrollView, StyleSheet,
-  SafeAreaView, Modal, TextInput,
+  Modal, TextInput,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import MapView, { Marker, Polyline } from 'react-native-maps';
+import OsmTileLayer from '../components/OsmTileLayer';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
 import { CATEGORIAS, RELEVANCIA, OPCIONES_TIEMPO, labelCategoria, labelRelevancia } from '../constants/tourism';
@@ -72,6 +74,7 @@ function optimizarRuta(pois) {
 export default function PantallaRutas({ ciudad, onActivarRuta }) {
   const { lang, rutasGuardadas, guardarRuta, borrarRuta, setRutaActiva, setMarcadorInicio, poisUsuario } = useApp();  
   const t = useT(lang);
+  const insets = useSafeAreaInsets();
 
   const [tab, setTab]                 = useState('crear'); // 'crear' | 'manual' | 'guardadas'
   const [tiempo, setTiempo]           = useState(null);
@@ -123,7 +126,7 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
 
   return (
     <View style={s.root}>
-        <SafeAreaView style={s.safe}>
+        <View style={[s.safe, { paddingTop: insets.top }]}>
           <View style={s.header}>
             <Text style={s.headerTitulo}>🧭 {t.rutas}</Text>
             <View style={s.tabsHeader}>
@@ -138,7 +141,7 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
               </TouchableOpacity>
             </View>
           </View>
-        </SafeAreaView>
+        </View>
 
       {tab === 'crear' && (
         <ScrollView style={s.flex} contentContainerStyle={s.scroll}>
@@ -158,7 +161,8 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
           {tiempo && (
             <View style={s.mapaBox}>
               {eligiendo && <View style={s.mapaAviso}><Text style={s.mapaAvisoT}>{t.tocaMapa}</Text></View>}
-              <MapView style={s.mapa} initialRegion={region} onPress={tocarMapa}>
+              <MapView style={s.mapa} initialRegion={region} mapType="none" onPress={tocarMapa}>
+                <OsmTileLayer />
                 {marcador && <Marker coordinate={marcador}><View style={s.pinInicio}><Text style={{fontSize:16}}>📍</Text></View></Marker>}
                 {ruta && ruta.map((poi,i)=>{
                   const cat=CATEGORIAS[poi.categoria]??{color:'#555'};

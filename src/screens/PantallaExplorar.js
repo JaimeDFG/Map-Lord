@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import {
   View, Text, TouchableOpacity, ScrollView, StyleSheet,
-  SafeAreaView, Modal, TextInput, ActivityIndicator,
+  Modal, TextInput, ActivityIndicator,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import MapView, { Marker, Polyline } from 'react-native-maps';
+import OsmTileLayer from '../components/OsmTileLayer';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
 import { CATEGORIAS, RELEVANCIA, SECCIONES, labelCategoria, labelRelevancia, nombrePaisEn } from '../constants/tourism';
@@ -12,6 +14,7 @@ import { CATEGORIAS, RELEVANCIA, SECCIONES, labelCategoria, labelRelevancia, nom
 export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, poiPrerellenado, onPoiPrerellenadoUsado }) {
   const { lang, rutaActiva, setRutaActiva, todosLosPois, añadirPoi, marcadorInicio, poisUsuario } = useApp();
   const t = useT(lang);
+  const insets = useSafeAreaInsets();
 
   const puntoVacio = {
     nombre: '', categoria: 'Monumento', relevancia: 2,
@@ -131,7 +134,7 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
 
   return (
     <View style={s.root}>
-        <SafeAreaView style={s.safe}>
+        <View style={[s.safe, { paddingTop: insets.top }]}>
           <View style={s.header}>
             <View style={s.headerLeft}>
               <Text style={s.headerTitulo}>{ciudad?.nombre ?? 'Madrid'}</Text>
@@ -152,9 +155,10 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
               )}
             </View>
           </View>
-        </SafeAreaView>
+        </View>
       
-      <MapView style={s.mapa} key={`${ciudad?.nombre ?? 'madrid'}_${poisDelMapa.length}`} initialRegion={region} showsUserLocation onPress={handleMapaPress}>
+      <MapView style={s.mapa} key={`${ciudad?.nombre ?? 'madrid'}_${poisDelMapa.length}`} initialRegion={region} mapType="none" showsUserLocation onPress={handleMapaPress}>
+        <OsmTileLayer />
         {rutaActiva && (
           <Polyline
           coordinates={rutaActiva.map(p => p.coordenadas)}

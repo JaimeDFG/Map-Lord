@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import {
   View, Text, TouchableOpacity, ScrollView, StyleSheet,
-  SafeAreaView, Modal, TextInput,
+  Modal, TextInput,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import MapView, { Marker } from 'react-native-maps';
+import OsmTileLayer from '../components/OsmTileLayer';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
 import { nombrePaisEn, nombreContinenteEn, CONTINENTES_EN } from '../constants/tourism';
@@ -212,6 +214,7 @@ const CAPITALES = {
 export default function PantallaPasaporte({ onCerrar }) {
   const { lang, viajes, togglePaisVisitado, añadirCiudadViaje, borrarCiudadViaje, datosPais } = useApp();
   const t = useT(lang);
+  const insets = useSafeAreaInsets();
 
   const [vista, setVista]           = useState('lista');
   const [continente, setContinente] = useState('Europa');
@@ -233,7 +236,7 @@ export default function PantallaPasaporte({ onCerrar }) {
 
   return (
     <View style={s.root}>
-      <SafeAreaView style={s.safe}>
+      <View style={[s.safe, { paddingTop: insets.top }]}>
         <View style={s.header}>
           <Text style={s.titulo}>📕 {t.misViajes}</Text>
           <View style={s.headerBotones}>
@@ -254,7 +257,7 @@ export default function PantallaPasaporte({ onCerrar }) {
             </TouchableOpacity>
           </View>
         </View>
-      </SafeAreaView>
+      </View>
 
       {/* Stats siempre visibles */}
       <View style={s.statsRow}>
@@ -283,7 +286,9 @@ export default function PantallaPasaporte({ onCerrar }) {
           <MapView
             style={{ flex: 1 }}
             initialRegion={{ latitude: 20, longitude: 10, latitudeDelta: 120, longitudeDelta: 120 }}
+            mapType="none"
           >
+            <OsmTileLayer />
             {paisesVisitadosConCoords.map(pais => (
               <Marker
                 key={pais.id}

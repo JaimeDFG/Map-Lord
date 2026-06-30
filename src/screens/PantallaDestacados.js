@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import {
   View, Text, TouchableOpacity, ScrollView,
-  StyleSheet, ActivityIndicator, SafeAreaView,
+  StyleSheet, ActivityIndicator,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
@@ -109,6 +110,7 @@ async function fetchDestacados(coordenadas, lang = 'es') {
 export default function PantallaDestacados({ ciudad, onAñadirPOI }) {
   const { lang, todosLosPois } = useApp();
   const t = useT(lang);
+  const insets = useSafeAreaInsets();
 
   // Nombres normalizados de los POIs que el usuario ya tiene en este mapa
   const nombreCiudadLower = (ciudad?.nombre ?? '').toLowerCase();
@@ -195,7 +197,7 @@ export default function PantallaDestacados({ ciudad, onAñadirPOI }) {
   };
 
   return (
-    <SafeAreaView style={s.safe}>
+    <View style={[s.safe, { paddingTop: insets.top }]}>
       <View style={s.header}>
         <Text style={s.titulo}>{textos.titulo}</Text>
         <Text style={s.subtitulo}>{textos.subtitulo}</Text>
@@ -275,7 +277,7 @@ export default function PantallaDestacados({ ciudad, onAñadirPOI }) {
 
         <View style={{ height: 100 }} />
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 

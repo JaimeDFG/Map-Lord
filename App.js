@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { useState, useEffect, useCallback } from 'react';
+import { View, StyleSheet, BackHandler } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AppProvider, useApp } from './src/context/AppContext';
 import PantallaInicio from './src/screens/PantallaInicio';
 import PantallaMapa from './src/screens/PantallaMapa';
@@ -7,45 +8,82 @@ import PantallaPasaporte from './src/screens/PantallaPasaporte';
 import { buscarCoordenadas } from './src/data/ciudades';
 
 function Navegador() {
-  const [pantalla, setPantalla] = useState('inicio'); // 'inicio' | 'mapas' | 'mapa' | 'pasaporte'
-  const [mapaActivo, setMapaActivo] = useState(null);
+  // Historial de pantallas como una pila: el último elemento es la pantalla actual
+  const [pila, setPila] = useState([{ id: 'inicio' }]);
+  const pantalla = pila[pila.length - 1];
+
+  function ir(nuevaPantalla) {
+    setPila(prev => [...prev, nuevaPantalla]);
+  }
+
+  function volver() {
+    setPila(prev => (prev.length > 1 ? prev.slice(0, -1) : prev));
+  }
+
+  // Botón físico "atrás" de Android: si hay más de 1 pantalla en la pila, retrocede
+  // dentro de la app; si estamos en la pantalla raíz, dejamos que el sistema
+  // operativo gestione el cierre de la app de forma normal.
+  useEffect(() => {
+    const onBackPress = () => {
+      if (pila.length > 1) {
+        volver();
+        return true; // evento consumido, no cierra la app
+      }
+      return false; // en la raíz, comportamiento por defecto del sistema
+    };
+    const sub = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+    return () => sub.remove();
+  }, [pila.length]);
 
   function abrirMapa({ paisId, ciudad, pais }) {
     const coordenadas = buscarCoordenadas(ciudad) ?? buscarCoordenadas(pais?.capital ?? '') ?? null;
-    setMapaActivo({ paisId, ciudad, pais, coordenadas });
-    setPantalla('mapa');
+    ir({ id: 'mapa', paisId, ciudad, pais, coordenadas });
   }
 
-  if (pantalla === 'pasaporte') {
-    return <PantallaPasaporte onCerrar={() => setPantalla('inicio')} />;
+  if (pantalla.id === 'pasaporte') {
+    return <PantallaPasaporte onCerrar={volver} />;
   }
 
-  if (pantalla === 'mapa' && mapaActivo) {
+  if (pantalla.id === 'mapa') {
     return (
       <PantallaMapa
-        pais={mapaActivo.pais}
-        ciudad={{ nombre: mapaActivo.ciudad, coordenadas: mapaActivo.coordenadas }}
-        onVolver={() => setPantalla('mapas')}
+        pais={pantalla.pais}
+        ciudad={{ nombre: pantalla.ciudad, coordenadas: pantalla.coordenadas }}
+        onVolver={volver}
+      />
+    );
+  }
+
+  if (pantalla.id === 'mapas') {
+    return (
+      <PantallaInicio
+        vistaInicial="mapas"
+        onVolverInicio={volver}
+        onAbrirMapa={abrirMapa}
+        onAbrirPasaporte={() => ir({ id: 'pasaporte' })}
       />
     );
   }
 
   return (
     <PantallaInicio
-      vistaInicial={pantalla === 'mapas' ? 'mapas' : 'inicio'}
+      vistaInicial="inicio"
+      onAbrirMisMapas={() => ir({ id: 'mapas' })}
       onAbrirMapa={abrirMapa}
-      onAbrirPasaporte={() => setPantalla('pasaporte')}
+      onAbrirPasaporte={() => ir({ id: 'pasaporte' })}
     />
   );
 }
 
 export default function App() {
   return (
-    <AppProvider>
-      <View style={s.root}>
-        <Navegador />
-      </View>
-    </AppProvider>
+    <SafeAreaProvider>
+      <AppProvider>
+        <View style={s.root}>
+          <Navegador />
+        </View>
+      </AppProvider>
+    </SafeAreaProvider>
   );
 }
 
