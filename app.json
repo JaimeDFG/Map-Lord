@@ -28,11 +28,11 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "owner": "jaimedf",
     "extra": {
       "eas": {
-        "projectId": "a1a1e481-107d-4ebd-bcf3-9378fcb1deb8"
+        "projectId": "3e43a794-c489-4bc9-a20f-c59ca01712a5"
       }
-    },
-    "owner": "jaimedf"
+    }
   }
 }
