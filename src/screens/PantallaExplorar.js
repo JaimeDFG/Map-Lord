@@ -1,35 +1,53 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   View, Text, TouchableOpacity, ScrollView, StyleSheet,
-  SafeAreaView, Modal, TextInput,
+  SafeAreaView, Modal, TextInput, ActivityIndicator,
 } from 'react-native';
 import MapView, { Marker, Polyline } from 'react-native-maps';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
-import { CATEGORIAS, RELEVANCIA } from '../constants/tourism';
+import { CATEGORIAS, RELEVANCIA, SECCIONES, labelCategoria, labelRelevancia, nombrePaisEn } from '../constants/tourism';
 
-export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar }) {
+
+export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, poiPrerellenado, onPoiPrerellenadoUsado }) {
   const { lang, rutaActiva, setRutaActiva, todosLosPois, añadirPoi, marcadorInicio, poisUsuario } = useApp();
   const t = useT(lang);
 
-  const [poiResumen, setPoiResumen]       = useState(null);
-  const [modalNuevo, setModalNuevo]       = useState(false);
-  const [agregando, setAgregando]         = useState(false);
-  const [modoPunto, setModoPunto]         = useState(false); // modo toca mapa para ubicar
-  const [nuevoPunto, setNuevoPunto]       = useState({
+  const puntoVacio = {
     nombre: '', categoria: 'Monumento', relevancia: 2,
     latitude: '', longitude: '',
     descripcion_corta: '', historia: '', arquitectura: '',
     curiosidades: '', misterios: '', tiempo_visita: '30',
-  });
+  };
+
+  const [poiResumen, setPoiResumen]       = useState(null);
+  const [modalNuevo, setModalNuevo]       = useState(false);
+  const [agregando, setAgregando]         = useState(false);
+  const [modoPunto, setModoPunto]         = useState(false);
+  const [nuevoPunto, setNuevoPunto]       = useState(puntoVacio);
+
+  // Cuando llega un lugar desde Destacados, lo abrimos pre-rellenado en el formulario
+  useEffect(() => {
+    if (!poiPrerellenado) return;
+    setNuevoPunto({
+      ...puntoVacio,
+      nombre:    poiPrerellenado.nombre ?? '',
+      latitude:  String(poiPrerellenado.coordenadas?.latitude ?? ''),
+      longitude: String(poiPrerellenado.coordenadas?.longitude ?? ''),
+      relevancia: 3, // Los lugares de Top son siempre destacados (★★★)
+    });
+    setModalNuevo(true);
+    onPoiPrerellenadoUsado?.();
+  }, [poiPrerellenado]);
 
   const poisEnRuta = rutaActiva ? rutaActiva.map(p => p.id) : [];
 
   // POIs filtrados por ciudad
-  const nombreCiudad = ciudad?.nombre?.toLowerCase() ?? 'madrid';
-  const poisDelMapa = todosLosPois.filter(p =>
+  const nombreCiudad = ciudad?.nombre?.toLowerCase() ?? '';
+  const poisLocales = todosLosPois.filter(p =>
     (p.ciudad ?? 'Madrid').toLowerCase() === nombreCiudad
   );
+  const poisDelMapa = poisLocales;
 
   // Centro del mapa por orden de prioridad:
   // 1) Media de los POIs del mapa (si hay alguno, es lo más relevante)
@@ -43,14 +61,28 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar })
     : null;
   const centro = centroPois ?? ciudad?.coordenadas ?? { latitude: 40.4168, longitude: -3.7038 };
 
-  // Delta: ajustar zoom según la dispersión real de los puntos
-  const latDelta = poisDelMapa.length > 1
-    ? (Math.max(...poisDelMapa.map(p => p.coordenadas.latitude))  - Math.min(...poisDelMapa.map(p => p.coordenadas.latitude)))  * 1.5 + 0.008
-    : 0.012;
-  const lonDelta = poisDelMapa.length > 1
-    ? (Math.max(...poisDelMapa.map(p => p.coordenadas.longitude)) - Math.min(...poisDelMapa.map(p => p.coordenadas.longitude))) * 1.5 + 0.008
-    : 0.012;
-  const region = { ...centro, latitudeDelta: Math.max(latDelta, 0.008), longitudeDelta: Math.max(lonDelta, 0.008) };
+  // Delta: zoom consistente a nivel de ciudad
+  // Sin POIs → zoom fijo de ciudad (~10km de radio, igual para todas)
+  // Con 1 POI → zoom fijo cercano al pin
+  // Con 2+ POIs → zoom dinámico para encuadrar todos los pins
+  const CIUDAD_DELTA = 0.12;  // ~10km, vista de ciudad estándar
+  const POI_DELTA    = 0.01;  // ~1km, vista cercana a un solo pin
+  const MARGEN       = 1.3;
+
+  let latDelta, lonDelta;
+  if (poisDelMapa.length === 0) {
+    latDelta = CIUDAD_DELTA;
+    lonDelta = CIUDAD_DELTA;
+  } else if (poisDelMapa.length === 1) {
+    latDelta = POI_DELTA;
+    lonDelta = POI_DELTA;
+  } else {
+    const lats = poisDelMapa.map(p => p.coordenadas.latitude);
+    const lons = poisDelMapa.map(p => p.coordenadas.longitude);
+    latDelta = Math.max((Math.max(...lats) - Math.min(...lats)) * MARGEN + 0.003, POI_DELTA);
+    lonDelta = Math.max((Math.max(...lons) - Math.min(...lons)) * MARGEN + 0.003, POI_DELTA);
+  }
+  const region = { ...centro, latitudeDelta: latDelta, longitudeDelta: lonDelta };
 
   function handlePin(poi) {
     if (rutaActiva && poisEnRuta.includes(poi.id)) setPoiResumen(poi);
@@ -81,7 +113,7 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar })
       coordenadas: { latitude: lat, longitude: lon },
       categoria: nuevoPunto.categoria,
       relevancia: nuevoPunto.relevancia,
-      descripcion_corta: nuevoPunto.descripcion_corta || 'Punto personalizado',
+      descripcion_corta: nuevoPunto.descripcion_corta || t.puntoPersonalizado,
       historia:      nuevoPunto.historia,
       arquitectura:  nuevoPunto.arquitectura,
       curiosidades:  nuevoPunto.curiosidades,
@@ -103,7 +135,7 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar })
           <View style={s.header}>
             <View style={s.headerLeft}>
               <Text style={s.headerTitulo}>{ciudad?.nombre ?? 'Madrid'}</Text>
-              <Text style={s.headerSub}>{pais?.nombre ?? 'España'} · {poisDelMapa.length} {t.lugares}</Text>
+              <Text style={s.headerSub}>{nombrePaisEn(pais?.nombre ?? 'España', lang)} · {poisDelMapa.length} {t.lugares}</Text>
             </View>
             <View style={s.headerBotones}>
               {rutaActiva ? (
@@ -122,7 +154,7 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar })
           </View>
         </SafeAreaView>
       
-      <MapView style={s.mapa} key={`${ciudad?.nombre ?? 'madrid'}_${poisDelMapa.length > 0}`} initialRegion={region} showsUserLocation onPress={handleMapaPress}>
+      <MapView style={s.mapa} key={`${ciudad?.nombre ?? 'madrid'}_${poisDelMapa.length}`} initialRegion={region} showsUserLocation onPress={handleMapaPress}>
         {rutaActiva && (
           <Polyline
           coordinates={rutaActiva.map(p => p.coordenadas)}
@@ -179,7 +211,7 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar })
 
       {modoPunto && (
         <View style={s.bannerModo}>
-          <Text style={s.bannerModoT}>👆 Toca el mapa para colocar el punto</Text>
+          <Text style={s.bannerModoT}>👆 {lang === 'en' ? 'Tap the map to place the point' : 'Toca el mapa para colocar el punto'}</Text>
           <TouchableOpacity onPress={() => setModoPunto(false)}><Text style={{ color: '#fff', fontWeight: '700' }}>✕</Text></TouchableOpacity>
         </View>
       )}
@@ -241,7 +273,7 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar })
               </View>
 
               <Text style={s.label}>{t.nombre} *</Text>
-              <TextInput style={s.input} value={nuevoPunto.nombre} onChangeText={v => setNuevoPunto(p => ({ ...p, nombre: v }))} placeholder="Ej. Fuente del parque..." placeholderTextColor="#bbb" />
+              <TextInput style={s.input} value={nuevoPunto.nombre} onChangeText={v => setNuevoPunto(p => ({ ...p, nombre: v }))} placeholder={lang === 'en' ? 'E.g. Park fountain...' : 'Ej. Fuente del parque...'} placeholderTextColor="#bbb" />
 
               <Text style={[s.label, { marginTop: 12 }]}>{t.categoria}</Text>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 12 }}>
@@ -252,13 +284,13 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar })
                     onPress={() => setNuevoPunto(p => ({ ...p, categoria: cat }))}
                   >
                     <Text style={[s.chipT, nuevoPunto.categoria === cat && s.chipTActivo]}>
-                      {cat}
+                      {labelCategoria(cat, lang)}
                     </Text>
                   </TouchableOpacity>
                 ))}
               </ScrollView>
 
-              <Text style={s.label}>Relevancia</Text>
+              <Text style={s.label}>{lang === 'en' ? 'Relevance' : 'Relevancia'}</Text>
               <View style={{ flexDirection: 'row', gap: 8, marginBottom: 12 }}>
                 {[1, 2, 3].map(r => (
                   <TouchableOpacity key={r} style={[s.chip, nuevoPunto.relevancia === r && s.chipActivo]} onPress={() => setNuevoPunto(p => ({ ...p, relevancia: r }))}>
@@ -278,27 +310,27 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar })
                 </View>
               </View>
               <TouchableOpacity style={s.botonUbicar} onPress={() => { setModalNuevo(false); setModoPunto(true); }}>
-                <Text style={s.botonUbicarT}>📍 Tocar mapa para ubicar</Text>
+                <Text style={s.botonUbicarT}>📍 {lang === 'en' ? 'Tap map to locate' : 'Tocar mapa para ubicar'}</Text>
               </TouchableOpacity>
 
-              <Text style={[s.label, { marginTop: 12 }]}>Descripción corta</Text>
-              <TextInput style={s.input} value={nuevoPunto.descripcion_corta} onChangeText={v => setNuevoPunto(p => ({ ...p, descripcion_corta: v }))} placeholder="Una línea descriptiva..." placeholderTextColor="#bbb" />
+              <Text style={[s.label, { marginTop: 12 }]}>{lang === 'en' ? 'Short description' : 'Descripción corta'}</Text>
+              <TextInput style={s.input} value={nuevoPunto.descripcion_corta} onChangeText={v => setNuevoPunto(p => ({ ...p, descripcion_corta: v }))} placeholder={lang === 'en' ? 'One descriptive line...' : 'Una línea descriptiva...'} placeholderTextColor="#bbb" />
 
-              {['historia', 'arquitectura', 'curiosidades', 'misterios'].map(campo => (
-                <View key={campo}>
-                  <Text style={[s.label, { marginTop: 12 }]}>{t[campo]} <Text style={{ color: '#bbb', fontWeight: '400' }}>{t.opcional}</Text></Text>
+              {SECCIONES.map(sec => (
+                <View key={sec.key}>
+                  <Text style={[s.label, { marginTop: 12 }]}>{lang === 'en' ? sec.labelEn : sec.labelEs} <Text style={{ color: '#bbb', fontWeight: '400' }}>{t.opcional}</Text></Text>
                   <TextInput
                     style={[s.input, { minHeight: 70, textAlignVertical: 'top' }]}
-                    value={nuevoPunto[campo]}
-                    onChangeText={v => setNuevoPunto(p => ({ ...p, [campo]: v }))}
-                    placeholder={`Información sobre ${campo}...`}
+                    value={nuevoPunto[sec.key]}
+                    onChangeText={v => setNuevoPunto(p => ({ ...p, [sec.key]: v }))}
+                    placeholder={`${lang === 'en' ? 'Info about' : 'Información sobre'} ${lang === 'en' ? sec.labelEn.toLowerCase() : sec.labelEs.toLowerCase()}...`}
                     placeholderTextColor="#bbb"
                     multiline
                   />
                 </View>
               ))}
 
-              <Text style={[s.label, { marginTop: 12 }]}>Tiempo de visita ({t.min})</Text>
+              <Text style={[s.label, { marginTop: 12 }]}>{lang === 'en' ? 'Visit time' : 'Tiempo de visita'} ({t.min})</Text>
               <TextInput style={s.input} value={nuevoPunto.tiempo_visita} onChangeText={v => setNuevoPunto(p => ({ ...p, tiempo_visita: v }))} keyboardType="number-pad" placeholder="30" placeholderTextColor="#bbb" />
 
               <TouchableOpacity style={[s.botonGuardar, { marginTop: 20 }]} onPress={guardarNuevoPunto}>

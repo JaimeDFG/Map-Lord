@@ -6,7 +6,7 @@ import {
 import MapView, { Marker, Polyline } from 'react-native-maps';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
-import { CATEGORIAS, RELEVANCIA, OPCIONES_TIEMPO } from '../constants/tourism';
+import { CATEGORIAS, RELEVANCIA, OPCIONES_TIEMPO, labelCategoria, labelRelevancia } from '../constants/tourism';
 import PUNTOS_BASE from '../data/puntosInteres.json';
 import FichaPOI from '../components/FichaPOI';
 
@@ -148,9 +148,9 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
           </View>
           <View style={s.opciones}>
             {OPCIONES_TIEMPO.map(op=>(
-              <TouchableOpacity key={op.label} style={[s.opcion,tiempo?.label===op.label&&s.opcionActiva]} onPress={()=>selTiempo(op)}>
+              <TouchableOpacity key={op.labelEs} style={[s.opcion,tiempo?.labelEs===op.labelEs&&s.opcionActiva]} onPress={()=>selTiempo(op)}>
                 <Text style={s.opcionEmoji}>{op.emoji}</Text>
-                <Text style={[s.opcionLabel,tiempo?.label===op.label&&s.opcionLabelActiva]}>{op.label}</Text>
+                <Text style={[s.opcionLabel,tiempo?.labelEs===op.labelEs&&s.opcionLabelActiva]}>{lang === 'en' ? op.labelEn : op.labelEs}</Text>
               </TouchableOpacity>
             ))}
           </View>
@@ -190,7 +190,7 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
                     <View style={[s.pasoIcono,{backgroundColor:cat.color+'20'}]}><Text style={{fontSize:18}}>{cat.emoji}</Text></View>
                     <View style={s.pasoInfo}>
                       <Text style={s.pasoNombre}>{poi.nombre}</Text>
-                      <Text style={s.pasoDetalle}>{poi.categoria} · {poi.tiempo_visita} {t.min}</Text>
+                      <Text style={s.pasoDetalle}>{labelCategoria(poi.categoria, lang)} · {poi.tiempo_visita} {t.min}</Text>
                       <Text style={[s.pasoRel,{color:rel?.color}]}>{rel?.estrellas} {t[rel?.label?.toLowerCase()]??rel?.label}</Text>
                     </View>
                     <Text style={s.arrow}>›</Text>
@@ -243,7 +243,7 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
                 </View>
                 <View style={{flex:1}}>
                   <Text style={[s.poiSelNombre, sel && {color:'#2563eb'}]}>{poi.nombre}</Text>
-                  <Text style={s.poiSelSub}>{poi.categoria} · {poi.tiempo_visita} min</Text>
+                  <Text style={s.poiSelSub}>{labelCategoria(poi.categoria, lang)} · {poi.tiempo_visita} {t.min}</Text>
                 </View>
               </TouchableOpacity>
             );
@@ -279,7 +279,7 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
                     <View style={[s.pasoIcono,{backgroundColor:cat.color+'20'}]}><Text style={{fontSize:18}}>{cat.emoji}</Text></View>
                     <View style={s.pasoInfo}>
                       <Text style={s.pasoNombre}>{poi.nombre}</Text>
-                      <Text style={s.pasoDetalle}>{poi.categoria} · {poi.tiempo_visita} {t.min}</Text>
+                      <Text style={s.pasoDetalle}>{labelCategoria(poi.categoria, lang)} · {poi.tiempo_visita} {t.min}</Text>
                       <Text style={[s.pasoRel,{color:rel?.color}]}>{rel?.estrellas} {t[rel?.label?.toLowerCase()]??rel?.label}</Text>
                     </View>
                     <Text style={s.arrow}>›</Text>

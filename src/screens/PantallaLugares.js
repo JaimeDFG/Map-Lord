@@ -7,7 +7,7 @@ import MapView, { Marker } from 'react-native-maps';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
 import FichaPOI from '../components/FichaPOI';
-import { CATEGORIAS, RELEVANCIA } from '../constants/tourism';
+import { CATEGORIAS, RELEVANCIA, labelCategoria, labelRelevancia } from '../constants/tourism';
 
 export default function PantallaLugares({ ciudad, onAbrirPOI }) {
   const { lang, todosLosPois, poisVisitados, togglePoiVisitado } = useApp();
@@ -58,14 +58,14 @@ export default function PantallaLugares({ ciudad, onAbrirPOI }) {
         <SafeAreaView style={s.safe}>
           <View style={s.header}>
             <View style={{ flex: 1 }}>
-              <Text style={s.titulo}>📋 Lugares</Text>
+              <Text style={s.titulo}>📋 {t.lugares}</Text>
               <Text style={s.sub}>
                 {totalVisitados}/{poisDeLaCiudad.length} {t.visitados2} · {t.mostrando} {poisFiltrados.length}
               </Text>
             </View>
             {hayFiltros && (
               <TouchableOpacity style={s.btnLimpiar} onPress={limpiarFiltros}>
-                <Text style={s.btnLimpiarT}>✕ Limpiar</Text>
+                <Text style={s.btnLimpiarT}>✕ {lang === 'en' ? 'Clear' : 'Limpiar'}</Text>
               </TouchableOpacity>
             )}
           </View>
@@ -106,7 +106,7 @@ export default function PantallaLugares({ ciudad, onAbrirPOI }) {
               onPress={() => setCategoriaFiltro(activo ? null : cat)}
             >
               <Text style={s.filtroChipEmoji}>{info.emoji}</Text>
-              <Text style={[s.filtroChipT, activo && s.filtroChipTActivo]}>{cat}</Text>
+              <Text style={[s.filtroChipT, activo && s.filtroChipTActivo]}>{labelCategoria(cat, lang)}</Text>
             </TouchableOpacity>
           );
         })}
@@ -138,7 +138,7 @@ export default function PantallaLugares({ ciudad, onAbrirPOI }) {
       {/* Lista */}
       <ScrollView style={s.flex} contentContainerStyle={s.lista}>
         {poisFiltrados.length === 0 && (
-          <Text style={s.vacio}>No hay lugares que coincidan con los filtros</Text>
+          <Text style={s.vacio}>{t.sinLugares}</Text>
         )}
         {poisFiltrados.map(poi => {
           const cat = CATEGORIAS[poi.categoria] ?? { emoji: '📍', color: '#888' };
@@ -186,7 +186,7 @@ export default function PantallaLugares({ ciudad, onAbrirPOI }) {
           <SafeAreaView style={{ backgroundColor: '#1a1a2e' }}>
             <View style={s.modalMapaHeader}>
               <Text style={s.modalMapaTitulo}>
-                {categoriaFiltro ?? 'Todos los lugares'} · {poisFiltrados.length}
+                {labelCategoria(categoriaFiltro, lang) ?? t.todosLosLugares} · {poisFiltrados.length}
               </Text>
               <TouchableOpacity onPress={() => setModalMapa(false)} style={s.modalMapaCerrar}>
                 <Text style={{ color: '#fff', fontSize: 16, fontWeight: '700' }}>✕</Text>
@@ -229,13 +229,13 @@ export default function PantallaLugares({ ciudad, onAbrirPOI }) {
             <View style={s.fichaEnMapa}>
               <View style={{ flex: 1 }}>
                 <Text style={s.fichaEnMapaNombre}>{poiEnMapa.nombre}</Text>
-                <Text style={s.fichaEnMapaSub}>{poiEnMapa.categoria} · ⏱ {poiEnMapa.tiempo_visita} min</Text>
+                <Text style={s.fichaEnMapaSub}>{labelCategoria(poiEnMapa.categoria, lang)} · ⏱ {poiEnMapa.tiempo_visita} {t.min}</Text>
               </View>
               <TouchableOpacity
                 style={s.fichaEnMapaBtn}
                 onPress={() => setFichaMapaVisible(true)}
               >
-                <Text style={s.fichaEnMapaBtnT}>Ver ficha →</Text>
+                <Text style={s.fichaEnMapaBtnT}>{t.verFicha}</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={s.fichaEnMapaCerrar}

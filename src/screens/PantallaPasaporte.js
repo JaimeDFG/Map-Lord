@@ -6,6 +6,7 @@ import {
 import MapView, { Marker } from 'react-native-maps';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
+import { nombrePaisEn, nombreContinenteEn, CONTINENTES_EN } from '../constants/tourism';
 import PAISES from '../data/paises.json';
 
 const CAPITALES = {
@@ -240,13 +241,13 @@ export default function PantallaPasaporte({ onCerrar }) {
               style={[s.vistaBtn, vista === 'lista' && s.vistaBtnActivo]}
               onPress={() => setVista('lista')}
             >
-              <Text style={[s.vistaBtnT, vista === 'lista' && s.vistaBtnTActivo]}>☰ Lista</Text>
+              <Text style={[s.vistaBtnT, vista === 'lista' && s.vistaBtnTActivo]}>☰ {lang === 'en' ? 'List' : 'Lista'}</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[s.vistaBtn, vista === 'mapa' && s.vistaBtnActivo]}
               onPress={() => setVista('mapa')}
             >
-              <Text style={[s.vistaBtnT, vista === 'mapa' && s.vistaBtnTActivo]}>🌍 Mapa</Text>
+              <Text style={[s.vistaBtnT, vista === 'mapa' && s.vistaBtnTActivo]}>🌍 {lang === 'en' ? 'Map' : 'Mapa'}</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={onCerrar} style={s.cerrar}>
               <Text style={s.cerrarT}>✕</Text>
@@ -319,13 +320,13 @@ export default function PantallaPasaporte({ onCerrar }) {
                 style={[s.contTab, continente === c && s.contTabActivo]}
                 onPress={() => setContinente(c)}
               >
-                <Text style={[s.contTabT, continente === c && s.contTabTActivo]}>{c}</Text>
+                <Text style={[s.contTabT, continente === c && s.contTabTActivo]}>{nombreContinenteEn(c, lang)}</Text>
               </TouchableOpacity>
             ))}
           </ScrollView>
 
           <Text style={s.contResumen}>
-            {visitadosCont} {t.de} {filtrados.length} {t.paisesEn} {continente}
+            {visitadosCont} {t.de} {filtrados.length} {t.paisesEn} {nombreContinenteEn(continente, lang)}
           </Text>
 
           <View style={s.grid}>
@@ -339,7 +340,7 @@ export default function PantallaPasaporte({ onCerrar }) {
                 >
                   <Text style={s.paisEmoji}>{pais.emoji}</Text>
                   <Text style={[s.paisNombre, d.visitado && s.paisNombreV]} numberOfLines={2}>
-                    {pais.nombre}
+                    {nombrePaisEn(pais.nombre, lang)}
                   </Text>
                   {d.visitado && <Text style={s.check}>✓</Text>}
                   {d.ciudades.length > 0 && (
@@ -361,8 +362,8 @@ export default function PantallaPasaporte({ onCerrar }) {
             <View style={s.modalHeader}>
               <Text style={{ fontSize: 44 }}>{modalPais?.emoji}</Text>
               <View style={{ flex: 1, marginLeft: 12 }}>
-                <Text style={s.modalTitulo}>{modalPais?.nombre}</Text>
-                <Text style={s.modalSub}>{modalPais?.continente}</Text>
+                <Text style={s.modalTitulo}>{nombrePaisEn(modalPais?.nombre, lang)}</Text>
+                <Text style={s.modalSub}>{nombreContinenteEn(modalPais?.continente, lang)}</Text>
               </View>
               <TouchableOpacity onPress={() => setModalPais(null)} style={s.cerrarModal}>
                 <Text style={{ color: '#555' }}>✕</Text>
@@ -375,7 +376,7 @@ export default function PantallaPasaporte({ onCerrar }) {
             >
               <Text style={[s.toggleBtnT, { color: datosPais(modalPais?.id ?? '').visitado ? '#fff' : '#2563eb' }]}>
                 {datosPais(modalPais?.id ?? '').visitado
-                  ? t.visitado + ' — toca para desmarcar'
+                  ? t.visitado + (lang === 'en' ? ' — tap to unmark' : ' — toca para desmarcar')
                   : t.marcarVisitado}
               </Text>
             </TouchableOpacity>
@@ -386,7 +387,7 @@ export default function PantallaPasaporte({ onCerrar }) {
                 style={s.input}
                 value={ciudad}
                 onChangeText={setCiudad}
-                placeholder="Nombre de la ciudad..."
+                placeholder={t.nombreCiudadPasaporte}
                 placeholderTextColor="#bbb"
                 onSubmitEditing={añadir}
                 returnKeyType="done"

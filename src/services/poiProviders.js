@@ -134,11 +134,19 @@ function osmElementToPoi(element) {
     },
     categoria: category,
     relevancia: relevanceFromOsmTags(tags),
-    descripcion_corta: textOrFallback(description, 'Punto de interés de OpenStreetMap'),
-    historia: textOrFallback(description, tags.wikipedia ? `Referencia Wikipedia: ${tags.wikipedia}` : 'Información pendiente de completar desde fuentes abiertas.'),
-    arquitectura: textOrFallback(tags.architect || tags.building || tags.historic || tags.tourism, 'Datos arquitectónicos pendientes de completar.'),
-    curiosidades: tags.website ? `Web oficial: ${tags.website}` : 'Curiosidades pendientes de completar.',
-    misterios: 'Sin información adicional contrastada por ahora.',
+    descripcion_corta: textOrFallback(description, `${category} registrado en OpenStreetMap`),
+    historia: textOrFallback(description,
+      tags.wikipedia
+        ? `Este lugar está referenciado en Wikipedia (${tags.wikipedia}). Ábrelo para ver el artículo completo.`
+        : 'Información histórica no disponible en fuentes abiertas para este lugar.'),
+    arquitectura: textOrFallback(
+      [tags.architect, tags.start_date ? `Construido en ${tags.start_date}` : null, tags.building, tags.historic]
+        .filter(Boolean).join('. '),
+      'Datos arquitectónicos no disponibles en fuentes abiertas para este lugar.'),
+    curiosidades: tags.website
+      ? `Web oficial: ${tags.website}`
+      : 'No hay curiosidades documentadas en fuentes abiertas para este lugar.',
+    misterios: 'No existen registros documentados de leyendas o misterios contrastados para este lugar.',
     tiempo_visita: visitTimeForCategory(category),
     fuentes: {
       osm: `${element.type}/${element.id}`,
@@ -149,23 +157,64 @@ function osmElementToPoi(element) {
   };
 }
 
-async function enrichPoiWithWikipedia(poi) {
+// ── Palabras clave para identificar párrafos de arquitectura dentro del artículo
+const ARQU_KEYWORDS = [
+  'construido', 'construida', 'construyó', 'edificio', 'arquitecto', 'arquitectura',
+  'estilo', 'fachada', 'torre', 'cúpula', 'nave', 'planta', 'siglo', 'neoclás',
+  'barroc', 'gótic', 'románic', 'diseñado', 'diseñada', 'obra de', 'altura',
+  'metros', 'piedra', 'mármol', 'columna', 'arco',
+];
+
+// Divide el extracto de Wikipedia en párrafos y busca el más relevante para arquitectura
+function extraerArquitectura(extract = '', fallback = '') {
+  if (!extract) return fallback;
+  const parrafos = extract.split('\n').map(p => p.trim()).filter(p => p.length > 60);
+  // Buscar párrafo con más palabras clave de arquitectura
+  let mejor = null;
+  let mejorPuntos = 0;
+  for (const p of parrafos) {
+    const lower = p.toLowerCase();
+    const puntos = ARQU_KEYWORDS.reduce((acc, kw) => acc + (lower.includes(kw) ? 1 : 0), 0);
+    if (puntos > mejorPuntos) { mejorPuntos = puntos; mejor = p; }
+  }
+  // Necesitamos al menos 2 coincidencias para que valga la pena
+  return mejorPuntos >= 2 ? mejor : fallback;
+}
+
+// Devuelve el segundo párrafo del extracto (suele contener datos concretos / curiosidades)
+function extraerCuriosidades(extract = '', pageUrl = '', fallback = '') {
+  const parrafos = extract.split('\n').map(p => p.trim()).filter(p => p.length > 60);
+  const segundo = parrafos[1] || parrafos[0] || '';
+  if (segundo && segundo.length > 60) return segundo;
+  if (pageUrl) return `Puedes leer más sobre este lugar en Wikipedia: ${pageUrl}`;
+  return fallback;
+}
+
+async function enrichPoiWithWikipedia(poi, lang = 'es') {
   const title = wikipediaTitleFromTag(poi?.fuentes?.wikipedia);
   if (!title) return poi;
 
   try {
-    const summary = await fetchWikipediaSummary(title);
-    const extract = summary?.extract?.trim();
-    const description = summary?.description?.trim();
-    const pageUrl = summary?.content_urls?.desktop?.page || summary?.content_urls?.mobile?.page;
+    const summary = await fetchWikipediaSummary(title, lang);
+    const extract  = summary?.extract?.trim() || '';
+    const description = summary?.description?.trim() || '';
+    const pageUrl  = summary?.content_urls?.desktop?.page || summary?.content_urls?.mobile?.page || '';
 
     if (!extract && !description && !pageUrl) return poi;
 
+    // Primer párrafo → Historia
+    const primerParrafo = extract.split('\n').map(p => p.trim()).find(p => p.length > 60) || extract;
+
     return {
       ...poi,
+      _wikien: lang === 'en',
       descripcion_corta: description || poi.descripcion_corta,
-      historia: extract || poi.historia,
-      curiosidades: pageUrl ? `Artículo de Wikipedia: ${pageUrl}` : poi.curiosidades,
+      historia:      primerParrafo || poi.historia,
+      arquitectura:  extraerArquitectura(extract, poi.arquitectura),
+      curiosidades:  extraerCuriosidades(extract, pageUrl, poi.curiosidades),
+      misterios:     lang === 'en'
+        ? 'No documented legends or mysteries on record for this place.'
+        : 'No existen registros documentados de leyendas o misterios contrastados para este lugar.',
       fuentes: {
         ...poi.fuentes,
         wikipediaUrl: pageUrl,
@@ -176,12 +225,12 @@ async function enrichPoiWithWikipedia(poi) {
   }
 }
 
-async function enrichPoisWithWikipedia(pois, limit = 14) {
+async function enrichPoisWithWikipedia(pois, lang = 'es', limit = 14) {
   const enriched = [];
 
   for (const poi of pois) {
     if (enriched.length < limit) {
-      enriched.push(await enrichPoiWithWikipedia(poi));
+      enriched.push(await enrichPoiWithWikipedia(poi, lang));
     } else {
       enriched.push(poi);
     }
@@ -194,27 +243,22 @@ async function enrichPoisWithWikipedia(pois, limit = 14) {
 }
 
 function buildOverpassQuery({ center, limit, radius, timeout }) {
-  return `
-    [out:json][timeout:${timeout}];
-    (
-      node(around:${radius},${center.latitude},${center.longitude})["tourism"~"^(attraction|museum|gallery|artwork|viewpoint)$"];
-      way(around:${radius},${center.latitude},${center.longitude})["tourism"~"^(attraction|museum|gallery|artwork|viewpoint)$"];
-      relation(around:${radius},${center.latitude},${center.longitude})["tourism"~"^(attraction|museum|gallery|artwork|viewpoint)$"];
-      node(around:${radius},${center.latitude},${center.longitude})["historic"];
-      way(around:${radius},${center.latitude},${center.longitude})["historic"];
-      relation(around:${radius},${center.latitude},${center.longitude})["historic"];
-      node(around:${radius},${center.latitude},${center.longitude})["amenity"~"^(place_of_worship|theatre|arts_centre)$"];
-      way(around:${radius},${center.latitude},${center.longitude})["amenity"~"^(place_of_worship|theatre|arts_centre)$"];
-      relation(around:${radius},${center.latitude},${center.longitude})["amenity"~"^(place_of_worship|theatre|arts_centre)$"];
-      node(around:${radius},${center.latitude},${center.longitude})["leisure"~"^(park|garden)$"];
-      way(around:${radius},${center.latitude},${center.longitude})["leisure"~"^(park|garden)$"];
-      relation(around:${radius},${center.latitude},${center.longitude})["leisure"~"^(park|garden)$"];
-      node(around:${radius},${center.latitude},${center.longitude})["building"~"^(church|cathedral|chapel|castle|palace)$"];
-      way(around:${radius},${center.latitude},${center.longitude})["building"~"^(church|cathedral|chapel|castle|palace)$"];
-      relation(around:${radius},${center.latitude},${center.longitude})["building"~"^(church|cathedral|chapel|castle|palace)$"];
-    );
-    out center tags qt ${limit};
-  `;
+  const { latitude: lat, longitude: lon } = center;
+  // Query simplificada y compatible con todos los servidores Overpass
+  // Usamos union de nodos y ways con los tags más básicos
+  return [
+    `[out:json][timeout:${timeout}];`,
+    `(`,
+    `  node["tourism"~"attraction|museum|gallery|viewpoint"](around:${radius},${lat},${lon});`,
+    `  node["historic"~"monument|memorial|castle|ruins|archaeological_site"](around:${radius},${lat},${lon});`,
+    `  node["amenity"~"place_of_worship|theatre"](around:${radius},${lat},${lon})["name"];`,
+    `  node["leisure"~"park|garden"](around:${radius},${lat},${lon})["name"];`,
+    `  way["tourism"~"attraction|museum|gallery|viewpoint"](around:${radius},${lat},${lon});`,
+    `  way["historic"~"monument|memorial|castle|ruins|archaeological_site"](around:${radius},${lat},${lon});`,
+    `  way["building"~"church|cathedral|chapel|palace|castle"](around:${radius},${lat},${lon})["name"];`,
+    `);`,
+    `out center tags ${limit};`,
+  ].join('\n');
 }
 
 function mergeByNameAndDistance(primaryPois, fallbackPois = []) {
@@ -298,28 +342,51 @@ export async function fetchOverpassPois({
   timeout = POI_SOURCE_CONFIG.overpass.timeout,
 } = {}) {
   const query = buildOverpassQuery({ center, limit, radius, timeout });
-  const result = await fetchJson(POI_SOURCE_CONFIG.overpass.endpoint, {
-    body: `data=${encodeURIComponent(query)}`,
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    method: 'POST',
-    timeoutMs: (timeout + 5) * 1000,
-  });
 
-  return (result.elements || [])
-    .map(osmElementToPoi)
-    .filter(Boolean)
-    .slice(0, limit);
+  const OVERPASS_SERVERS = [
+    'https://overpass-api.de/api/interpreter',
+    'https://overpass.kumi.systems/api/interpreter',
+    'https://maps.mail.ru/osm/tools/overpass/api/interpreter',
+  ];
+
+  let lastError;
+  for (const server of OVERPASS_SERVERS) {
+    try {
+      const result = await fetchJson(server, {
+        body: `data=${encodeURIComponent(query)}`,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        method: 'POST',
+        timeoutMs: (timeout + 10) * 1000,
+      });
+
+      const pois = (result.elements || [])
+        .map(osmElementToPoi)
+        .filter(Boolean)
+        .slice(0, limit);
+
+      console.log(`[Overpass] ${server} OK: ${pois.length} POIs`);
+      return pois;
+    } catch (e) {
+      console.log(`[Overpass] Servidor ${server} falló:`, e?.message);
+      lastError = e;
+    }
+  }
+  throw lastError;
 }
 
-export async function fetchWikipediaSummary(title) {
-  const url = `${POI_SOURCE_CONFIG.wikipedia.baseUrl}/page/summary/${encodeURIComponent(title)}`;
+export async function fetchWikipediaSummary(title, lang = 'es') {
+  const base = lang === 'en'
+    ? 'https://en.wikipedia.org/w/rest.php/v1'
+    : POI_SOURCE_CONFIG.wikipedia.baseUrl;
+  const url = `${base}/page/summary/${encodeURIComponent(title)}`;
   return fetchJson(url);
 }
 
-export async function searchWikipediaTitle(query) {
-  const url = `https://es.wikipedia.org/w/api.php?${toQuery({
+export async function searchWikipediaTitle(query, lang = 'es') {
+  const wiki = lang === 'en' ? 'en.wikipedia.org' : 'es.wikipedia.org';
+  const url = `https://${wiki}/w/api.php?${toQuery({
     action: 'query',
     format: 'json',
     list: 'search',
@@ -331,35 +398,55 @@ export async function searchWikipediaTitle(query) {
   return result?.query?.search?.[0]?.title || null;
 }
 
-async function fetchBestWikipediaSummary(poi) {
+async function fetchBestWikipediaSummary(poi, lang = 'es') {
   const directTitle = wikipediaTitleFromTag(poi?.fuentes?.wikipedia) || poi?.nombre;
 
   try {
-    return await fetchWikipediaSummary(directTitle);
+    return await fetchWikipediaSummary(directTitle, lang);
   } catch (error) {
-    const foundTitle = await searchWikipediaTitle(poi?.nombre);
+    const foundTitle = await searchWikipediaTitle(poi?.nombre, lang);
     if (!foundTitle) throw error;
-    return fetchWikipediaSummary(foundTitle);
+    return fetchWikipediaSummary(foundTitle, lang);
   }
 }
 
-export async function fetchPoiDetails(poi) {
-  const summary = await fetchBestWikipediaSummary(poi);
-  const extract = summary?.extract?.trim();
-  const description = summary?.description?.trim();
-  const pageUrl = summary?.content_urls?.desktop?.page || summary?.content_urls?.mobile?.page;
+export async function fetchPoiDetails(poi, lang = 'es') {
+  let summary;
+  try {
+    summary = await fetchBestWikipediaSummary(poi, lang);
+  } catch (_) {
+    // Si Wikipedia no responde, devolvemos el POI con textos neutros
+    return {
+      ...poi,
+      historia:     poi.historia?.length > 40 ? poi.historia : 'Wikipedia no dispone de información para este lugar.',
+      arquitectura: poi.arquitectura?.length > 40 ? poi.arquitectura : 'No hay datos arquitectónicos disponibles en fuentes abiertas.',
+      curiosidades: poi.curiosidades?.length > 40 ? poi.curiosidades : 'No hay curiosidades documentadas en fuentes abiertas.',
+      misterios:    'No existen registros documentados de leyendas o misterios contrastados para este lugar.',
+      fuenteResumen: sourceLabel(poi.fuentes),
+    };
+  }
+
+  const extract     = summary?.extract?.trim() || '';
+  const description = summary?.description?.trim() || '';
+  const pageUrl     = summary?.content_urls?.desktop?.page || summary?.content_urls?.mobile?.page || '';
+
+  // Primer párrafo con contenido → Historia
+  const parrafos = extract.split('\n').map(p => p.trim()).filter(p => p.length > 60);
+  const primerParrafo = parrafos[0] || extract;
 
   return {
     ...poi,
-    descripcion_corta: description || poi.categoria || 'Punto de interés',
-    historia: extract || 'Wikipedia no ofrece un resumen para este punto de interés.',
-    arquitectura: poi.fuentes?.osm
-      ? `Datos base procedentes de OpenStreetMap (${poi.fuentes.osm}).`
-      : 'Datos base procedentes de fuentes abiertas.',
-    curiosidades: pageUrl ? `Artículo de Wikipedia: ${pageUrl}` : 'No hay enlace público adicional disponible.',
-    misterios: poi.fuentes?.wikidata
-      ? `Entidad Wikidata: ${poi.fuentes.wikidata}`
-      : 'Sin metadatos adicionales disponibles desde la API.',
+    descripcion_corta: description || poi.descripcion_corta || poi.categoria || 'Punto de interés',
+    historia:     primerParrafo || 'Wikipedia no ofrece un resumen para este punto de interés.',
+    arquitectura: extraerArquitectura(extract,
+      poi.arquitectura?.length > 40
+        ? poi.arquitectura
+        : 'No hay datos arquitectónicos específicos disponibles en fuentes abiertas para este lugar.'),
+    curiosidades: extraerCuriosidades(extract, pageUrl,
+      poi.curiosidades?.length > 40
+        ? poi.curiosidades
+        : 'No hay curiosidades documentadas en fuentes abiertas para este lugar.'),
+    misterios:    'No existen registros documentados de leyendas o misterios contrastados para este lugar.',
     fuenteResumen: pageUrl ? 'Wikipedia API' : sourceLabel(poi.fuentes),
     fuentes: {
       ...poi.fuentes,
@@ -401,21 +488,117 @@ export async function geocodeCityWithNominatim(query, { limit = 1 } = {}) {
   return fetchJson(url);
 }
 
-export async function loadExternalPois({ center, localPois }) {
+// ── LibreTranslate: traducción gratuita sin registro ────────────────────────
+// Usamos instancias públicas con fallback entre ellas
+const LIBRETRANSLATE_SERVERS = [
+  'https://translate.argosopentech.com',
+  'https://libretranslate.de',
+  'https://translate.terraprint.co',
+];
+
+// Caché en memoria para esta sesión (se persiste en AsyncStorage)
+const _translateCache = {};
+const TRANSLATE_CACHE_KEY = 'maplord_translate_cache_v1';
+let _cacheCargado = false;
+
+async function cargarCacheTraduccion() {
+  if (_cacheCargado) return;
+  try {
+    const AsyncStorage = (await import('@react-native-async-storage/async-storage')).default;
+    const raw = await AsyncStorage.getItem(TRANSLATE_CACHE_KEY);
+    if (raw) Object.assign(_translateCache, JSON.parse(raw));
+  } catch (_) {}
+  _cacheCargado = true;
+}
+
+async function guardarCacheTraduccion() {
+  try {
+    const AsyncStorage = (await import('@react-native-async-storage/async-storage')).default;
+    await AsyncStorage.setItem(TRANSLATE_CACHE_KEY, JSON.stringify(_translateCache));
+  } catch (_) {}
+}
+
+async function traducirTexto(texto, desde = 'es', hasta = 'en') {
+  if (!texto || hasta === desde) return texto;
+  const clave = `${desde}|${hasta}|${texto}`;
+  await cargarCacheTraduccion();
+
+  // Si ya está en caché lo devolvemos directamente
+  if (_translateCache[clave]) return _translateCache[clave];
+
+  // Intentar con cada servidor hasta que uno funcione
+  for (const server of LIBRETRANSLATE_SERVERS) {
+    try {
+      const res = await fetch(`${server}/translate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ q: texto, source: desde, target: hasta, format: 'text' }),
+        signal: AbortSignal.timeout(5000),
+      });
+      if (!res.ok) continue;
+      const data = await res.json();
+      const traduccion = data?.translatedText;
+      if (traduccion) {
+        _translateCache[clave] = traduccion;
+        guardarCacheTraduccion(); // async, no bloqueamos
+        return traduccion;
+      }
+    } catch (_) {
+      // Próximo servidor
+    }
+  }
+  // Si todos fallan devolvemos el texto original
+  return texto;
+}
+
+// Traduce los campos de texto de un POI externo al idioma pedido
+async function traducirPoi(poi, lang) {
+  if (lang !== 'en') return poi;
+
+  // Si el POI ya viene de Wikipedia en inglés (fetchPoiDetails con lang=en) no hace falta
+  if (poi._wikien) return poi;
+
+  // Traducimos en paralelo los campos más importantes
+  const [nombre, descripcion_corta, historia, arquitectura, curiosidades, misterios] =
+    await Promise.all([
+      traducirTexto(poi.nombre, 'es', 'en'),
+      traducirTexto(poi.descripcion_corta, 'es', 'en'),
+      traducirTexto(poi.historia, 'es', 'en'),
+      traducirTexto(poi.arquitectura, 'es', 'en'),
+      traducirTexto(poi.curiosidades, 'es', 'en'),
+      traducirTexto(poi.misterios, 'es', 'en'),
+    ]);
+
+  return { ...poi, nombre, descripcion_corta, historia, arquitectura, curiosidades, misterios };
+}
+
+export { traducirTexto, traducirPoi };
+
+export async function loadExternalPois({ center, localPois, lang = 'es' }) {
   const sources = [];
   const overpassPois = await fetchOverpassPois({ center });
-  sources.push(...await enrichPoisWithWikipedia(overpassPois));
+
+  // Enriquecer con Wikipedia en el idioma correcto
+  const enriquecidos = await enrichPoisWithWikipedia(overpassPois, lang);
+
+  // Si el idioma es inglés, los que no tenían Wikipedia los traducimos con LibreTranslate
+  if (lang === 'en') {
+    const traducidos = await Promise.all(
+      enriquecidos.map(p => traducirPoi(p, 'en'))
+    );
+    sources.push(...traducidos);
+  } else {
+    sources.push(...enriquecidos);
+  }
 
   if (hasOpenTripMapApiKey()) {
     try {
       const openTripMapPois = await fetchOpenTripMapPois({ center });
       sources.push(...openTripMapPois);
     } catch (error) {
-      // OpenTripMap is optional now; free no-key sources remain the baseline.
+      // OpenTripMap is optional
     }
   }
 
-  return sources.length
-    ? mergeByNameAndDistance(sources, localPois)
-    : localPois;
+  return mergeByNameAndDistance(sources, localPois);
 }

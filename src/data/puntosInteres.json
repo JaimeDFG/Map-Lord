@@ -15,7 +15,15 @@
     "misterios": "Se habla de túneles subterráneos y restos de antiguas galerías medievales bajo la plaza. La tradición oral habla de galerías bajo la plaza vinculadas a antiguas infraestructuras y edificios desaparecidos.",
     "tiempo_visita": 12,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Puerta del Sol",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Kilometre Zero of Spain",
+    "historia_en": "One of Madrid's most famous squares. Its name comes from an ancient gate in the medieval city wall facing east towards the rising sun. The scene of key historical events including the 2 May 1808 uprising against Napoleon's occupation.",
+    "arquitectura_en": "Semicircular shape dominated by the neoclassical Real Casa de Correos (18th century), designed by Jaime Marquet. Its clock is the star of the New Year's Eve countdown.",
+    "curiosidades_en": "The Kilometre Zero marker is the origin of Spain's radial roads. Every New Year's Eve millions watch the clock's twelve chimes live.",
+    "misterios_en": "Stories of underground tunnels and ancient medieval galleries beneath the square have circulated for centuries."
   },
   {
     "id": 2,
@@ -33,7 +41,15 @@
     "misterios": "Existen rumores sobre obras no expuestas en cámaras ocultas. Algunas leyendas hablan de salas y depósitos no accesibles al público donde se conservan piezas poco conocidas.",
     "tiempo_visita": 120,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Museo del Prado",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "One of the most important museums in the world",
+    "historia_en": "Founded in 1819 by Ferdinand VII to house the Spanish royal collection. Became one of the great European painting museums.",
+    "arquitectura_en": "Neoclassical design by Juan de Villanueva with a stone façade and porticos, originally conceived for scientific purposes.",
+    "curiosidades_en": "Houses Las Meninas and The Garden of Earthly Delights, plus essential works by Velázquez, Goya, Bosch, Titian and Rubens.",
+    "misterios_en": "Rumours persist of unexposed works hidden in secret vaults not accessible to the public."
   },
   {
     "id": 3,
@@ -51,7 +67,15 @@
     "misterios": "Pasadizos secretos conectan con edificios religiosos cercanos. Se han documentado conexiones históricas entre el palacio y edificios religiosos cercanos, origen de numerosas leyendas.",
     "tiempo_visita": 90,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Royal Palace of Madrid",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "The largest royal residence in Western Europe",
+    "historia_en": "Built after the fire of the Alcázar in 1734, it symbolises the continuity of the Spanish monarchy.",
+    "arquitectura_en": "Baroque-classicist style with over 3,000 rooms. The Main Staircase, Throne Room and Royal Armoury stand out.",
+    "curiosidades_en": "Although not the regular residence of the royal family, it is still used for official state events.",
+    "misterios_en": "Secret passages are said to connect the palace to nearby religious buildings."
   },
   {
     "id": 4,
@@ -69,7 +93,15 @@
     "misterios": "Se cree que existen restos de edificaciones árabes bajo ella. Bajo el pavimento y en edificios colindantes se han encontrado restos de etapas históricas anteriores.",
     "tiempo_visita": 18,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Plaza Mayor",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "The historic heart of Madrid",
+    "historia_en": "Built in the 17th century under Philip III. Served as a market, bullring, scene of autos-da-fé and the centre of public life in Habsburg Madrid.",
+    "arquitectura_en": "Arcaded square with 237 balconies. The uniformity of the façades creates one of the most recognisable urban spaces in Spain.",
+    "curiosidades_en": "Scene of markets, festivities and executions throughout the centuries.",
+    "misterios_en": "Remains of Arab buildings are believed to lie beneath the square."
   },
   {
     "id": 5,
@@ -87,7 +119,15 @@
     "misterios": "Alineación solar en determinadas fechas. La orientación del templo y ciertos alineamientos solares han alimentado interpretaciones esotéricas.",
     "tiempo_visita": 45,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Templo de Debod",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "An Egyptian temple in the heart of Madrid",
+    "historia_en": "Donated by Egypt to Spain in 1968 in gratitude for help in safeguarding Nubian monuments.",
+    "arquitectura_en": "Original structure from the 2nd century BC, carefully reconstructed in Madrid with original Ptolemaic and Roman elements.",
+    "curiosidades_en": "One of the few Egyptian temples outside Egypt. The surrounding pool has become one of the most photographed sunset spots in the city.",
+    "misterios_en": "Solar alignments on certain dates have fuelled esoteric interpretations about the temple's orientation."
   },
   {
     "id": 6,
@@ -105,7 +145,15 @@
     "misterios": "Restos arqueológicos bajo su trazado. Las demoliciones necesarias para abrir la vía dejaron al descubierto estructuras y restos de barrios desaparecidos.",
     "tiempo_visita": 40,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Gran Vía",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Madrid's main artery",
+    "historia_en": "Built between 1910 and 1930, its opening transformed the centre of Madrid. During the Civil War it was known as the 'Avenue of Shells'.",
+    "arquitectura_en": "Brings together examples of eclecticism, Art Deco, rationalism and modern commercial architecture.",
+    "curiosidades_en": "Today the centre of musicals and entertainment in Madrid.",
+    "misterios_en": "Archaeological remains lie beneath its layout from the neighbourhoods demolished to open the avenue."
   },
   {
     "id": 7,
@@ -123,7 +171,15 @@
     "misterios": "El Ángel Caído es una de las pocas estatuas satánicas públicas. La estatua del Ángel Caído, inspirada en Lucifer, ha generado multitud de interpretaciones populares.",
     "tiempo_visita": 90,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "El Retiro Park",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Madrid's main park",
+    "historia_en": "A royal garden since the 17th century, born as a courtly garden for Philip IV before becoming a great public park.",
+    "arquitectura_en": "Combines formal French and English gardens, monumental ponds and the iconic Crystal Palace.",
+    "curiosidades_en": "Houses the Crystal Palace, sculptures, fountains, libraries and cultural spaces across more than a hundred hectares.",
+    "misterios_en": "The Fallen Angel statue is one of the few public Satanic monuments in the world, generating countless popular interpretations."
   },
   {
     "id": 8,
@@ -141,7 +197,15 @@
     "misterios": "Catacumbas nunca completamente excavadas. La existencia de criptas y espacios subterráneos ha alimentado historias locales durante siglos.",
     "tiempo_visita": 50,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Basílica de San Francisco el Grande",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Grand neoclassical dome",
+    "historia_en": "Built in the 18th century, replacing an earlier Franciscan convent. One of Madrid's great Enlightenment temples.",
+    "arquitectura_en": "Dome 33 metres in diameter, one of the largest in Spain.",
+    "curiosidades_en": "Contains important paintings by Goya, Zurbarán and other masters.",
+    "misterios_en": "The existence of catacombs never fully excavated has fuelled local stories for centuries."
   },
   {
     "id": 9,
@@ -159,7 +223,15 @@
     "misterios": "Proyectos decorativos no ejecutados. Algunos proyectos decorativos previstos nunca llegaron a ejecutarse.",
     "tiempo_visita": 7,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Puerta de Alcalá",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Iconic neoclassical arch",
+    "historia_en": "Commissioned in 1778 by Charles III to modernise the city's gateways. Predates the Arc de Triomphe in Paris.",
+    "arquitectura_en": "Designed by Sabatini in granite and stone, combining classical language with great monumentality.",
+    "curiosidades_en": "It was the royal gateway for travellers arriving in Madrid from the east.",
+    "misterios_en": "Several planned decorative projects were never carried out."
   },
   {
     "id": 10,
@@ -177,7 +249,15 @@
     "misterios": "Restos de canalizaciones antiguas. Bajo el entorno de la plaza sobreviven complejas infraestructuras hidráulicas históricas.",
     "tiempo_visita": 6,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Cibeles Fountain",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Symbol of Madrid",
+    "historia_en": "Created in 1782 as part of Charles III's Enlightenment urban beautification programme.",
+    "arquitectura_en": "Sculptural composition depicting the goddess Cybele in a chariot pulled by lions.",
+    "curiosidades_en": "The main scene for sporting celebrations and symbolic events in the city.",
+    "misterios_en": "Complex historical hydraulic infrastructure survives beneath the square."
   },
   {
     "id": 11,
@@ -195,7 +275,15 @@
     "misterios": "Antiguas estructuras hidráulicas. Las sucesivas canalizaciones del entorno han dejado restos de antiguas redes de agua.",
     "tiempo_visita": 5,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Neptune Fountain",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Classical fountain, rival of Cibeles",
+    "historia_en": "Designed in the 18th century, completing the sculptural ensemble of the Paseo del Prado.",
+    "arquitectura_en": "The sea god appears on a marine chariot surrounded by aquatic motifs.",
+    "curiosidades_en": "Traditionally the celebration spot for Atlético de Madrid's titles.",
+    "misterios_en": "Successive water channelling in the area has left remains of old water networks beneath."
   },
   {
     "id": 12,
@@ -213,7 +301,15 @@
     "misterios": "Túneles de logística subterráneos. Bajo el estadio existe una compleja red de túneles de servicio y mantenimiento.",
     "tiempo_visita": 90,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Santiago Bernabéu Stadium",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Real Madrid's iconic stadium",
+    "historia_en": "Opened in 1947, has hosted European Cup finals, World Cup matches and major concerts.",
+    "arquitectura_en": "Recent renovation incorporates a metallic façade and advanced roof and logistics systems.",
+    "curiosidades_en": "The stadium tour includes changing rooms, museum and normally restricted areas.",
+    "misterios_en": "Beneath the stadium lies a complex network of service and maintenance tunnels."
   },
   {
     "id": 13,
@@ -231,7 +327,15 @@
     "misterios": "Restos arqueológicos en la cripta. La cripta y el subsuelo han proporcionado hallazgos arqueológicos de distintas épocas.",
     "tiempo_visita": 45,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Almudena Cathedral",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Madrid's cathedral",
+    "historia_en": "Construction between 1883 and 1993, stretching over more than a century. Consecrated by Pope John Paul II in 1993.",
+    "arquitectura_en": "Mix of neo-Gothic and neoclassical styles, with a neo-Romanesque crypt.",
+    "curiosidades_en": "The only cathedral consecrated by John Paul II during his pontificate.",
+    "misterios_en": "Archaeological finds from different periods have emerged from the crypt and subsoil."
   },
   {
     "id": 14,
@@ -249,7 +353,15 @@
     "misterios": "Antiguos túneles de distribución. Se habla de antiguos túneles de abastecimiento hoy desaparecidos o cerrados.",
     "tiempo_visita": 35,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Mercado de San Miguel",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Gourmet market",
+    "historia_en": "Opened in 1916, one of the few historic iron markets still preserved in Madrid.",
+    "arquitectura_en": "Metallic structure and glass recalling early 20th-century commercial architecture.",
+    "curiosidades_en": "Brings together stalls of Spanish and international cuisine in a very popular compact space.",
+    "misterios_en": "Stories of old supply tunnels that disappeared or were sealed off persist."
   },
   {
     "id": 15,
@@ -267,7 +379,15 @@
     "misterios": "Trazado de origen romano.",
     "tiempo_visita": 24,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Calle de Alcalá",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Great historic axis",
+    "historia_en": "Medieval road to Alcalá de Henares.",
+    "arquitectura_en": "19th and 20th-century buildings.",
+    "curiosidades_en": "Passes through Cibeles and Gran Vía.",
+    "misterios_en": "Layout believed to be of Roman origin."
   },
   {
     "id": 16,
@@ -285,7 +405,15 @@
     "misterios": "Pasadizos hacia el Palacio Real.",
     "tiempo_visita": 18,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Calle Mayor",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Historic street in the centre",
+    "historia_en": "Connects Sol with Plaza de la Villa.",
+    "arquitectura_en": "Baroque buildings.",
+    "curiosidades_en": "Quevedo's residence.",
+    "misterios_en": "Passages towards the Royal Palace."
   },
   {
     "id": 17,
@@ -303,7 +431,15 @@
     "misterios": "Fincas ocultas tras fachadas modernas.",
     "tiempo_visita": 22,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Calle Serrano",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Luxury shopping area",
+    "historia_en": "Bourgeois expansion of the 19th century.",
+    "arquitectura_en": "Mansions and modern shops.",
+    "curiosidades_en": "Madrid's Golden Mile.",
+    "misterios_en": "Hidden estates behind modern façades."
   },
   {
     "id": 18,
@@ -321,7 +457,15 @@
     "misterios": "Superviviente a incendios históricos. La supervivencia de parte de sus fondos durante el conflicto bélico ha generado numerosas historias.",
     "tiempo_visita": 60,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Palace of Liria",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Residence of the House of Alba",
+    "historia_en": "18th century residence of the House of Alba, rebuilt after Civil War damage.",
+    "arquitectura_en": "French neoclassical style inspired by French palaces with historic salons.",
+    "curiosidades_en": "Houses one of the most valuable private art collections in Spain.",
+    "misterios_en": "The survival of part of its collections during the Civil War has generated numerous stories."
   },
   {
     "id": 19,
@@ -339,7 +483,15 @@
     "misterios": "Archivos subterráneos históricos. Los archivos y espacios subterráneos del edificio alimentan relatos sobre documentación histórica oculta.",
     "tiempo_visita": 45,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Cibeles Palace",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Former headquarters of the Post Office",
+    "historia_en": "Inaugurated in 1919 as the central headquarters of Posts and Telegraphs, today Madrid's City Hall.",
+    "arquitectura_en": "Monumental neo-Plateresque and Modernist building by Antonio Palacios and Joaquín Otamendi.",
+    "curiosidades_en": "Its viewpoint offers one of the best views of the Prado-Castellana axis.",
+    "misterios_en": "Underground archives fuel stories about hidden historical documentation."
   },
   {
     "id": 20,
@@ -357,7 +509,15 @@
     "misterios": "Depósitos subterráneos de obras.",
     "tiempo_visita": 120,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Reina Sofía Museum",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Spanish contemporary art",
+    "historia_en": "Former 18th-century hospital.",
+    "arquitectura_en": "Modern extension by Nouvel.",
+    "curiosidades_en": "Houses Picasso's Guernica.",
+    "misterios_en": "Underground storage vaults for artworks."
   },
   {
     "id": 21,
@@ -375,7 +535,15 @@
     "misterios": "Parte de la colección no expuesta. Parte de las obras permanece en reserva o rota periódicamente.",
     "tiempo_visita": 90,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Thyssen-Bornemisza Museum",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Historic pictorial collection",
+    "historia_en": "The Thyssen family's private collection was integrated into Spanish cultural heritage in the 1990s.",
+    "arquitectura_en": "Renovated palace combining historic spaces with contemporary museum rooms.",
+    "curiosidades_en": "Together with the Prado and Reina Sofía completes the so-called Art Triangle.",
+    "misterios_en": "Some works remain in reserve or rotate periodically."
   },
   {
     "id": 22,
@@ -393,7 +561,15 @@
     "misterios": "Estructuras ferroviarias antiguas ocultas. Bajo las sucesivas ampliaciones permanecen restos de instalaciones ferroviarias históricas.",
     "tiempo_visita": 30,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Atocha Station",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Madrid's main railway station",
+    "historia_en": "19th-century station expanded to become Madrid's main railway hub.",
+    "arquitectura_en": "Historic iron canopy coexists with modern high-speed infrastructure and a tropical garden.",
+    "curiosidades_en": "The indoor tropical garden became one of its most recognisable features.",
+    "misterios_en": "Remains of historic railway facilities lie beneath successive expansions."
   },
   {
     "id": 23,
@@ -411,7 +587,15 @@
     "misterios": "Restos de construcciones reales. En distintos puntos se conservan restos de construcciones vinculadas a usos históricos del recinto.",
     "tiempo_visita": 180,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Casa de Campo",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Large urban natural park",
+    "historia_en": "Once the monarchy's hunting estate, passed into public use in the 20th century.",
+    "arquitectura_en": "Large natural space with lakes, paths and forested areas rather than a conventional urban park.",
+    "curiosidades_en": "Madrid's largest park. Includes the lake, cable car, zoo and numerous sports routes.",
+    "misterios_en": "Remains linked to the historical uses of the estate are preserved at various points."
   },
   {
     "id": 24,
@@ -429,7 +613,15 @@
     "misterios": "Restos de infraestructuras antiguas.",
     "tiempo_visita": 60,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Madrid Río",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Linear park along the Manzanares",
+    "historia_en": "M-30 motorway tunnel project.",
+    "arquitectura_en": "Modern green spaces.",
+    "curiosidades_en": "Connects the south of Madrid.",
+    "misterios_en": "Remains of old infrastructure."
   },
   {
     "id": 25,
@@ -447,7 +639,15 @@
     "misterios": "Subsuelo con antiguas estructuras. El subsuelo conserva infraestructuras de distintas etapas del desarrollo madrileño.",
     "tiempo_visita": 14,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Plaza de España",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Renovated monumental square",
+    "historia_en": "Recent renovation reclaimed pedestrian spaces and improved connectivity with Gran Vía and the Royal Palace.",
+    "arquitectura_en": "Dominated by Torre de Madrid, Edificio España and the Cervantes monument.",
+    "curiosidades_en": "One of the great urban and tourist hubs in the centre of Madrid.",
+    "misterios_en": "The subsoil preserves infrastructure from different stages of Madrid's development."
   },
   {
     "id": 26,
@@ -465,7 +665,15 @@
     "misterios": "Restos de murallas medievales.",
     "tiempo_visita": 11,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Plaza de Oriente",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Facing the Royal Palace",
+    "historia_en": "19th-century design.",
+    "arquitectura_en": "Statues of Spanish kings.",
+    "curiosidades_en": "Direct view of the Royal Palace.",
+    "misterios_en": "Remains of medieval walls."
   },
   {
     "id": 27,
@@ -483,7 +691,15 @@
     "misterios": "Antiguos corrales de comedia.",
     "tiempo_visita": 12,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Plaza de Santa Ana",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Theatrical and literary area",
+    "historia_en": "Cultural centre since the 19th century.",
+    "arquitectura_en": "Teatro Español and classic buildings.",
+    "curiosidades_en": "Statue of Calderón de la Barca.",
+    "misterios_en": "Ancient theatre courtyards."
   },
   {
     "id": 28,
@@ -501,7 +717,15 @@
     "misterios": "Túneles de acceso ocultos. Los pasadizos de servicio y acceso han generado numerosas historias entre aficionados.",
     "tiempo_visita": 60,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Las Ventas Bullring",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Spain's most important bullring",
+    "historia_en": "Opened in 1931, Spain's main bullring and an international reference for bullfighting.",
+    "arquitectura_en": "Neo-Mudéjar style with decorative ceramics, one of Madrid's most distinctive buildings.",
+    "curiosidades_en": "Capacity for 23,000 people. Hosts bullfights, concerts and major cultural events.",
+    "misterios_en": "Service and access passages have generated numerous stories among aficionados."
   },
   {
     "id": 29,
@@ -519,7 +743,15 @@
     "misterios": "Restos de ermitas anteriores. La conservación del conjunto y las intervenciones realizadas a lo largo del tiempo han alimentado diversas leyendas.",
     "tiempo_visita": 25,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "San Antonio de la Florida",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Goya's frescoes",
+    "historia_en": "Built at the end of the 18th century and forever linked to Goya.",
+    "arquitectura_en": "Dome painted by Goya, a masterpiece of Spanish mural painting.",
+    "curiosidades_en": "Houses the tomb of Goya himself and two twin chapels to protect the original frescoes.",
+    "misterios_en": "Conservation interventions over time have given rise to various legends."
   },
   {
     "id": 30,
@@ -537,7 +769,15 @@
     "misterios": "Estructuras monásticas ocultas.",
     "tiempo_visita": 30,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "San Jerónimo el Real",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Los Jerónimos",
+    "historia_en": "Monastery from the 16th century.",
+    "arquitectura_en": "Isabelline Gothic.",
+    "curiosidades_en": "Royal coronations.",
+    "misterios_en": "Hidden monastic structures."
   },
   {
     "id": 31,
@@ -555,7 +795,15 @@
     "misterios": "Catacumbas antiguas.",
     "tiempo_visita": 14,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "San Ginés Church",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Literary church in the centre",
+    "historia_en": "Medieval origins.",
+    "arquitectura_en": "Madrid Baroque.",
+    "curiosidades_en": "Frequented by writers.",
+    "misterios_en": "Ancient catacombs."
   },
   {
     "id": 32,
@@ -573,7 +821,15 @@
     "misterios": "Pasadizos religiosos.",
     "tiempo_visita": 16,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Basílica de San Miguel",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Italian Baroque in Madrid",
+    "historia_en": "18th century.",
+    "arquitectura_en": "Curved Baroque façade.",
+    "curiosidades_en": "Historic diplomatic use.",
+    "misterios_en": "Religious passages."
   },
   {
     "id": 33,
@@ -591,7 +847,15 @@
     "misterios": "Estructuras internas reforzadas.",
     "tiempo_visita": 15,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Torre de Madrid",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Historic skyscraper",
+    "historia_en": "Built in the 1950s.",
+    "arquitectura_en": "Reinforced concrete.",
+    "curiosidades_en": "One of the tallest in Europe at the time.",
+    "misterios_en": "Reinforced internal structures."
   },
   {
     "id": 34,
@@ -609,7 +873,15 @@
     "misterios": "Símbolos ocultos en la fachada.",
     "tiempo_visita": 5,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Metrópolis Building",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Architectural icon of Gran Vía",
+    "historia_en": "Opened in 1911.",
+    "arquitectura_en": "Golden dome and French style.",
+    "curiosidades_en": "Winged figure at the top.",
+    "misterios_en": "Hidden symbols on the façade."
   },
   {
     "id": 35,
@@ -627,7 +899,15 @@
     "misterios": "Diseño inspirado en Londres. Su aparente fragilidad ha dado pie a relatos sobre reformas y estructuras ocultas.",
     "tiempo_visita": 25,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Crystal Palace",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Glass structure in El Retiro",
+    "historia_en": "Constructed for a tropical flora exhibition in 1887.",
+    "arquitectura_en": "Iron and glass structure inspired by the great exhibition pavilions of the 19th century.",
+    "curiosidades_en": "Reflected in the nearby pond, one of the Retiro's iconic photographic spots.",
+    "misterios_en": "Its apparent fragility has given rise to stories about hidden structures."
   },
   {
     "id": 36,
@@ -645,7 +925,15 @@
     "misterios": "Galerías subterráneas.",
     "tiempo_visita": 25,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Palacio de Velázquez",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Exhibition hall in El Retiro",
+    "historia_en": "19th century.",
+    "arquitectura_en": "Brick and iron.",
+    "curiosidades_en": "Modern art exhibitions.",
+    "misterios_en": "Underground galleries."
   },
   {
     "id": 37,
@@ -663,7 +951,15 @@
     "misterios": "Estructura de comunicación antigua.",
     "tiempo_visita": 20,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Faro de Moncloa",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Panoramic viewpoint",
+    "historia_en": "Built in the 1990s.",
+    "arquitectura_en": "Steel tower.",
+    "curiosidades_en": "360° views of Madrid.",
+    "misterios_en": "Old communications structure."
   },
   {
     "id": 38,
@@ -681,7 +977,15 @@
     "misterios": "Túneles subterráneos militares. Las infraestructuras subterráneas de la zona han generado especulaciones sobre antiguos usos militares.",
     "tiempo_visita": 8,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Plaza de Colón",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Columbus Monument",
+    "historia_en": "The area was transformed between the 19th and 20th centuries into an important administrative and financial centre.",
+    "arquitectura_en": "The Columbus monument and large modern towers stand out.",
+    "curiosidades_en": "Home to one of the largest Spanish flags in the country.",
+    "misterios_en": "Underground infrastructure has fuelled speculation about former military uses."
   },
   {
     "id": 39,
@@ -699,7 +1003,15 @@
     "misterios": "Viejas imprentas ocultas.",
     "tiempo_visita": 20,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Calle Fuencarral",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Alternative commercial street",
+    "historia_en": "Historic commercial axis.",
+    "arquitectura_en": "Modern shops and old buildings.",
+    "curiosidades_en": "Youth fashion area.",
+    "misterios_en": "Old hidden printing presses."
   },
   {
     "id": 40,
@@ -717,7 +1029,15 @@
     "misterios": "Antiguos comercios medievales.",
     "tiempo_visita": 14,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Calle Preciados",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Main commercial axis",
+    "historia_en": "Connects Sol and Callao.",
+    "arquitectura_en": "Commercial buildings.",
+    "curiosidades_en": "One of the busiest streets in Spain.",
+    "misterios_en": "Ancient medieval shops."
   },
   {
     "id": 41,
@@ -735,7 +1055,15 @@
     "misterios": "Antiguos cuarteles militares.",
     "tiempo_visita": 18,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Calle Princesa",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Northern axis of Madrid",
+    "historia_en": "19th-century expansion.",
+    "arquitectura_en": "Residential buildings.",
+    "curiosidades_en": "Connects Moncloa with the centre.",
+    "misterios_en": "Old military barracks."
   },
   {
     "id": 42,
@@ -753,7 +1081,15 @@
     "misterios": "Restos de caballerizas reales.",
     "tiempo_visita": 18,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Sabatini Gardens",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Neoclassical gardens of the Royal Palace",
+    "historia_en": "Designed in the 20th century.",
+    "arquitectura_en": "Geometric symmetry.",
+    "curiosidades_en": "Views of the Royal Palace.",
+    "misterios_en": "Remains of royal stables."
   },
   {
     "id": 43,
@@ -771,7 +1107,15 @@
     "misterios": "Restos de baterías antiaéreas.",
     "tiempo_visita": 60,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Parque del Oeste",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Park with views and cable car",
+    "historia_en": "Created in the 20th century.",
+    "arquitectura_en": "Landscaped gardens.",
+    "curiosidades_en": "Templo de Debod nearby.",
+    "misterios_en": "Remains of anti-aircraft batteries."
   },
   {
     "id": 44,
@@ -789,7 +1133,15 @@
     "misterios": "Galerías industriales subterráneas.",
     "tiempo_visita": 90,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Matadero Madrid",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Contemporary cultural centre",
+    "historia_en": "Former 20th-century municipal slaughterhouse.",
+    "arquitectura_en": "Industrial brick architecture.",
+    "curiosidades_en": "Space for art and design.",
+    "misterios_en": "Underground industrial galleries."
   },
   {
     "id": 45,
@@ -807,7 +1159,15 @@
     "misterios": "Búnker de la Guerra Civil oculto bajo el parque. Bajo el parque se conserva el búnker del Cuartel General del Ejército Republicano de la Guerra Civil.",
     "tiempo_visita": 110,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Parque de El Capricho",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Secret Romantic garden",
+    "historia_en": "Created by the Duchess of Osuna in the 18th century, one of the most refined historic gardens in Madrid.",
+    "arquitectura_en": "Combines French, English and Italian gardens with temples, labyrinths and pavilions.",
+    "curiosidades_en": "One of Madrid's least known parks, kept relatively uncrowded by limited access.",
+    "misterios_en": "A Civil War bunker of the Republican Army General Headquarters is preserved beneath the park."
   },
   {
     "id": 46,
@@ -825,7 +1185,15 @@
     "misterios": "Se dice que algunas estancias privadas nunca han sido abiertas al público. La existencia de estancias privadas y dependencias poco accesibles alimenta su aura histórica.",
     "tiempo_visita": 60,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Cerralbo Museum",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Intact 19th-century aristocratic palace",
+    "historia_en": "Residence of the Marquis of Cerralbo, preserved as a museum since the early 20th century.",
+    "arquitectura_en": "Eclectic mansion with original salons, period lamps and tapestries.",
+    "curiosidades_en": "One of the best-preserved domestic-atmosphere museums in Spain.",
+    "misterios_en": "Some private rooms are said to have never been opened to the public."
   },
   {
     "id": 47,
@@ -843,7 +1211,15 @@
     "misterios": "El jardín está diseñado como una obra pictórica en sí misma. El cuidado diseño del jardín ha sido interpretado como una obra artística en sí misma.",
     "tiempo_visita": 50,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Sorolla Museum",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Home and studio of painter Joaquín Sorolla",
+    "historia_en": "The house and studio were designed by Joaquín Sorolla himself and preserve his original environment.",
+    "arquitectura_en": "Andalusian-inspired garden that functions as an extension of the home and studio.",
+    "curiosidades_en": "Allows visitors to see the artist's authentic brushes, furniture and workspaces.",
+    "misterios_en": "The carefully designed garden has been interpreted as an artistic work in its own right."
   },
   {
     "id": 48,
@@ -861,7 +1237,15 @@
     "misterios": "Se atribuyen apariciones en algunas salas antiguas.",
     "tiempo_visita": 60,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Museum of Romanticism",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "A journey to 19th-century Madrid",
+    "historia_en": "Former noble residence converted into a museum.",
+    "arquitectura_en": "Salons decorated with original Romantic furniture.",
+    "curiosidades_en": "Includes an almost intact historic café.",
+    "misterios_en": "Apparitions are attributed to some of the old rooms."
   },
   {
     "id": 49,
@@ -879,7 +1263,15 @@
     "misterios": "Se dice que conecta con antiguas casas nobles cercanas.",
     "tiempo_visita": 8,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Prince of Anglona Garden",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Secret garden of Habsburg Madrid",
+    "historia_en": "Designed in the 18th century as a private noble garden.",
+    "arquitectura_en": "Classical style with geometric hedges.",
+    "curiosidades_en": "One of the smallest and least known gardens in the centre.",
+    "misterios_en": "Said to connect with ancient noble houses nearby."
   },
   {
     "id": 50,
@@ -897,7 +1289,15 @@
     "misterios": "Restos medievales bajo el pavimento actual.",
     "tiempo_visita": 9,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Plaza de la Paja",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Medieval square in La Latina",
+    "historia_en": "One of the administrative centres of medieval Madrid.",
+    "arquitectura_en": "Surroundings of old houses and historic mansions.",
+    "curiosidades_en": "Straw was stored here as tribute to the king.",
+    "misterios_en": "Medieval remains beneath the current pavement."
   },
   {
     "id": 51,
@@ -915,7 +1315,15 @@
     "misterios": "Se dice que algunos libros contienen anotaciones históricas ocultas.",
     "tiempo_visita": 17,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Cuesta de Moyano",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Permanent open-air book fair",
+    "historia_en": "Born in the 20th century as a used book market.",
+    "arquitectura_en": "Wooden stalls lined up next to El Retiro.",
+    "curiosidades_en": "One of the oldest literary markets in Europe.",
+    "misterios_en": "Some books are said to contain hidden historical annotations."
   },
   {
     "id": 52,
@@ -933,7 +1341,15 @@
     "misterios": "Pasillos industriales cerrados al público.",
     "tiempo_visita": 60,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Tabacalera de Lavapiés",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Alternative cultural centre",
+    "historia_en": "Former 18th-19th century tobacco factory.",
+    "arquitectura_en": "Industrial space converted into an artistic centre.",
+    "curiosidades_en": "Urban murals and indoor street art.",
+    "misterios_en": "Industrial corridors closed to the public."
   },
   {
     "id": 53,
@@ -951,7 +1367,15 @@
     "misterios": "Se dice que artistas lo usaban como punto de inspiración nocturna. La vida nocturna artística del edificio ha generado numerosas anécdotas y leyendas urbanas.",
     "tiempo_visita": 35,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Círculo de Bellas Artes Rooftop",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "One of the best viewpoints in Madrid",
+    "historia_en": "Founded in 1880, one of Madrid's great cultural institutions since the late 19th century.",
+    "arquitectura_en": "Eclectic building combining exhibition spaces, theatres, salons and a panoramic rooftop.",
+    "curiosidades_en": "Offers one of the most complete 360° views of Gran Vía and Madrid's skyline.",
+    "misterios_en": "Said to have been used by artists as a spot for nocturnal inspiration."
   },
   {
     "id": 54,
@@ -969,7 +1393,15 @@
     "misterios": "Se dice que el manantial cercano tiene propiedades milagrosas.",
     "tiempo_visita": 12,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Ermita de San Isidro",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Site of the festival of Madrid's patron saint",
+    "historia_en": "Erected in the 18th century in honour of San Isidro.",
+    "arquitectura_en": "Small Baroque chapel rebuilt several times.",
+    "curiosidades_en": "Every May it hosts traditional pilgrimages.",
+    "misterios_en": "The nearby spring is said to have miraculous properties."
   },
   {
     "id": 55,
@@ -987,7 +1419,15 @@
     "misterios": "Restos de antiguos sistemas de riego ocultos. En el parque aún se identifican restos de antiguos sistemas de riego y canalizaciones.",
     "tiempo_visita": 75,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Quinta de los Molinos",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Secret park of almond trees in bloom",
+    "historia_en": "Agricultural estate that became a unique public park.",
+    "arquitectura_en": "Retains historic constructions with a garden and orchard layout integrated with the landscape.",
+    "curiosidades_en": "The almond blossom attracts thousands of visitors every spring.",
+    "misterios_en": "Remains of old irrigation systems and water channels can still be identified in the park."
   },
   {
     "id": 56,
@@ -1005,7 +1445,15 @@
     "misterios": "Se cuentan historias de pasadizos entre panteones antiguos.",
     "tiempo_visita": 60,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "La Almudena Cemetery",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Monumental necropolis of Madrid",
+    "historia_en": "Opened in the 19th century after urban epidemics.",
+    "arquitectura_en": "Modernist and neo-Gothic pantheons.",
+    "curiosidades_en": "One of the largest cemeteries in Western Europe.",
+    "misterios_en": "Stories of passages between old pantheons are told."
   },
   {
     "id": 57,
@@ -1023,7 +1471,15 @@
     "misterios": "Estructuras medievales ocultas en sus muros.",
     "tiempo_visita": 10,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Casa de los Lujanes",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Madrid's oldest medieval building",
+    "historia_en": "15th century noble residence.",
+    "arquitectura_en": "Mudéjar tower with Gothic influence.",
+    "curiosidades_en": "Francis I of France is said to have been imprisoned here.",
+    "misterios_en": "Medieval structures hidden in its walls."
   },
   {
     "id": 58,
@@ -1041,7 +1497,15 @@
     "misterios": "Antiguos caminos defensivos desaparecidos.",
     "tiempo_visita": 7,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "La Latina Cornisa Viewpoint",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Little-known viewpoint of historic Madrid",
+    "historia_en": "Elevated area of medieval Madrid.",
+    "arquitectura_en": "Railings and natural urban terraces.",
+    "curiosidades_en": "Views of the Royal Palace and cathedral.",
+    "misterios_en": "Vanished ancient defensive paths."
   },
   {
     "id": 59,
@@ -1059,7 +1523,15 @@
     "misterios": "Se cree que el terreno fue sagrado antes del cristianismo.",
     "tiempo_visita": 11,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Ermita de Santa María la Antigua",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Small restored medieval chapel",
+    "historia_en": "Late Romanesque origins.",
+    "arquitectura_en": "Rural simplicity with original stonework.",
+    "curiosidades_en": "One of the oldest churches in the southern area.",
+    "misterios_en": "The land is believed to have been sacred before Christianity."
   },
   {
     "id": 60,
@@ -1077,7 +1549,15 @@
     "misterios": "Restos de asentamientos preindustriales.",
     "tiempo_visita": 70,
     "ciudad": "Madrid",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Parque Lineal del Manzanares Alto",
+    "ciudad_en": "Madrid",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Less-visited natural area of the river",
+    "historia_en": "Environmental recovery of the Manzanares river.",
+    "arquitectura_en": "Contemporary green infrastructure.",
+    "curiosidades_en": "Bird-watching area.",
+    "misterios_en": "Remains of pre-industrial settlements."
   },
   {
     "id": 1001,
@@ -1095,7 +1575,15 @@
     "arquitectura": "Construida principalmente en granito, alcanza hasta 12 metros de altura y cerca de 3 metros de grosor. El recinto tiene aproximadamente 2,5 kilómetros de longitud, cuenta con 87 torreones semicirculares y 9 puertas monumentales. Destacan la Puerta del Alcázar y la Puerta de San Vicente. Parte de sus piedras proceden de construcciones romanas anteriores, algunas con inscripciones visibles.",
     "curiosidades": "Es Patrimonio de la Humanidad desde 1985. El paseo por el adarve permite recorrer amplios tramos de la muralla y disfrutar de algunas de las mejores vistas de la ciudad. Es uno de los recintos amurallados medievales más completos y mejor conservados del mundo.",
     "misterios": "La tradición habla de diferencias constructivas entre las dos mitades de la muralla, dirigidas por maestros de obras distintos. También existen leyendas asociadas a la Puerta de la Malaventura, por donde supuestamente salían los condenados a muerte, y relatos populares sobre galerías subterráneas ocultas bajo algunos lienzos.",
-    "tiempo_visita": 45
+    "tiempo_visita": 45,
+    "nombre_en": "Walls of Ávila",
+    "ciudad_en": "Ávila",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "The best-preserved medieval wall in Spain",
+    "historia_en": "Built between the late 11th and early 12th centuries by order of Raymond of Burgundy. UNESCO World Heritage Site since 1985.",
+    "arquitectura_en": "Granite enclosure approximately 2.5 km long, up to 12 metres high, with 87 semicircular towers and 9 monumental gates.",
+    "curiosidades_en": "One of the most complete medieval walled enclosures in the world. The walkway allows visitors to explore long stretches.",
+    "misterios_en": "Legends of the Puerta de la Malaventura (through which condemned prisoners passed) and stories of hidden underground galleries beneath some sections."
   },
   {
     "id": 1002,
@@ -1113,7 +1601,15 @@
     "arquitectura": "Destaca por su imponente ábside almenado, conocido como 'el cimorro', que sobresale de la muralla. El interior alberga el sepulcro de El Tostado, obispo del siglo XV famoso por su prolífica obra escrita, así como un magnífico retablo mayor y vidrieras góticas de gran belleza.",
     "curiosidades": "El ábside de la catedral forma parte de la muralla de la ciudad, siendo el único ejemplo conocido de catedral-fortaleza integrada en un recinto amurallado urbano en España.",
     "misterios": "Se desconoce el nombre del maestro de obras original. Algunos estudios apuntan a que fue diseñada por el mismo arquitecto que comenzó la muralla, aunque no hay certeza documental.",
-    "tiempo_visita": 60
+    "tiempo_visita": 60,
+    "nombre_en": "Ávila Cathedral",
+    "ciudad_en": "Ávila",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "The first Gothic cathedral in Spain",
+    "historia_en": "Begun in the 12th century under King Alfonso VIII. Its apse serves as a tower integrated into the city wall.",
+    "arquitectura_en": "The crenellated apse known as 'el cimorro' protrudes from the city wall. Inside houses the tomb of El Tostado and beautiful Gothic stained-glass windows.",
+    "curiosidades_en": "The only known example of a fortress-cathedral integrated into an urban walled enclosure in Spain.",
+    "misterios_en": "The name of the original master builder is unknown. Some studies suggest it was the same architect who designed the city wall."
   },
   {
     "id": 1003,
@@ -1131,7 +1627,15 @@
     "arquitectura": "Presenta una portada occidental de gran riqueza escultórica con arquivoltas finamente labradas. En su interior destaca el sepulcro policromado de los Santos Mártires, una obra maestra de la escultura románica.",
     "curiosidades": "La basílica está construida con la típica piedra arenisca rojiza de Ávila, que le da ese característico color cálido tan fotografiado al atardecer.",
     "misterios": "Bajo la cripta se conservan restos de un antiguo edificio anterior, posiblemente de época visigoda, cuya función exacta sigue siendo objeto de debate entre los arqueólogos.",
-    "tiempo_visita": 40
+    "tiempo_visita": 40,
+    "nombre_en": "Basílica de San Vicente",
+    "ciudad_en": "Ávila",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Jewel of Ávila Romanesque",
+    "historia_en": "Built between the 11th and 13th centuries on the site where Saint Vincent of Zaragoza was martyred.",
+    "arquitectura_en": "Richly sculpted western portal with finely carved archivolts. The polychrome sepulchre of the Holy Martyrs stands out.",
+    "curiosidades_en": "Built with the typical reddish sandstone of Ávila, giving it a characteristic warm colour at sunset.",
+    "misterios_en": "Beneath the crypt, remains of an earlier building, possibly Visigothic, whose function is still debated."
   },
   {
     "id": 1004,
@@ -1149,7 +1653,15 @@
     "arquitectura": "Magnífico ejemplo del gótico isabelino tardío. Cuenta con tres claustros de diferente tamaño y carácter: el del Noviciado, el del Silencio y el de los Reyes. La iglesia conserva la sillería del coro y el retablo mayor original.",
     "curiosidades": "El infante Don Juan, heredero de la Corona y prometido a Margarita de Austria, murió aquí con solo 19 años, dejando sin sucesor a los Reyes Católicos. Su muerte cambió el curso de la historia de España.",
     "misterios": "Se dice que los Reyes Católicos nunca volvieron a pisar el monasterio tras la muerte de su hijo, y que Isabel lloraba cada vez que contemplaba el escudo real bordado en los tapices.",
-    "tiempo_visita": 50
+    "tiempo_visita": 50,
+    "nombre_en": "Monasterio de Santo Tomás",
+    "ciudad_en": "Ávila",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Royal pantheon and seat of the Inquisition",
+    "historia_en": "Founded by the Catholic Monarchs in 1482. Houses the tomb of Prince Don Juan, their only male son.",
+    "arquitectura_en": "Magnificent late Isabelline Gothic with three cloisters: Novices', Silence and Kings'.",
+    "curiosidades_en": "Prince Don Juan died here aged only 19, leaving the Catholic Monarchs without a successor, changing the course of Spanish history.",
+    "misterios_en": "It is said the Catholic Monarchs never returned after their son's death."
   },
   {
     "id": 1101,
@@ -1167,7 +1679,15 @@
     "arquitectura": "Es célebre por sus más de 1.800 metros cuadrados de vidrieras medievales que filtran la luz en tonos azules, rojos y dorados, creando un espectáculo visual único. Sus muros son tan delgados y su superficie vidriada tan grande que algunos arquitectos la llaman 'la catedral de cristal'. Cuenta con tres portadas escultóricas de gran riqueza.",
     "curiosidades": "Las vidrieras de la catedral son consideradas las mejores de España y una de las colecciones más importantes de Europa. Su 'Virgen Blanca', copia de la original conservada en el interior, preside la portada principal.",
     "misterios": "Durante siglos se creyó que el edificio podría derrumbarse por el exceso de vidrio en sus muros. En el siglo XIX llegaron a desmontarse partes para reforzarla, y aún hoy existe debate sobre su estabilidad a largo plazo.",
-    "tiempo_visita": 75
+    "tiempo_visita": 75,
+    "nombre_en": "León Cathedral",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "The cathedral of light",
+    "historia_en": "Begun in the 13th century, one of the masterpieces of Hispanic Gothic. In the 19th century it suffered a serious structural crisis requiring major restoration.",
+    "arquitectura_en": "Famous for more than 1,800 m² of medieval stained-glass windows filtering light in blues, reds and golds. Walls so thin architects call it 'the crystal cathedral'.",
+    "curiosidades_en": "The stained-glass windows are considered the finest in Spain and one of the most important collections in Europe.",
+    "misterios_en": "For centuries it was feared the building might collapse due to the excess of glass in its walls. Debate about long-term stability continues today."
   },
   {
     "id": 1102,
@@ -1185,7 +1705,15 @@
     "arquitectura": "El Panteón Real conserva unas pinturas románicas del siglo XII de extraordinaria calidad y estado de conservación, conocidas como el 'Sixtino del románico'. Las bóvedas están cubiertas de escenas del Nuevo Testamento, el calendario agrícola y motivos de bestiario. La fachada exterior del templo exhibe esculturas románicas de gran importancia.",
     "curiosidades": "Están enterrados en el Panteón Real 23 reyes, 12 reinas, 9 infantes y varios condes. Ningún rey de León murió sin ser enterrado aquí durante dos siglos. El museo del tesoro conserva joyas, relicarios y manuscritos iluminados de incalculable valor.",
     "misterios": "Existe una cripta de acceso restringido cuyo contenido exacto no ha sido completamente catalogado. Algunos investigadores creen que podría haber documentos medievales sin estudiar.",
-    "tiempo_visita": 60
+    "tiempo_visita": 60,
+    "nombre_en": "Real Basílica de San Isidoro",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "The Sistine of the Romanesque",
+    "historia_en": "Founded in the 11th century by Ferdinand I to house the relics of Saint Isidore of Seville. The Royal Pantheon houses most kings and queens of León.",
+    "arquitectura_en": "The Royal Pantheon preserves 12th-century Romanesque paintings of extraordinary quality: the 'Sistine of the Romanesque'. Vaults covered with scenes of the life of Christ.",
+    "curiosidades_en": "23 kings, 12 queens, 9 princes and several counts are buried in the Royal Pantheon.",
+    "misterios_en": "A restricted-access crypt whose exact contents have not been fully catalogued may contain unstudied medieval documents."
   },
   {
     "id": 1103,
@@ -1203,7 +1731,15 @@
     "arquitectura": "Callejuelas medievales con edificios históricos reconvertidos en bares. La Plaza de San Martín conserva soportales y fachadas de los siglos XVII y XVIII. La Casa de los Botines, obra de Gaudí, se encuentra a escasos metros.",
     "curiosidades": "En León es tradición que cada bebida venga acompañada de una tapa gratuita, costumbre que se mantiene con especial fervor en el Barrio Húmedo. Los locales compiten en originalidad y generosidad de sus tapas.",
     "misterios": "Existen teorías sobre el origen del nombre: algunos lo atribuyen al nivel freático del terreno, otros al sudor de los parroquianos, y otros simplemente a la humedad del alcohol.",
-    "tiempo_visita": 90
+    "tiempo_visita": 90,
+    "nombre_en": "Barrio Húmedo",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "León's legendary tapas district",
+    "historia_en": "The nerve centre of León's nightlife and gastronomy. The epicentre of the Leonese tradition of free tapas with every drink.",
+    "arquitectura_en": "Medieval alleys with historic buildings around Plaza de San Martín, with 17th and 18th-century arcades. Casa de Botines (Gaudí) nearby.",
+    "curiosidades_en": "In León every drink comes with a free tapa, a custom bars compete over in originality and generosity.",
+    "misterios_en": "Theories about the origin of the name 'Húmedo': the water table, the sweat of patrons, or simply the humidity of alcohol."
   },
   {
     "id": 1104,
@@ -1221,7 +1757,15 @@
     "arquitectura": "De estilo neogótico, presenta cuatro torres cilíndricas en las esquinas rematadas con chapiteles de pizarra, y una fachada en piedra caliza. Durante una restauración en el año 2000 se encontró en el interior de uno de los pináculos un tubo metálico con los planos originales del edificio firmados por Gaudí.",
     "curiosidades": "Gaudí diseñó este edificio en tan solo 15 días durante una visita a León. Los lugareños, poco acostumbrados a su estilo, apodaron el edificio 'Casa de los Botines' en referencia irónica al dueño.",
     "misterios": "En la fachada hay una escultura de San Jorge matando al dragón. Según la leyenda urbana, Gaudí ocultó en ella su propio retrato, aunque ningún estudio lo ha confirmado definitivamente.",
-    "tiempo_visita": 45
+    "tiempo_visita": 45,
+    "nombre_en": "Casa de Botines",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "A work by Gaudí in the heart of Castile",
+    "historia_en": "Built between 1891 and 1894 by Antoni Gaudí, one of only three buildings he built outside Catalonia.",
+    "arquitectura_en": "Neo-Gothic with four cylindrical corner towers topped with slate spires and a limestone façade.",
+    "curiosidades_en": "Gaudí designed this building in just 15 days. During a restoration a metal tube with original plans signed by Gaudí was found inside a pinnacle.",
+    "misterios_en": "A sculpture of Saint George on the façade: urban legend says Gaudí hid his own portrait in it, unconfirmed by any study."
   },
   {
     "id": 1201,
@@ -1239,7 +1783,15 @@
     "arquitectura": "El bosque de columnas con arcos bicolores en rojo y blanco es su imagen más icónica. Tiene más de 850 columnas de mármol, jaspe y granito. El mihrab es una joya del arte califal con mosaicos de oro donados por el emperador bizantino. La catedral renacentista interior, aunque discutida, es también una obra de gran valor artístico.",
     "curiosidades": "Cuando Carlos I vio la catedral construida dentro de la mezquita exclamó: 'Habéis destruido algo único para poner algo que se puede ver en cualquier lugar'. Patrimonio de la Humanidad desde 1984.",
     "misterios": "Bajo el suelo de la mezquita se han encontrado restos de la basílica visigoda anterior. Se desconoce si existen más estructuras enterradas. También hay debate sobre las columnas romanas reutilizadas: se cree que proceden de edificios de la Córdoba romana, pero no todas han sido identificadas.",
-    "tiempo_visita": 90
+    "tiempo_visita": 90,
+    "nombre_en": "Mosque-Cathedral of Córdoba",
+    "ciudad_en": "Córdoba",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "One of the masterpieces of world architecture",
+    "historia_en": "Built over a Visigothic basilica by Abd al-Rahman I in the 8th century. Consecrated as a cathedral in 1236. In the 16th century a Renaissance cathedral was built inside. UNESCO World Heritage Site since 1984.",
+    "arquitectura_en": "Forest of 850+ columns with two-tone red and white arches. The mihrab is a jewel of Caliphal art with Byzantine gold mosaics.",
+    "curiosidades_en": "When Charles I saw the cathedral inside the mosque he exclaimed: 'You have destroyed something unique to build something that can be seen anywhere'.",
+    "misterios_en": "Beneath the mosque's floor, remains of the earlier Visigothic basilica have been found. It is unknown whether more buried structures exist."
   },
   {
     "id": 1202,
@@ -1257,7 +1809,15 @@
     "arquitectura": "Conjunto de torres, patios y jardines de gran belleza. Destaca la Torre del Homenaje, la Torre de los Leones y los jardines de inspiración andalusí con estanques, fuentes y cipreses. En su interior se conservan impresionantes mosaicos romanos hallados en la ciudad.",
     "curiosidades": "Los jardines del Alcázar, iluminados en verano, son uno de los espectáculos nocturnos más visitados de Córdoba. Alberga una de las mejores colecciones de mosaicos romanos de España.",
     "misterios": "Durante siglos se especuló con la existencia de pasadizos subterráneos que comunicarían el Alcázar con la Mezquita y el río Guadalquivir. Algunos han sido confirmados, pero el trazado completo sigue sin mapearse.",
-    "tiempo_visita": 60
+    "tiempo_visita": 60,
+    "nombre_en": "Alcázar de los Reyes Cristianos",
+    "ciudad_en": "Córdoba",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Residence of the Catholic Monarchs",
+    "historia_en": "Built by Alfonso XI in the 14th century. The Catholic Monarchs received Christopher Columbus here before his first voyage to America.",
+    "arquitectura_en": "Complex of towers, courtyards and beautiful Andalusian-inspired gardens. Houses impressive Roman mosaics found in the city.",
+    "curiosidades_en": "The Alcázar's illuminated gardens in summer are one of Córdoba's most visited nocturnal spectacles.",
+    "misterios_en": "Speculation about underground passages connecting the Alcázar with the Mosque and the Guadalquivir river. Some have been confirmed."
   },
   {
     "id": 1203,
@@ -1275,7 +1835,15 @@
     "arquitectura": "Laberinto de callejuelas encaladas con flores en las fachadas, características de la arquitectura popular andaluza. Conserva la sinagoga del siglo XIV, una de las tres sinagogas medievales que se conservan en España. La Casa de Sefarad reconstruye la vida de la comunidad judía.",
     "curiosidades": "La sinagoga de Córdoba es el único monumento judío medieval de Andalucía. La estatua de Maimónides en la plaza de Tiberiades es uno de los puntos de visita obligada. Dicen que tocar su pie da buena suerte.",
     "misterios": "Bajo algunas casas de la Judería se han encontrado restos de estructuras más antiguas. Se especula con la existencia de una sinagoga mayor anterior a la conservada, cuya ubicación exacta se desconoce.",
-    "tiempo_visita": 60
+    "tiempo_visita": 60,
+    "nombre_en": "Jewish Quarter of Córdoba",
+    "ciudad_en": "Córdoba",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "One of the best-preserved medieval Jewish quarters in Europe",
+    "historia_en": "One of the most important cultural centres of medieval Judaism. Maimonides lived here. The community was expelled in 1492.",
+    "arquitectura_en": "Labyrinth of whitewashed alleys with flowers. Preserves the 14th-century synagogue, one of only three medieval synagogues in Spain.",
+    "curiosidades_en": "The Córdoba synagogue is the only medieval Jewish monument in Andalusia. Touching Maimonides' statue foot is said to bring good luck.",
+    "misterios_en": "Remains of older structures found beneath some houses. Speculation about a larger synagogue predating the existing one."
   },
   {
     "id": 1204,
@@ -1293,7 +1861,15 @@
     "arquitectura": "Ciudad palatina distribuida en tres terrazas escalonadas. El salón de Abd al-Rahman III, con sus intrincados arabescos de mármol y piedra caliza, es la joya del conjunto. Solo una pequeña parte del yacimiento ha sido excavada; se estima que el 90% permanece aún bajo tierra.",
     "curiosidades": "Patrimonio Mundial de la UNESCO desde 2018. El museo de sitio acoge las piezas recuperadas. Se calcula que en su momento de máximo esplendor albergaba a más de 10.000 personas entre la corte, la guardia y los sirvientes.",
     "misterios": "La leyenda dice que fue construida para la favorita del califa, llamada al-Zahra (la brillante), y que cada piedra del palacio tenía inscrito su nombre. Esto no ha podido verificarse, pero la historia romántica ha perdurado mil años.",
-    "tiempo_visita": 90
+    "tiempo_visita": 90,
+    "nombre_en": "Medina Azahara",
+    "ciudad_en": "Córdoba",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "The palatine city of the Caliphate",
+    "historia_en": "Built by Abd al-Rahman III from 936. One of the most splendid cities in 10th-century Europe. Destroyed barely 70 years after construction. UNESCO World Heritage Site since 2018.",
+    "arquitectura_en": "Palatine city on three terraces. The Hall of Abd al-Rahman III with intricate arabesques is the jewel. Only 10% has been excavated.",
+    "curiosidades_en": "At its height it housed more than 10,000 people between the court, the guard and servants.",
+    "misterios_en": "Legend says it was built for the Caliph's favourite al-Zahra and every stone had her name inscribed. Unverified but enduring a thousand years."
   },
   {
     "id": 1301,
@@ -1311,12 +1887,23 @@
     "arquitectura": "Es un magnífico ejemplo de arquitectura gótico-mudéjar. Está formada por dos grandes torres cuadradas unidas por un cuerpo central con seis arcos, combinando arcos apuntados góticos y arcos de herradura de tradición islámica. Conserva además elementos heráldicos vinculados a la Corona de Castilla.",
     "curiosidades": "Por esta puerta entraron monarcas como Juan II, Enrique IV, los Reyes Católicos y Carlos I. Originalmente formaba parte de un recinto defensivo de cuatro kilómetros de murallas y más de cien torreones.",
     "misterios": "Algunos historiadores sostienen que bajo la puerta podrían conservarse restos de estructuras defensivas desaparecidas. Las leyendas locales también hablan de túneles que comunicarían antiguamente distintos sectores de la muralla.",
-    "tiempo_visita": 15
+    "tiempo_visita": 15,
+    "nombre_en": "Puerta de Toledo",
+    "ciudad_en": "Ciudad Real",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "The last vestige of the medieval city wall",
+    "historia_en": "Built during the 14th century, controlling access from Toledo. The only remaining remnant of the wall protecting the city founded by Alfonso X in 1255.",
+    "arquitectura_en": "Magnificent Gothic-Mudéjar architecture: two large square towers with six arches combining pointed Gothic arches and horseshoe arches.",
+    "curiosidades_en": "Monarchs such as John II, Henry IV, the Catholic Monarchs and Charles I entered through this gate.",
+    "misterios_en": "Remains of disappeared defensive structures may be preserved beneath. Local legends speak of tunnels connecting different sections of the city wall."
   },
   {
     "id": 2101,
     "nombre": "Monasterio Stavropoleos",
-    "coordenadas": { "latitude": 44.4301, "longitude": 26.0975 },
+    "coordenadas": {
+      "latitude": 44.4301,
+      "longitude": 26.0975
+    },
     "categoria": "Iglesia",
     "relevancia": 3,
     "descripcion_corta": "Joya del barroco brancoveano, el monasterio más bello de Bucarest, fundado en 1724.",
@@ -1326,12 +1913,23 @@
     "misterios": "Se dice que bajo las losas del patio descansan restos de monjes que nunca fueron identificados. Algunos historiadores creen que el edificio original fue construido sobre una capilla de rito romano anterior, aunque no existe prueba documental.",
     "tiempo_visita": 40,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Stavropoleos Monastery",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Jewel of Brâncovenesc Baroque in Bucharest",
+    "historia_en": "Founded in 1724 by Greek monk Ioanikios. Restored in the late 19th century by architect Ion Mincu. Its cloisters house medieval tombstones rescued from churches demolished by Ceaușescu.",
+    "arquitectura_en": "Masterpiece of the Brâncovenesc style combining Venetian Baroque, Ottoman and Romanian medieval elements. 18th-century frescoes of remarkable quality.",
+    "curiosidades_en": "Houses the most important collection of Brâncovenesc Art in Romania. The monks are known for their active Gregorian-Orthodox choir.",
+    "misterios_en": "Said to be built over a previous Roman-rite chapel, though there is no documentary proof."
   },
   {
     "id": 2102,
     "nombre": "Palacio del Parlamento",
-    "coordenadas": { "latitude": 44.4274, "longitude": 26.0875 },
+    "coordenadas": {
+      "latitude": 44.4274,
+      "longitude": 26.0875
+    },
     "categoria": "Palacio",
     "relevancia": 3,
     "descripcion_corta": "El segundo edificio administrativo más grande del mundo, símbolo colosal del megalómano régimen de Ceaușescu.",
@@ -1341,12 +1939,23 @@
     "misterios": "Existen rumores de túneles secretos que conectan el palacio con puntos estratégicos de la ciudad. Se desconoce qué hay exactamente en los pisos subterráneos, que permanecen cerrados al público. Durante décadas circuló la leyenda de que Ceaușescu planeaba trasladar el Mar Negro mediante canales hasta el edificio.",
     "tiempo_visita": 90,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Palace of the Parliament",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "The second largest administrative building in the world",
+    "historia_en": "Built 1984-1997 as Ceaușescu's 'House of the People'. Its construction demolished 9 km² of Bucharest's historic centre. Today houses the Senate and Chamber of Deputies.",
+    "arquitectura_en": "270,000 m² of usable floor area, 1,100 rooms, 12 above-ground floors and 8 below ground. 20 km of underground corridors.",
+    "curiosidades_en": "Costs over 6 million euros a year in electricity. The heaviest building in the world at over 4 billion kg.",
+    "misterios_en": "Rumours of secret tunnels connecting the palace with strategic city points. Unknown what lies in underground floors closed to the public."
   },
   {
     "id": 2103,
     "nombre": "Museo del Pueblo",
-    "coordenadas": { "latitude": 44.4623, "longitude": 26.0762 },
+    "coordenadas": {
+      "latitude": 44.4623,
+      "longitude": 26.0762
+    },
     "categoria": "Museo",
     "relevancia": 3,
     "descripcion_corta": "El mayor museo etnográfico al aire libre de Europa, con más de 300 construcciones tradicionales auténticas traídas de toda Rumanía.",
@@ -1356,12 +1965,23 @@
     "misterios": "Varios objetos de la colección nunca han podido ser datados con precisión. Existe una sección de 'objetos anónimos' cuyo uso exacto permanece sin identificar. Se dice que algunas estructuras traídas de Maramureș contienen inscripciones rúnicas preeslavas aún sin descifrar.",
     "tiempo_visita": 120,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Village Museum",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "The largest open-air ethnographic museum in Europe",
+    "historia_en": "Inaugurated in 1936 by King Carol II. Teams travelled every village in Romania dismantling and relocating houses, mills, churches and barns from the 17th to 19th centuries.",
+    "arquitectura_en": "100 hectares next to Lake Herăstrău with over 300 constructions organised by geographical region: Moldavia, Transylvania, Oltenia, Muntenia, Dobruja.",
+    "curiosidades_en": "Some houses still preserve the original household items. An 18th-century Orthodox church holds weddings and baptisms.",
+    "misterios_en": "Some structures from Maramureș are said to contain pre-Slavic runic inscriptions yet to be deciphered."
   },
   {
     "id": 2104,
     "nombre": "Ateneo Rumano",
-    "coordenadas": { "latitude": 44.4412, "longitude": 26.0975 },
+    "coordenadas": {
+      "latitude": 44.4412,
+      "longitude": 26.0975
+    },
     "categoria": "Monumento",
     "relevancia": 3,
     "descripcion_corta": "La sala de conciertos más hermosa de Rumanía, símbolo cultural de la nación y sede de la Filarmónica George Enescu.",
@@ -1371,12 +1991,23 @@
     "misterios": "El fresco circular interior tardó 40 años en completarse (1897-1938), y varios de sus paneles fueron pintados por artistas distintos sin que exista registro completo de sus nombres. Se dice que algunas figuras del fresco son retratos disfrazados de personalidades vivas en ese momento.",
     "tiempo_visita": 60,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Romanian Athenaeum",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "The most beautiful concert hall in Romania",
+    "historia_en": "Built 1886-1888 with popular donations ('Give a leu for the Athenaeum'). Designed by French architect Albert Galleron. Inaugurated by King Carol I.",
+    "arquitectura_en": "Neoclassical façade with Doric portico. Circular rotunda with glazed dome. 70-metre fresco narrating Romanian history from Trajan onwards.",
+    "curiosidades_en": "George Enescu debuted here at age 13. Declared UNESCO World Heritage Site in 2007. Acoustics ranked among top 10 in Europe.",
+    "misterios_en": "The circular interior fresco took 40 years to complete (1897-1938) and some figures are believed to be disguised portraits of living personalities at the time."
   },
   {
     "id": 2105,
     "nombre": "Piața Unirii",
-    "coordenadas": { "latitude": 44.4272, "longitude": 26.1029 },
+    "coordenadas": {
+      "latitude": 44.4272,
+      "longitude": 26.1029
+    },
     "categoria": "Plaza",
     "relevancia": 2,
     "descripcion_corta": "La plaza más grande de Bucarest, epicentro del proyecto urbanístico de Ceaușescu, con la mayor fuente musical de Europa del Este.",
@@ -1386,12 +2017,23 @@
     "misterios": "Numerosos arqueólogos sostienen que bajo la plaza existen restos de la antigua ciudad medieval de Bucarest, incluyendo posiblemente la primera fortaleza de Vlad el Empalador, que nunca han podido excavarse debido a las infraestructuras.",
     "tiempo_visita": 30,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Unirii Square",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Bucharest's largest square",
+    "historia_en": "The historic neighbourhood of Văcărești was demolished in 1984 to build Ceaușescu's Victory of Socialism Boulevard.",
+    "arquitectura_en": "Unirii Boulevard is 3 km long and 120 m wide, larger than the Champs-Élysées. 63 illuminated fountains offer a spectacular show.",
+    "curiosidades_en": "Ceaușescu designed the boulevard to be exactly 10 cm wider than the Champs-Élysées in Paris.",
+    "misterios_en": "Beneath the square may lie remains of ancient medieval Bucharest, possibly including the first fortress of Vlad the Impaler, never excavated."
   },
   {
     "id": 2106,
     "nombre": "Macca-Vilacrosse Passage",
-    "coordenadas": { "latitude": 44.4397, "longitude": 26.0962 },
+    "coordenadas": {
+      "latitude": 44.4397,
+      "longitude": 26.0962
+    },
     "categoria": "Calle",
     "relevancia": 2,
     "descripcion_corta": "Galería cubierta del siglo XIX, considerada la más bella de Bucarest, con techos de cristal emplomado amarillo que proyectan una luz dorada única.",
@@ -1401,12 +2043,23 @@
     "misterios": "Existen planos del siglo XIX que muestran un tercer brazo del pasaje que nunca fue construido. Algunos mapas históricos sugieren que el pasaje fue diseñado originalmente para conectar con otro pasaje cubierto hoy desaparecido.",
     "tiempo_visita": 20,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Macca-Vilacrosse Passage",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Bucharest's most beautiful covered gallery",
+    "historia_en": "Built in 1891 by the Macca and Vilacrosse brothers, inspired by commercial galleries in Brussels and Paris. Restored in the 2000s.",
+    "arquitectura_en": "Y-shaped covered passage with wrought-iron vault and yellow leaded glass that bathes the interior in warm golden light. 120 metres total.",
+    "curiosidades_en": "The yellowish light filtering through the glass turns any photograph into an artistic work.",
+    "misterios_en": "19th-century plans show a third arm of the passage that was never built."
   },
   {
     "id": 2107,
     "nombre": "Biserica Zlătari",
-    "coordenadas": { "latitude": 44.4341, "longitude": 26.1001 },
+    "coordenadas": {
+      "latitude": 44.4341,
+      "longitude": 26.1001
+    },
     "categoria": "Iglesia",
     "relevancia": 1,
     "descripcion_corta": "Pequeña iglesia ortodoxa del siglo XVII famosa por su icono milagroso de la Virgen y su emplazamiento entre edificios comerciales modernos.",
@@ -1416,12 +2069,23 @@
     "misterios": "La procedencia exacta del icono venerado es desconocida; la tradición dice que fue traído de Constantinopla, pero no hay documentación que lo confirme.",
     "tiempo_visita": 20,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Zlătari Church",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "17th-century Orthodox church",
+    "historia_en": "Founded in the 17th century by goldsmiths (zlătari = those who work gold), rebuilt in 1780 after a fire.",
+    "arquitectura_en": "Yellow plastered façade with 18th-century gilded iconostasis.",
+    "curiosidades_en": "The 17th-century icon of the Virgin Theotokos is considered miraculous; the faithful from all over Romania come to kiss it.",
+    "misterios_en": "The exact provenance of the venerated icon is unknown; tradition says it was brought from Constantinople."
   },
   {
     "id": 2108,
     "nombre": "Palacio CEC",
-    "coordenadas": { "latitude": 44.4325, "longitude": 26.0986 },
+    "coordenadas": {
+      "latitude": 44.4325,
+      "longitude": 26.0986
+    },
     "categoria": "Palacio",
     "relevancia": 2,
     "descripcion_corta": "Sede de la Caja de Ahorros rumana, uno de los edificios más suntuosos de Bucarest, con cúpula de cristal y hierro forjado.",
@@ -1431,12 +2095,23 @@
     "misterios": "Existen rumores de que bajo el edificio existe una cámara acorazada original del siglo XIX que nunca fue abierta tras la nacionalización comunista y cuyo contenido se desconoce.",
     "tiempo_visita": 20,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "CEC Palace",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Seat of the Romanian Savings Bank",
+    "historia_en": "Built 1897-1900 by French architect Paul Gottereau. The most important financial building of 19th-century Romania.",
+    "arquitectura_en": "French eclectic style. Most striking feature: central dome of wrought iron and glass illuminating the main lobby.",
+    "curiosidades_en": "Gottereau also designed the current Royal Palace of Bucharest. The central lobby is accessible during banking hours.",
+    "misterios_en": "Rumours of an original 19th-century vault beneath the building that was never opened after communist nationalisation."
   },
   {
     "id": 2109,
     "nombre": "Museo de Historia Nacional de Rumanía",
-    "coordenadas": { "latitude": 44.4315, "longitude": 26.1002 },
+    "coordenadas": {
+      "latitude": 44.4315,
+      "longitude": 26.1002
+    },
     "categoria": "Museo",
     "relevancia": 2,
     "descripcion_corta": "El principal museo histórico del país, que alberga la Columna de Trajano (réplica), el Tesoro Nacional y colecciones desde la prehistoria.",
@@ -1446,12 +2121,23 @@
     "misterios": "Varias piezas del Tesoro Nacional fueron enviadas a Rusia durante la I Guerra Mundial para su custodia y nunca devueltas. El paradero exacto de estas piezas, conocidas como el 'Tesoro de Moscú', sigue siendo uno de los mayores litigios diplomáticos de Rumanía.",
     "tiempo_visita": 90,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "National History Museum of Romania",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Romania's main historical museum",
+    "historia_en": "Installed in the former Post Office Palace (1900). Houses 600,000+ objects including the National Treasury and a 1:1 replica of Trajan's Column.",
+    "arquitectura_en": "Former Post and Telegraph Palace in eclectic style. The lobby houses the impressive 30-metre replica of Trajan's Column.",
+    "curiosidades_en": "Contains the 'Golden Hen with Chicks', a Getan goldsmith piece from the 4th century BC of incalculable value.",
+    "misterios_en": "Part of the National Treasury sent to Russia during WWI for safekeeping was never returned — the 'Moscow Treasury' dispute continues."
   },
   {
     "id": 2110,
     "nombre": "Cărturești Carusel",
-    "coordenadas": { "latitude": 44.4357, "longitude": 26.1013 },
+    "coordenadas": {
+      "latitude": 44.4357,
+      "longitude": 26.1013
+    },
     "categoria": "Monumento",
     "relevancia": 2,
     "descripcion_corta": "La librería más bella de Europa del Este, instalada en un palacio neoclásico del siglo XIX con galerías de hierro y cristal.",
@@ -1461,12 +2147,23 @@
     "misterios": "Bajo el sótano de la librería se descubrieron durante la restauración restos de cimentaciones de un edificio anterior del siglo XVIII cuya función se desconoce.",
     "tiempo_visita": 40,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Cărturești Carusel Bookshop",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "The most beautiful bookshop in Eastern Europe",
+    "historia_en": "The building was constructed in 1903, restored 2012-2015 and voted by international media as the most beautiful bookshop in the world.",
+    "arquitectura_en": "6-storey building with white wrought-iron galleries surrounding a central atrium. Skylight creates continuous natural-light effect. 10,000 books.",
+    "curiosidades_en": "The top floor café has the best views of Lipscani Boulevard. Voted the most romantic bookshop in Europe in 2017.",
+    "misterios_en": "During restoration, remains of foundations from an earlier 18th-century building of unknown function were discovered in the basement."
   },
   {
     "id": 2111,
     "nombre": "Caru' cu Bere",
-    "coordenadas": { "latitude": 44.4305, "longitude": 26.0977 },
+    "coordenadas": {
+      "latitude": 44.4305,
+      "longitude": 26.0977
+    },
     "categoria": "Monumento",
     "relevancia": 2,
     "descripcion_corta": "La cervecería más antigua y ornamentada de Bucarest (1879), con interiores neogóticos que la convierten en uno de los restaurantes más bellos de Europa.",
@@ -1476,12 +2173,23 @@
     "misterios": "Se rumorea que bajo la cervecería existe una bodega secreta del siglo XIX que comunicaba con el monasterio Stavropoleos vecino a través de un túnel, aunque no ha sido encontrado.",
     "tiempo_visita": 60,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Caru' cu Bere",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Bucharest's oldest and most ornate brewery (1879)",
+    "historia_en": "Founded in 1879, redesigned in neo-Gothic style in 1897. Meeting place of Bucharest's intelligentsia. Fully restored in 2007.",
+    "arquitectura_en": "Main hall with neo-Gothic ribbed vaults, stained-glass windows, Art Nouveau frescoes and exceptional carved walnut wood.",
+    "curiosidades_en": "The original craft beer recipe remains the same as in 1879. Romanian national poet Mihail Eminescu was said to be a regular.",
+    "misterios_en": "Rumoured 19th-century secret cellar connecting with the neighbouring Stavropoleos Monastery through a tunnel, never found."
   },
   {
     "id": 2112,
     "nombre": "Pasajul Victoria",
-    "coordenadas": { "latitude": 44.4390, "longitude": 26.0957 },
+    "coordenadas": {
+      "latitude": 44.439,
+      "longitude": 26.0957
+    },
     "categoria": "Calle",
     "relevancia": 1,
     "descripcion_corta": "Pasaje comercial del siglo XIX que conecta la Calea Victoriei con las calles interiores del centro, con ambiente de bazar artesanal.",
@@ -1491,12 +2199,23 @@
     "misterios": "Algunos mapas históricos muestran una continuación del pasaje hacia el sur que fue demolida en los años 80. Nadie sabe exactamente qué había en esa extensión.",
     "tiempo_visita": 20,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Pasajul Victoria",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "19th-century commercial passage",
+    "historia_en": "Built in the late 19th century as a luxury commercial gallery, converted to a craft bazaar during communism.",
+    "arquitectura_en": "Single-nave covered passage with iron and glass roof.",
+    "curiosidades_en": "Where Bucharest residents have brought watches, umbrellas and shoes for repair for over a hundred years.",
+    "misterios_en": "Historical maps show a southward continuation demolished in the 1980s. Nobody knows what was in that extension."
   },
   {
     "id": 2113,
     "nombre": "Parque Cişmigiu",
-    "coordenadas": { "latitude": 44.4373, "longitude": 26.0898 },
+    "coordenadas": {
+      "latitude": 44.4373,
+      "longitude": 26.0898
+    },
     "categoria": "Parque",
     "relevancia": 2,
     "descripcion_corta": "El parque más antiguo y querido de Bucarest, jardín romántico decimonónico con lago, estatuas y rincones literarios.",
@@ -1506,12 +2225,23 @@
     "misterios": "Existen varias leyendas de apariciones nocturnas en el parque. Un rumor persistente afirma que bajo el lago existe un búnker de la época comunista nunca confirmado.",
     "tiempo_visita": 60,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Cișmigiu Park",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Bucharest's oldest and most beloved park",
+    "historia_en": "Designed 1845-1860 by German landscape architect Wilhelm Mayer. Created from a natural basin called Cismea (fountain in Turkish).",
+    "arquitectura_en": "Romantic garden of 17 hectares with a boating lake, neoclassical gazebos, statues of Romanian poets and a centennial rose garden.",
+    "curiosidades_en": "The Writers' Corner with busts was the favourite spot of 20th-century Romanian literary figures. Rowing boats have been in service since 1890.",
+    "misterios_en": "A persistent rumour claims that beneath the lake there is a communist-era bunker that has never been confirmed."
   },
   {
     "id": 2114,
     "nombre": "Memorial of Rebirth",
-    "coordenadas": { "latitude": 44.4408, "longitude": 26.0968 },
+    "coordenadas": {
+      "latitude": 44.4408,
+      "longitude": 26.0968
+    },
     "categoria": "Monumento",
     "relevancia": 1,
     "descripcion_corta": "Monumento conmemorativo de la Revolución de 1989, conocido popularmente como 'el olivo' o 'el pincho de Drácula', objeto de polémica artística.",
@@ -1521,12 +2251,23 @@
     "misterios": "La decisión de quién escogió el diseño final y por qué se rechazaron otras propuestas más consensuadas nunca fue aclarada públicamente. Existe sospecha de que hubo intereses políticos en la elección.",
     "tiempo_visita": 10,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Memorial of Rebirth",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Commemorative monument of the 1989 Revolution",
+    "historia_en": "Inaugurated in 2005 on the 15th anniversary of the Revolution. Located where first protesters fell in December 1989.",
+    "arquitectura_en": "25-metre travertine marble column crowned by a perforated bronze flame. Severely criticised for its aesthetics.",
+    "curiosidades_en": "Nicknamed by Bucharest residents: 'potato on a spit', 'the olive', 'the suppository'.",
+    "misterios_en": "Who chose the final design and why more consensual proposals were rejected was never publicly clarified."
   },
   {
     "id": 2115,
     "nombre": "Palacio Real de Bucarest",
-    "coordenadas": { "latitude": 44.4414, "longitude": 26.0969 },
+    "coordenadas": {
+      "latitude": 44.4414,
+      "longitude": 26.0969
+    },
     "categoria": "Palacio",
     "relevancia": 2,
     "descripcion_corta": "Antigua residencia de la familia real rumana, hoy sede del Museo Nacional de Arte y galería de arte europeo de primer nivel.",
@@ -1536,12 +2277,23 @@
     "misterios": "Se dice que existen documentos de la familia real ocultos en cámaras secretas del palacio que nunca fueron encontrados tras la nacionalización. La familia real ha reclamado el edificio pero no le ha sido devuelto.",
     "tiempo_visita": 90,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Royal Palace of Bucharest",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Former royal residence, now National Museum of Art",
+    "historia_en": "Rebuilt 1927-1937. Official residence of kings Carol II and Michael I until 1947. The communist regime converted it into the National Museum of Art.",
+    "arquitectura_en": "250-metre neoclassical façade with central Corinthian colonnade. Houses 70,000 works including European Art Gallery with El Greco, Rembrandt, Rubens and Monet.",
+    "curiosidades_en": "The central balcony was the scene of Ceaușescu's famous last public speech on 21 December 1989, before he fled by helicopter.",
+    "misterios_en": "Royal family documents hidden in secret chambers were never found after nationalisation. The royal family has claimed the building but it has not been returned."
   },
   {
     "id": 2116,
     "nombre": "Templo Coral",
-    "coordenadas": { "latitude": 44.4298, "longitude": 26.1021 },
+    "coordenadas": {
+      "latitude": 44.4298,
+      "longitude": 26.1021
+    },
     "categoria": "Iglesia",
     "relevancia": 2,
     "descripcion_corta": "La sinagoga principal de Bucarest, joya del estilo moorish-romántico que atestigua la rica historia judía de la capital rumana.",
@@ -1551,12 +2303,23 @@
     "misterios": "Existen registros de una genizá (depósito sagrado de manuscritos) que fue sellada antes de la II Guerra Mundial para proteger documentos sagrados; nunca fue reabierta.",
     "tiempo_visita": 40,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Coral Temple",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Bucharest's main synagogue",
+    "historia_en": "Built 1857-1867 in Moorish style by Viennese architect Jakob Freiwald. The Jewish community once the second largest in Eastern Europe.",
+    "arquitectura_en": "Basilica plan with three naves, central dome of 23 metres, horseshoe arches and geometric ornamentation. The 1890 organ is preserved.",
+    "curiosidades_en": "The name 'Coral' comes from the choir. Ceaușescu used it as a bargaining chip, 'selling' Jewish emigration to Israel for foreign currency.",
+    "misterios_en": "Records exist of a genizah (sacred manuscript repository) sealed before WWII to protect documents; it was never reopened."
   },
   {
     "id": 2117,
     "nombre": "Arcul de Triumf",
-    "coordenadas": { "latitude": 44.4677, "longitude": 26.0779 },
+    "coordenadas": {
+      "latitude": 44.4677,
+      "longitude": 26.0779
+    },
     "categoria": "Monumento",
     "relevancia": 2,
     "descripcion_corta": "El arco del triunfo de Bucarest, construido en 1936 para conmemorar la unificación de Rumanía tras la I Guerra Mundial.",
@@ -1566,12 +2329,23 @@
     "misterios": "Algunos relieves de la fachada muestran figuras sin identificar que algunos historiadores creen que son retratos encubiertos de colaboradores del arquitecto.",
     "tiempo_visita": 30,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Arcul de Triumf",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Bucharest's triumphal arch",
+    "historia_en": "Built in 1936 following the model of the Arc de Triomphe. Inaugurated by King Carol II. Romanian troops paraded beneath it after WWI.",
+    "arquitectura_en": "Stone arch 27 metres high with reliefs depicting WWI episodes. Internal staircase gives access to rooftop with views over Kiseleff Boulevard.",
+    "curiosidades_en": "The inscriptions on the four façades were written personally by King Carol II himself.",
+    "misterios_en": "Some façade reliefs show unidentified figures believed to be concealed portraits of the architect's collaborators."
   },
   {
     "id": 2118,
     "nombre": "The Patriarchal Cathedral",
-    "coordenadas": { "latitude": 44.4261, "longitude": 26.0983 },
+    "coordenadas": {
+      "latitude": 44.4261,
+      "longitude": 26.0983
+    },
     "categoria": "Iglesia",
     "relevancia": 2,
     "descripcion_corta": "La catedral patriarcal ortodoxa de Rumanía, sede del Patriarca y lugar de coronación de los reyes rumanos.",
@@ -1581,12 +2355,23 @@
     "misterios": "Bajo la catedral existen criptas del siglo XVII que nunca han sido completamente excavadas. Se rumorea que contienen los restos de varios príncipes medievales cuya identidad exacta es incierta.",
     "tiempo_visita": 40,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "The Patriarchal Cathedral",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "The patriarchal Orthodox cathedral of Romania",
+    "historia_en": "Built 1654-1658 under Prince Constantin Șerban. Seat of the Romanian Orthodox Patriarchate since 1668. Romanian kings were crowned here.",
+    "arquitectura_en": "Post-Byzantine Brâncovenesc style with triconch floor plan. Original 17th-century iconostasis. Patriarchal throne carved in oak with mother-of-pearl inlays.",
+    "curiosidades_en": "Preserves relics of Saint Dimitrie Basarabov, patron of Bucharest, brought out in procession every 27 October.",
+    "misterios_en": "17th-century crypts beneath the cathedral have never been fully excavated. Rumoured to contain remains of medieval princes of uncertain identity."
   },
   {
     "id": 2119,
     "nombre": "Palacio del Patriarcado",
-    "coordenadas": { "latitude": 44.4256, "longitude": 26.0979 },
+    "coordenadas": {
+      "latitude": 44.4256,
+      "longitude": 26.0979
+    },
     "categoria": "Palacio",
     "relevancia": 1,
     "descripcion_corta": "Residencia oficial del Patriarca Ortodoxo Rumano, adyacente a la catedral patriarcal, en la colina de la Mitrópolis.",
@@ -1596,12 +2381,23 @@
     "misterios": "Se dice que los sótanos del palacio guardan archivos eclesiásticos que incluyen documentos sobre familias boyardas medievales que nunca han sido publicados.",
     "tiempo_visita": 20,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Patriarchal Palace",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Official residence of the Romanian Orthodox Patriarch",
+    "historia_en": "Current building dates from the 19th century, though a patriarchal residence has existed since the 17th century.",
+    "arquitectura_en": "19th-century neoclassical building on Dealul Mitropoliei, one of the highest points in the city centre.",
+    "curiosidades_en": "From the palace terrace there is one of the best panoramic views over Bucharest's historic centre.",
+    "misterios_en": "Said to hold ecclesiastical archives with documents about medieval boyar families that have never been published."
   },
   {
     "id": 2120,
     "nombre": "Antim Monastery",
-    "coordenadas": { "latitude": 44.4275, "longitude": 26.0942 },
+    "coordenadas": {
+      "latitude": 44.4275,
+      "longitude": 26.0942
+    },
     "categoria": "Iglesia",
     "relevancia": 2,
     "descripcion_corta": "Monasterio ortodoxo del siglo XVIII fundado por el metropolitano Antim Ivireanul, considerado uno de los templos más importantes de Bucarest.",
@@ -1611,12 +2407,23 @@
     "misterios": "La tumba de Antim Ivireanul nunca fue encontrada; los turcos lo arrojaron al río Tunca tras ejecutarlo. Existe una leyenda que dice que su espíritu protege el monasterio.",
     "tiempo_visita": 30,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Antim Monastery",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "18th-century Orthodox monastery",
+    "historia_en": "Founded 1713-1715 by Antim Ivireanul, Metropolitan of Hungrovalachia and father of Romanian printing. Its founder was killed by the Ottomans in 1716.",
+    "arquitectura_en": "Triconch church with stone-carved columns. 18th-century frescoes and a gilded wooden iconostasis carved by Antim Ivireanul himself.",
+    "curiosidades_en": "Antim Ivireanul was canonised as a saint in 1992. He printed the first Bible in Romanian in the 18th century.",
+    "misterios_en": "The tomb of Antim Ivireanul was never found; the Turks threw him into the Tunca river. A legend says his spirit protects the monastery."
   },
   {
     "id": 2121,
     "nombre": "People's Salvation Cathedral",
-    "coordenadas": { "latitude": 44.4224, "longitude": 26.0888 },
+    "coordenadas": {
+      "latitude": 44.4224,
+      "longitude": 26.0888
+    },
     "categoria": "Iglesia",
     "relevancia": 2,
     "descripcion_corta": "La catedral ortodoxa más grande de Rumanía y una de las más grandes de Europa, inaugurada en 2018, obra de arquitectura religiosa contemporánea.",
@@ -1626,12 +2433,23 @@
     "misterios": "El diseño final fue escogido en un concurso cuyas actas no son públicas. Existe controversia sobre si el emplazamiento respeta los límites del antiguo convento Văcărești demolido por Ceaușescu.",
     "tiempo_visita": 45,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "People's Salvation Cathedral",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Romania's largest Orthodox cathedral",
+    "historia_en": "Planned in 1990 after the fall of communism. Blessed by Patriarch Daniel in October 2018. Stands next to the Palace of Parliament in deliberate symbolic contrast.",
+    "arquitectura_en": "120 metres long, towers reach 120 metres. Contemporary Neo-Byzantine with a 53-metre central dome. Capacity: 5,000 worshippers. Second largest Orthodox cathedral in the world after Kiev.",
+    "curiosidades_en": "Cost more than 400 million euros, generating controversy while poverty existed. Bells donated by parishes from all over Romania.",
+    "misterios_en": "The final design was chosen in a competition whose records are not public. Controversy about whether location respects boundaries of the Văcărești Convent demolished by Ceaușescu."
   },
   {
     "id": 2122,
     "nombre": "Ministry of Internal Affairs",
-    "coordenadas": { "latitude": 44.4299, "longitude": 26.0866 },
+    "coordenadas": {
+      "latitude": 44.4299,
+      "longitude": 26.0866
+    },
     "categoria": "Monumento",
     "relevancia": 1,
     "descripcion_corta": "Imponente sede del Ministerio del Interior, ejemplo del estilo 'estalinista' o realismo socialista de la arquitectura rumana de los años 50.",
@@ -1641,12 +2459,23 @@
     "misterios": "Se rumorea que el edificio tiene varios pisos subterráneos que fueron utilizados como centros de detención e interrogatorio de la Securitate. Ningún documento oficial lo confirma ni lo desmiente.",
     "tiempo_visita": 15,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Ministry of Internal Affairs",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Stalinist architecture of the 1950s",
+    "historia_en": "Built 1950-1952 during maximum Soviet influence. Concentrated the Securitate and state control bodies.",
+    "arquitectura_en": "Neoclassical-socialist style: strict symmetry, monumental central colonnade, stone façade, 8 storeys, H-shaped structure.",
+    "curiosidades_en": "In front of the building is the famous Lacrimi și Sfinți café, creating an ironic contrast with the building's sombre past.",
+    "misterios_en": "Rumours of underground floors used as Securitate detention and interrogation centres. No official document confirms or denies this."
   },
   {
     "id": 2123,
     "nombre": "Iglesia Kretzulescu",
-    "coordenadas": { "latitude": 44.4415, "longitude": 26.0971 },
+    "coordenadas": {
+      "latitude": 44.4415,
+      "longitude": 26.0971
+    },
     "categoria": "Iglesia",
     "relevancia": 2,
     "descripcion_corta": "Bella iglesia ortodoxa brancoveana del siglo XVIII frente al Palacio Real, famosa por sus columnas talladas y su papel en la Revolución de 1989.",
@@ -1656,12 +2485,23 @@
     "misterios": "La inclinación de la torre-campanario fue durante décadas motivo de debate: si era intencional como símbolo de humildad o el resultado de los terremotos. Los estudios estructurales no han dado una respuesta definitiva.",
     "tiempo_visita": 25,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Kretzulescu Church",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Beautiful 18th-century Brâncovenesc Orthodox church",
+    "historia_en": "Built 1720-1722. In December 1989 demonstrators took refuge in the church and several people were killed on its steps. A plaque commemorates the victims.",
+    "arquitectura_en": "Triconch plan with a porch of twisted carved stone columns. 18th and 19th-century murals with gilded wooden iconostasis. The bell tower has a visible lean.",
+    "curiosidades_en": "The main bell was cast with the bronze of cannons captured in medieval wars. 18th-century frescoes were discovered beneath layers of later paint.",
+    "misterios_en": "The lean of the bell tower: whether intentional as a symbol of humility or result of earthquakes has not been definitively answered."
   },
   {
     "id": 2124,
     "nombre": "\"Saint Anthony\" Church",
-    "coordenadas": { "latitude": 44.4314, "longitude": 26.1001 },
+    "coordenadas": {
+      "latitude": 44.4314,
+      "longitude": 26.1001
+    },
     "categoria": "Iglesia",
     "relevancia": 1,
     "descripcion_corta": "Iglesia ortodoxa del siglo XVI, la más antigua de Bucarest, considerada el primer lugar de culto cristiano de la ciudad.",
@@ -1671,12 +2511,23 @@
     "misterios": "La identidad del fundador original no está completamente establecida. Algunos historiadores creen que el edificio original fue construido sobre los restos de una fortaleza más antigua.",
     "tiempo_visita": 20,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Saint Anthony Church",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "The oldest church in Bucharest (16th century)",
+    "historia_en": "Founded mid-16th century, the oldest church in Bucharest. Devastated by fires, earthquakes and wars, rebuilt in 1783.",
+    "arquitectura_en": "Post-Byzantine style with triconch plan. 18th-century façade with attached bell tower.",
+    "curiosidades_en": "Saint Anthony is venerated by people who have lost objects. Popular tradition to visit on Tuesdays, the saint's day.",
+    "misterios_en": "The identity of the original founder is not completely established. Possibly built over remains of an older fortress."
   },
   {
     "id": 2125,
     "nombre": "\"Saint Nicholas\" Church",
-    "coordenadas": { "latitude": 44.4281, "longitude": 26.1053 },
+    "coordenadas": {
+      "latitude": 44.4281,
+      "longitude": 26.1053
+    },
     "categoria": "Iglesia",
     "relevancia": 1,
     "descripcion_corta": "Histórica iglesia ortodoxa del siglo XVIII del barrio Șelari, con un campanario visible desde toda la zona de Lipscani.",
@@ -1686,12 +2537,23 @@
     "misterios": "Bajo la iglesia existen criptas medievales cuyo inventario nunca ha sido completado. Se encontraron monedas de varios siglos que sugieren que el lugar fue continuamente habitado desde la Edad Media.",
     "tiempo_visita": 15,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Saint Nicholas Church (Șelari)",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Historic 18th-century Orthodox church in Lipscani",
+    "historia_en": "Dating from the 18th century in the old commercial district. Saint Nicholas is patron of sailors and merchants.",
+    "arquitectura_en": "Yellow plastered façade with exposed brick bell tower. Neo-Byzantine iconostasis from the 19th century.",
+    "curiosidades_en": "Saint Nicholas's feast day (6 December) is when small gifts are given to children in Romania.",
+    "misterios_en": "Medieval crypts beneath the church whose inventory has never been completed."
   },
   {
     "id": 2126,
     "nombre": "Cantacuzino Palace",
-    "coordenadas": { "latitude": 44.4431, "longitude": 26.0992 },
+    "coordenadas": {
+      "latitude": 44.4431,
+      "longitude": 26.0992
+    },
     "categoria": "Palacio",
     "relevancia": 2,
     "descripcion_corta": "El palacio más elegante de la Calea Victoriei, Art Nouveau puro, hoy sede de la Casa Enescu dedicada al compositor rumano.",
@@ -1701,12 +2563,23 @@
     "misterios": "Existen varios retratos en el palacio cuya identidad no ha podido ser establecida con certeza. Se sospecha que representan a amantes y amigos del Nabab que pidieron no ser identificados públicamente.",
     "tiempo_visita": 45,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Cantacuzino Palace",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "The most elegant Art Nouveau palace in Bucharest",
+    "historia_en": "Built 1898-1902 for Prince Gheorghe Grigore Cantacuzino. Today the George Enescu Museum, dedicated to Romania's most famous composer.",
+    "arquitectura_en": "White stone façade with exuberant Art Nouveau ornamentation: mascarons, stone garlands, wrought-iron balconies. Marble main staircase with gilded balustrade.",
+    "curiosidades_en": "George Enescu's original Steinway piano, manuscript scores and personal objects are preserved. Enescu was teacher of Yehudi Menuhin.",
+    "misterios_en": "Several portraits in the palace whose identity has not been established. Suspected to represent lovers and friends of the Nabab who asked not to be publicly identified."
   },
   {
     "id": 2127,
     "nombre": "Palacio Sutu",
-    "coordenadas": { "latitude": 44.4350, "longitude": 26.1024 },
+    "coordenadas": {
+      "latitude": 44.435,
+      "longitude": 26.1024
+    },
     "categoria": "Palacio",
     "relevancia": 2,
     "descripcion_corta": "El palacio boyardo más antiguo de Bucarest (1834), hoy sede del Museo de Historia y Arqueología Urbana, ejemplo único del estilo neogótico romántico balcánico.",
@@ -1716,12 +2589,23 @@
     "misterios": "El arquitecto Veit diseñó el edificio con varias salas sin acceso visible desde el exterior cuya función no está clara. Se cree que podría haber tenido habitaciones secretas para proteger valores en caso de disturbios.",
     "tiempo_visita": 45,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Sutu Palace",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Bucharest's oldest boyar palace (1834)",
+    "historia_en": "Built 1833-1835 for boyar Constantin Suțu. The oldest private palace preserved in Bucharest. Houses the Bucharest City Museum since 1959.",
+    "arquitectura_en": "Neo-Gothic style with decorative battlements, pointed windows and corner turrets. Unique of its kind in all of Romania.",
+    "curiosidades_en": "The palace has the form of a miniature medieval castle, an unusual 19th-century Romantic whim. The museum includes scale models of Bucharest in different historical periods.",
+    "misterios_en": "Several rooms with no visible exterior access whose function is unclear. Believed to have had secret rooms to protect valuables."
   },
   {
     "id": 2128,
     "nombre": "Iglesia de San Jorge",
-    "coordenadas": { "latitude": 44.4319, "longitude": 26.0998 },
+    "coordenadas": {
+      "latitude": 44.4319,
+      "longitude": 26.0998
+    },
     "categoria": "Iglesia",
     "relevancia": 1,
     "descripcion_corta": "Pequeña iglesia ortodoxa del barrio Lipscani, dedicada al patrón de los herreros y los comerciantes de armas del antiguo Bucarest.",
@@ -1731,12 +2615,23 @@
     "misterios": "Existen registros de una iglesia anterior a la actual en este mismo solar que habría sido destruida durante los saqueos otomanos del siglo XVI, pero no se han encontrado restos arqueológicos.",
     "tiempo_visita": 15,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Saint George Church",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "17th-century church of Lipscani blacksmiths",
+    "historia_en": "Founded in the 17th century, spiritual centre of the blacksmiths' and swordsmiths' guilds. Rebuilt in the 18th century.",
+    "arquitectura_en": "Small triconch church with yellow plastered façade. 19th-century paintings on a characteristic sky-blue background.",
+    "curiosidades_en": "Saint George's Day (23 April) is celebrated with a special procession. Romanian tradition strongly associates Saint George with the dragon legend.",
+    "misterios_en": "Records exist of a church prior to the current one destroyed during Ottoman raids of the 16th century, but no archaeological remains found."
   },
   {
     "id": 2129,
     "nombre": "Cercul Militar",
-    "coordenadas": { "latitude": 44.4328, "longitude": 26.0969 },
+    "coordenadas": {
+      "latitude": 44.4328,
+      "longitude": 26.0969
+    },
     "categoria": "Palacio",
     "relevancia": 2,
     "descripcion_corta": "El Casino Militar de Bucarest, palacio de principios del siglo XX con una de las salas de banquetes más suntuosas de la ciudad.",
@@ -1746,12 +2641,23 @@
     "misterios": "Se rumorea que existe un subterráneo que conecta el Cercul Militar con el antiguo Palacio Real vecino, construido para uso en casos de emergencia protocolaria.",
     "tiempo_visita": 30,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Military Circle",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Bucharest's Military Casino",
+    "historia_en": "Built 1911-1923. Conceived as a club for Romanian army officers. Inaugurated by King Ferdinand I.",
+    "arquitectura_en": "Beaux-Arts style with monumental façade. The main lobby has white marble staircase and gilded balustrades. The Sala Oglinzilor (Hall of Mirrors) is the highlight.",
+    "curiosidades_en": "Has one of the best traditional Romanian cuisine restaurants in the city.",
+    "misterios_en": "Rumours of an underground passage connecting the Military Circle with the former Royal Palace nearby."
   },
   {
     "id": 2130,
     "nombre": "Palacio de los Depósitos",
-    "coordenadas": { "latitude": 44.4330, "longitude": 26.1010 },
+    "coordenadas": {
+      "latitude": 44.433,
+      "longitude": 26.101
+    },
     "categoria": "Palacio",
     "relevancia": 1,
     "descripcion_corta": "Antiguo palacio financiero del siglo XIX reconvertido en moderno espacio cultural y de negocios, testimonio de la historia bancaria de Bucarest.",
@@ -1761,12 +2667,23 @@
     "misterios": "No todos los documentos sobre los usos del edificio durante el período comunista son públicos.",
     "tiempo_visita": 15,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Palace of Deposits",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Former 19th-century financial palace",
+    "historia_en": "One of the financial centres of 19th-century Bucharest. Now houses offices and cultural spaces.",
+    "arquitectura_en": "Late 19th-century eclectic style with neoclassical elements. Stone façade with pilasters and decorated cornices.",
+    "curiosidades_en": "Part of the historic financial district ensemble of 19th-century Bucharest.",
+    "misterios_en": "Not all documents about the building's uses during the communist period are public."
   },
   {
     "id": 2131,
     "nombre": "Teatro Odeon",
-    "coordenadas": { "latitude": 44.4378, "longitude": 26.0961 },
+    "coordenadas": {
+      "latitude": 44.4378,
+      "longitude": 26.0961
+    },
     "categoria": "Monumento",
     "relevancia": 1,
     "descripcion_corta": "Uno de los teatros más importantes de Bucarest, ubicado en un edificio Art Nouveau de 1911, sede de producciones dramáticas de referencia.",
@@ -1776,12 +2693,23 @@
     "misterios": "Existen anécdotas sobre apariciones en el camerino principal relacionadas con actrices fallecidas en el escenario, que forman parte del folclore teatral del edificio.",
     "tiempo_visita": 20,
     "ciudad": "Bucarest",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Odeon Theatre",
+    "ciudad_en": "Bucharest",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "One of Bucharest's most important theatres",
+    "historia_en": "The Odeon Theatre was founded in 1946. During communism served as a refuge for playwrights such as Eugène Ionesco in his early career.",
+    "arquitectura_en": "Art Nouveau façade with floral stucco. Belle Époque main hall with side boxes and gallery balcony. Capacity: 600 spectators.",
+    "curiosidades_en": "Eugène Ionesco (father of the theatre of the absurd) began his career in Bucharest here.",
+    "misterios_en": "Anecdotes about apparitions in the main dressing room related to actresses who died on stage."
   },
   {
     "id": 2132,
     "nombre": "Castillo de Bran",
-    "coordenadas": { "latitude": 45.5150, "longitude": 25.3672 },
+    "coordenadas": {
+      "latitude": 45.515,
+      "longitude": 25.3672
+    },
     "categoria": "Palacio",
     "relevancia": 3,
     "descripcion_corta": "El 'Castillo de Drácula' más famoso del mundo, fortaleza medieval del siglo XIV con vistas espectaculares sobre los Cárpatos.",
@@ -1791,12 +2719,23 @@
     "misterios": "El túnel secreto que supuestamente comunicaba el castillo con el pueblo de Bran solo fue parcialmente explorado. Existe una habitación del siglo XIV que permanece cerrada a los visitantes sin explicación oficial. Varias noches al año los guardias del castillo reportan ruidos y puertas que se cierran solas.",
     "tiempo_visita": 90,
     "ciudad": "Bran",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Bran Castle",
+    "ciudad_en": "Bran",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "The world's most famous Dracula's Castle",
+    "historia_en": "Built 1377-1388 by the Saxons of Brașov. The association with Vlad III the Impaler is mainly touristic. In the 20th century it was the residence of Queen Marie of Romania.",
+    "arquitectura_en": "Medieval castle adapted to the rock with four towers. 57 rooms connected by 57 doors. A 57-metre well runs through the castle to bedrock.",
+    "curiosidades_en": "The castle was a gift from Brașov to Queen Marie in 1920. Bram Stoker's Dracula was never in this castle; his fictional castle was based on vague references.",
+    "misterios_en": "Secret tunnel supposedly connecting the castle with the village of Bran only partially explored. A 14th-century room remains closed to visitors without official explanation."
   },
   {
     "id": 2133,
     "nombre": "Castillo de Peles",
-    "coordenadas": { "latitude": 45.3598, "longitude": 25.5372 },
+    "coordenadas": {
+      "latitude": 45.3598,
+      "longitude": 25.5372
+    },
     "categoria": "Palacio",
     "relevancia": 3,
     "descripcion_corta": "El palacio más bello de Rumanía, residencia de verano neorenacimiento alemán del rey Carol I, obra maestra del eclecticismo romántico europeo.",
@@ -1806,12 +2745,23 @@
     "misterios": "El rey Carol II ocultó parte del tesoro real en el castillo durante la II Guerra Mundial; nunca fue completamente recuperado. Existen pasadizos secretos entre varias habitaciones que no aparecen en los planos oficiales. En 1948 Ceaușescu lo convirtió en su residencia personal de verano, y se dice que modificó algunas salas cuyo estado original nunca fue restaurado.",
     "tiempo_visita": 120,
     "ciudad": "Sinaia",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Peles Castle",
+    "ciudad_en": "Sinaia",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "Romania's most beautiful palace",
+    "historia_en": "Built 1873-1914 by King Carol I. First castle in Europe with electricity (1883) and one of the first with central heating and a hydraulic lift.",
+    "arquitectura_en": "German Neo-Renaissance style. 160 rooms, armouries, intimate theatre, projection room, library with 4,000 volumes. Interior with furniture from all over Europe.",
+    "curiosidades_en": "Has Europe's first electricity system generated by its own hydroelectric turbine (1883). The armoury has 4,000 pieces.",
+    "misterios_en": "King Carol II hid part of the royal treasury here during WWII; never fully recovered. Secret passages between rooms not on official plans."
   },
   {
     "id": 2134,
     "nombre": "Iglesia Negra",
-    "coordenadas": { "latitude": 45.6415, "longitude": 25.5886 },
+    "coordenadas": {
+      "latitude": 45.6415,
+      "longitude": 25.5886
+    },
     "categoria": "Iglesia",
     "relevancia": 3,
     "descripcion_corta": "La catedral gótica más grande de Rumanía y Europa Oriental, símbolo de Brasov, con 119 tapices anatolios medievales únicos en el mundo.",
@@ -1821,12 +2771,23 @@
     "misterios": "Se desconoce la identidad de varios donantes cuyos escudos aparecen en las claves de bóveda. Algunos tapices anatolios tienen motivos cuya simbología sigue siendo objeto de debate entre islamistas y especialistas en arte medieval.",
     "tiempo_visita": 60,
     "ciudad": "Brasov",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Black Church",
+    "ciudad_en": "Brasov",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "The largest Gothic cathedral in Romania",
+    "historia_en": "Built 1383-1480. Lutheran rite, reflecting the Saxon community. Named 'Black' after a great fire in 1689 blackened its walls.",
+    "arquitectura_en": "Late Gothic basilica, 89 metres long. The organ is the largest in Romania (4,000 pipes, 1839). Vault keystones preserve 15th-century paintings.",
+    "curiosidades_en": "Houses 119 17th-century Anatolian carpets donated by Saxon merchants — the largest collection outside Turkey.",
+    "misterios_en": "The identity of several donors whose coats of arms appear on vault keystones is unknown. Some carpet motifs are still debated by specialists."
   },
   {
     "id": 2135,
     "nombre": "La Plaza del Consejo de Brasov",
-    "coordenadas": { "latitude": 45.6413, "longitude": 25.5896 },
+    "coordenadas": {
+      "latitude": 45.6413,
+      "longitude": 25.5896
+    },
     "categoria": "Plaza",
     "relevancia": 3,
     "descripcion_corta": "El corazón medieval de Brasov, una de las plazas históricas más bellas de Europa Oriental, flanqueada por casas de colores y la Torre del Consejo.",
@@ -1836,12 +2797,23 @@
     "misterios": "Bajo los adoquines de la plaza existen galerías medievales documentadas pero nunca completamente exploradas. Los sótanos de la Casa del Consejo contienen vestigios de la primera fortaleza sajona de Brașov.",
     "tiempo_visita": 60,
     "ciudad": "Brasov",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Council Square",
+    "ciudad_en": "Brasov",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "The medieval heart of Brasov",
+    "historia_en": "Historic centre of Brașov since the 13th century. Scene of executions, markets, festivities and civic power of the Saxon city.",
+    "arquitectura_en": "Rectangular square flanked by 17th and 18th-century Baroque buildings painted in ochre, yellow, pink and blue. Centre presided over by the 15th-century Council House.",
+    "curiosidades_en": "Hosts one of Romania's most famous Christmas markets. The Transylvania Film Festival uses it as an open-air screen.",
+    "misterios_en": "Beneath the cobblestones lie documented medieval galleries never fully explored. Cellars of the Council House contain vestiges of the first Saxon fortress."
   },
   {
     "id": 2136,
     "nombre": "Monte Tampa",
-    "coordenadas": { "latitude": 45.6380, "longitude": 25.5947 },
+    "coordenadas": {
+      "latitude": 45.638,
+      "longitude": 25.5947
+    },
     "categoria": "Parque",
     "relevancia": 2,
     "descripcion_corta": "La montaña que domina Brasov con las famosas letras BRASOV, teleférico y vistas panorámicas sobre la ciudad y los Cárpatos.",
@@ -1851,12 +2823,23 @@
     "misterios": "Los restos de la fortaleza medieval de la cima (Cetatea Tampa) nunca han sido completamente excavados. Algunos historiadores creen que bajo los muros visibles existe una segunda muralla defensiva más antigua.",
     "tiempo_visita": 120,
     "ciudad": "Brasov",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Tampa Mountain",
+    "ciudad_en": "Brasov",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "The mountain dominating Brasov",
+    "historia_en": "Mount Tampa (960 m) has been Brașov's natural guardian since its founding. A 14th-century medieval fortress stood on its summit.",
+    "arquitectura_en": "Features the large BRAȘOV inscription (similar to the Hollywood sign) placed in 1950. Medieval fortress remains accessible by footpaths. Cable car covers 320 metres in 6 minutes.",
+    "curiosidades_en": "The BRAȘOV inscription was placed to imitate the Hollywood sign, by order of the communist authorities.",
+    "misterios_en": "The medieval fortress at the summit (Cetatea Tampa) has never been fully excavated. A second, older defensive wall may lie beneath the visible walls."
   },
   {
     "id": 2137,
     "nombre": "Torre Blanca de Brasov",
-    "coordenadas": { "latitude": 45.6438, "longitude": 25.5871 },
+    "coordenadas": {
+      "latitude": 45.6438,
+      "longitude": 25.5871
+    },
     "categoria": "Monumento",
     "relevancia": 2,
     "descripcion_corta": "Bastión defensivo medieval del siglo XV, parte del cinturón de murallas que protegía la ciudad sajona de Brasov.",
@@ -1866,12 +2849,23 @@
     "misterios": "Durante la restauración del siglo XX se encontraron sellos de cerámica y monedas medievales empotradas en los muros, cuya función ritual no está clara.",
     "tiempo_visita": 30,
     "ciudad": "Brasov",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "White Tower of Brasov",
+    "ciudad_en": "Brasov",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "15th-century medieval bastion",
+    "historia_en": "Built in the 15th century as part of Brașov's defensive system. Controlled by the furriers' guild. One of the most complete medieval defence systems in Central Europe.",
+    "arquitectura_en": "Circular defensive tower of three floors with walls more than 2 metres thick. Powder magazine, watchtower with arrow slits and cannon ports.",
+    "curiosidades_en": "Brașov's unique guild system: each city guild defended a specific tower. Views from the battlements are exceptional.",
+    "misterios_en": "During 20th-century restoration, ceramic seals and medieval coins embedded in walls were found whose ritual function is unclear."
   },
   {
     "id": 2138,
     "nombre": "Strada Sforii",
-    "coordenadas": { "latitude": 45.6404, "longitude": 25.5885 },
+    "coordenadas": {
+      "latitude": 45.6404,
+      "longitude": 25.5885
+    },
     "categoria": "Calle",
     "relevancia": 2,
     "descripcion_corta": "La calle más estrecha de Rumanía y una de las más estrechas de Europa (entre 111 y 135 cm), pasaje medieval de los bomberos sajones.",
@@ -1881,12 +2875,23 @@
     "misterios": "No existen planos medievales que muestren exactamente cuándo ni por qué fue construida con esa anchura específica. Algunos investigadores creen que la anchura original era mayor y que la acumulación de capas en las paredes la ha estrechado progresivamente.",
     "tiempo_visita": 15,
     "ciudad": "Brasov",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Rope Street",
+    "ciudad_en": "Brasov",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "The narrowest street in Romania",
+    "historia_en": "17th-century passage built for firefighters to access medieval city blocks. Between 111 and 135 cm wide, the second narrowest street in Europe after a lane in Cambridge.",
+    "arquitectura_en": "Irregular medieval passage between two 17th-18th century buildings. About 80 metres long. At some points you can touch both walls simultaneously.",
+    "curiosidades_en": "One of Romania's most famous photographic spots. During the medieval period known as 'Gasse' (alley in Saxon).",
+    "misterios_en": "No medieval plans exist showing exactly when or why it was built with that specific width. Some researchers believe the original width was greater."
   },
   {
     "id": 2139,
     "nombre": "Puerta de Catalina de Brasov",
-    "coordenadas": { "latitude": 45.6398, "longitude": 25.5876 },
+    "coordenadas": {
+      "latitude": 45.6398,
+      "longitude": 25.5876
+    },
     "categoria": "Monumento",
     "relevancia": 2,
     "descripcion_corta": "La única puerta medieval superviviente de las murallas de Brasov, construida en el siglo XV por el gremio de los sastres.",
@@ -1896,12 +2901,23 @@
     "misterios": "El nombre 'Catalina' ha generado debate: algunos historiadores lo atribuyen a la reina Catalina (esposa de algún rey húngaro), otros a la proximidad de una capilla dedicada a Santa Catalina de Alejandría ya desaparecida.",
     "tiempo_visita": 20,
     "ciudad": "Brasov",
-    "pais": "Rumanía"
+    "pais": "Rumanía",
+    "nombre_en": "Catherine's Gate",
+    "ciudad_en": "Brasov",
+    "pais_en": "Romania",
+    "descripcion_corta_en": "The only surviving medieval gate of Brasov",
+    "historia_en": "Built late 15th century, rebuilt in the 16th. Maintained and defended by the tailors' guild. The only one of Brașov's medieval gates to survive intact.",
+    "arquitectura_en": "Square-plan tower with five octagonal turrets on the roofs. Pointed arch, stone from Tampa quarry. Five roof turrets represent the five privileges granted to Brașov.",
+    "curiosidades_en": "The most reproduced medieval symbol of Brașov, photographed since the 19th century.",
+    "misterios_en": "The name 'Catherine' origin is debated: some attribute it to a queen, others to a chapel dedicated to Saint Catherine of Alexandria that has disappeared."
   },
   {
     "id": 2201,
     "nombre": "Ayuntamiento de Astorga",
-    "coordenadas": { "latitude": 42.4573, "longitude": -6.0559 },
+    "coordenadas": {
+      "latitude": 42.4573,
+      "longitude": -6.0559
+    },
     "categoria": "Monumento",
     "relevancia": 2,
     "descripcion_corta": "Elegante edificio barroco del siglo XVII que preside la Plaza Mayor de Astorga, con su característica figura del Maragato que toca las campanas.",
@@ -1911,12 +2927,23 @@
     "misterios": "Durante las obras del siglo XX se encontraron en la cripta del edificio monedas romanas y medievales que nunca fueron catalogadas completamente. Existen debates sobre si el pórtico original tenía una configuración diferente a la actual.",
     "tiempo_visita": 20,
     "ciudad": "Astorga",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Astorga Town Hall",
+    "ciudad_en": "Astorga",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Elegant 17th-century Baroque building",
+    "historia_en": "Built 1675-1703 in Castilian Baroque style, one of the most beautiful town halls in northwest Spain.",
+    "arquitectura_en": "Two-storey façade with portico, continuous balcony and bell tower. Famous automata: two Maragato figures (Pedro and Tomasa) that strike the bell on the hour.",
+    "curiosidades_en": "The two Maragato automata are Astorga's most beloved symbol. The Maragatos were traditional muleteers who transported goods across Spain.",
+    "misterios_en": "Roman and medieval coins found in the building's crypt during 20th-century works were never fully catalogued."
   },
   {
     "id": 2202,
     "nombre": "Catedral de Santa María de Astorga",
-    "coordenadas": { "latitude": 42.4572, "longitude": -6.0561 },
+    "coordenadas": {
+      "latitude": 42.4572,
+      "longitude": -6.0561
+    },
     "categoria": "Iglesia",
     "relevancia": 3,
     "descripcion_corta": "Monumental catedral gótica tardía iniciada en el siglo XV, con extraordinarias portadas platerescas y uno de los retablos mayores más impresionantes de España.",
@@ -1926,12 +2953,23 @@
     "misterios": "Se cree que bajo la catedral existen restos del foro romano de Asturica Augusta, la capital provincial romana, aunque las excavaciones son limitadas. Existe una cripta medieval cuyo acceso fue sellado en el siglo XIX cuyo contenido exacto se desconoce.",
     "tiempo_visita": 75,
     "ciudad": "Astorga",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Astorga Cathedral",
+    "ciudad_en": "Astorga",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Monumental late Gothic cathedral",
+    "historia_en": "Construction began in 1471. Work continued for more than three centuries, explaining the coexistence of Gothic, Plateresque, Baroque and neoclassical styles.",
+    "arquitectura_en": "Three-nave plan with Plateresque western portal in golden Villafranca stone. Gaspar Becerra's 14-metre high altarpiece with 50+ carved figures is a masterpiece of the Spanish Renaissance.",
+    "curiosidades_en": "Astorga was an important Roman mansion and Way of Saint James stop, enriching the cathedral with pilgrims' donations for centuries.",
+    "misterios_en": "Beneath the cathedral may lie remains of the Roman forum of Asturica Augusta. A medieval crypt sealed in the 19th century has never been opened."
   },
   {
     "id": 2203,
     "nombre": "Palacio Gaudí de Astorga",
-    "coordenadas": { "latitude": 42.4576, "longitude": -6.0569 },
+    "coordenadas": {
+      "latitude": 42.4576,
+      "longitude": -6.0569
+    },
     "categoria": "Palacio",
     "relevancia": 3,
     "descripcion_corta": "El único palacio diseñado por Antoni Gaudí fuera de Cataluña, neogótico visionario construido entre 1889 y 1913, hoy Museo de los Caminos.",
@@ -1941,12 +2979,23 @@
     "misterios": "Existen discrepancias entre los planos originales de Gaudí y el edificio construido tras su abandono. Nadie sabe con exactitud qué habría diseñado Gaudí para el interior si hubiera terminado él mismo la obra. Algunos investigadores creen que el edificio actual solo se parece parcialmente a la visión original del arquitecto.",
     "tiempo_visita": 60,
     "ciudad": "Astorga",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Gaudí Palace of Astorga",
+    "ciudad_en": "Astorga",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "The only palace designed by Gaudí outside Catalonia",
+    "historia_en": "Commissioned in 1887 by Bishop Grau, a friend of Gaudí. Work began in 1889. Gaudí abandoned it after the bishop's death in 1893 and it was not completed until 1913.",
+    "arquitectura_en": "Neo-Gothic with four angular slate-black towers, white granite façade and large pointed windows. The only Gaudí work outside Catalonia and the Valencian Community.",
+    "curiosidades_en": "Gaudí designed this building in just 15 days. Today houses the Museum of the Ways, with one of the finest collections of Jacobean art in Spain.",
+    "misterios_en": "Discrepancies between Gaudí's original plans and the building constructed after his departure. Nobody knows what he would have designed for the interior had he finished it."
   },
   {
     "id": 2204,
     "nombre": "Murallas de Astorga",
-    "coordenadas": { "latitude": 42.4580, "longitude": -6.0545 },
+    "coordenadas": {
+      "latitude": 42.458,
+      "longitude": -6.0545
+    },
     "categoria": "Monumento",
     "relevancia": 2,
     "descripcion_corta": "El mejor recinto amurallado romano-medieval conservado de Castilla y León, con lienzos de hasta 9 metros de altura que rodean el casco histórico.",
@@ -1956,12 +3005,23 @@
     "misterios": "Varios tramos del interior de los lienzos tienen cámaras vacías cuya función no ha sido determinada. Se sospecha que algunos de estos espacios fueron utilizados como zonas de almacenamiento de la legión romana, pero no ha podido confirmarse.",
     "tiempo_visita": 45,
     "ciudad": "Astorga",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Walls of Astorga",
+    "ciudad_en": "Astorga",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "The best-preserved Roman-medieval walled enclosure in Castile and León",
+    "historia_en": "Original core is Roman from the 3rd century AD. Medieval reforms added between the 11th and 14th centuries. Declared a Historic-Artistic National Monument in 1931.",
+    "arquitectura_en": "Sections of opus incertum from Roman times, with semicircular towers. Height varies between 3 and 9 metres. Approximately 1,500 metres of the original layout preserved.",
+    "curiosidades_en": "The Roman wall of Astorga is the best preserved in the entire northwestern Iberian Peninsula.",
+    "misterios_en": "Several sections inside the wall have empty chambers of undetermined function. Possibly used as storage areas for the Roman legion."
   },
   {
     "id": 2205,
     "nombre": "Museo Romano La Ergastula",
-    "coordenadas": { "latitude": 42.4563, "longitude": -6.0551 },
+    "coordenadas": {
+      "latitude": 42.4563,
+      "longitude": -6.0551
+    },
     "categoria": "Museo",
     "relevancia": 2,
     "descripcion_corta": "Museo dedicado a la Astorga romana (Asturica Augusta), instalado en un edificio con galerías subterráneas romanas originales visitables.",
@@ -1971,12 +3031,23 @@
     "misterios": "Solo una pequeña parte del subsuelo de Astorga ha sido excavado. Los arqueólogos estiman que bajo el casco histórico actual duermen restos del foro, el anfiteatro y el acueducto romano de Asturica Augusta que nunca han sido hallados.",
     "tiempo_visita": 45,
     "ciudad": "Astorga",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "La Ergastula Roman Museum",
+    "ciudad_en": "Astorga",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Museum of Roman Astorga with visitable underground galleries",
+    "historia_en": "Named after the 'ergastula', the Latin term for slave cellars. Preserves underground Roman structures from the 1st century AD.",
+    "arquitectura_en": "Historic building with access to Roman underground galleries. Combines original historic space with modern display cases.",
+    "curiosidades_en": "Astorga was the most important administrative capital of northwestern Hispania in Roman times. The Roman mosaic collection is one of the best preserved in Spain.",
+    "misterios_en": "Only a small part of Astorga's subsoil has been excavated. The forum, amphitheatre and Roman aqueduct of Asturica Augusta remain unfound."
   },
   {
     "id": 2206,
     "nombre": "Muralla romana de León",
-    "coordenadas": { "latitude": 42.5998, "longitude": -5.5713 },
+    "coordenadas": {
+      "latitude": 42.5998,
+      "longitude": -5.5713
+    },
     "categoria": "Monumento",
     "relevancia": 3,
     "descripcion_corta": "La muralla romana más completa de España, con 2.240 metros de perímetro conservados, símbolo fundacional de la ciudad de León (Legio VII Gemina).",
@@ -1986,12 +3057,23 @@
     "misterios": "Bajo la muralla existen varias zonas donde los arqueólogos sospechan que hay estructuras del campamento original aún intactas. En el siglo XIX se demolieron varios tramos para urbanizar la ciudad, y no se sabe qué estructuras se destruyeron con ellos.",
     "tiempo_visita": 60,
     "ciudad": "León",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Roman Wall of León",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "The most complete Roman wall in Spain",
+    "historia_en": "León was born as a legionary camp (castra legionis) of the Legio VII Gemina in 74 AD. The name 'León' derives directly from 'Legio'. Declared Historic-Artistic Monument in 1931.",
+    "arquitectura_en": "Rectangular-plan wall with 85 exterior semicircular towers. Original masonry in opus quadratum of granite and quartzite. Preserved height 5-14 metres. Perimeter: 2,240 metres.",
+    "curiosidades_en": "The only wall in Spain preserving both the layout and height of a Roman legionary camp wall. Stonemason's marks left by Roman legionaries are visible in the ashlars.",
+    "misterios_en": "Areas where original camp structures may still remain intact. In the 19th century several stretches were demolished for urbanisation, destroying unknown structures."
   },
   {
     "id": 2207,
     "nombre": "Arco de la Cárcel",
-    "coordenadas": { "latitude": 42.5984, "longitude": -5.5710 },
+    "coordenadas": {
+      "latitude": 42.5984,
+      "longitude": -5.571
+    },
     "categoria": "Monumento",
     "relevancia": 1,
     "descripcion_corta": "Arco romano del siglo I, uno de los accesos originales al campamento de la Legio VII Gemina, perfectamente integrado en el tejido urbano medieval de León.",
@@ -2001,12 +3083,23 @@
     "misterios": "No está completamente determinado si este fue el acceso principal (porta principalis) o un acceso secundario del campamento romano. Los planos del campamento legionario original siguen siendo objeto de debate entre los arqueólogos.",
     "tiempo_visita": 10,
     "ciudad": "León",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Arco de la Cárcel",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "1st-century Roman arch in León",
+    "historia_en": "One of the original entrances to the Roman camp, dated to the 1st century AD. Used as a municipal jail in the Middle Ages.",
+    "arquitectura_en": "Semicircular arch in opus quadratum of granite and quartzite. Approximately 4 metres wide and 5 metres high.",
+    "curiosidades_en": "Integrated into the urban fabric of the Barrio Húmedo. A regular point on the evening walk.",
+    "misterios_en": "It has not been fully determined whether this was the main or a secondary entrance to the Roman camp."
   },
   {
     "id": 2208,
     "nombre": "Torre del Gallo de León",
-    "coordenadas": { "latitude": 42.5995, "longitude": -5.5718 },
+    "coordenadas": {
+      "latitude": 42.5995,
+      "longitude": -5.5718
+    },
     "categoria": "Monumento",
     "relevancia": 1,
     "descripcion_corta": "Torre medieval integrada en el lienzo de la muralla romana, coronada por una veleta con forma de gallo que es emblema del barrio histórico.",
@@ -2016,12 +3109,23 @@
     "misterios": "Se desconoce cuándo exactamente fue añadida la veleta original y si hubo anteriormente otro remate diferente en la torre.",
     "tiempo_visita": 10,
     "ciudad": "León",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Torre del Gallo",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Medieval tower with rooster weather vane",
+    "historia_en": "One of the medieval towers added to León's Roman wall between the 10th and 12th centuries during the Kingdom of León period.",
+    "arquitectura_en": "Semicircular-plan tower with quartzite masonry. Wrought-iron rooster crowning it is a modern recreation of the original.",
+    "curiosidades_en": "The rooster is a symbol of dawn and vigilance in medieval Christian tradition.",
+    "misterios_en": "Unknown exactly when the original weather vane was added or whether there was previously a different finial."
   },
   {
     "id": 2209,
     "nombre": "Catedral de León",
-    "coordenadas": { "latitude": 42.5991, "longitude": -5.5701 },
+    "coordenadas": {
+      "latitude": 42.5991,
+      "longitude": -5.5701
+    },
     "categoria": "Iglesia",
     "relevancia": 3,
     "descripcion_corta": "La catedral gótica con más vidrieras del mundo: 1.800 m² de cristal emplomado del siglo XIII convierte su interior en un caleidoscopio de luz.",
@@ -2031,12 +3135,23 @@
     "misterios": "Durante los trabajos de restauración del siglo XIX se hallaron restos de estructuras romanas y prerrománicas bajo el suelo de la catedral que no han podido ser completamente datados. Existe el debate de si los maestros medievales conocían los límites estructurales del edificio o construyeron por encima de ellos.",
     "tiempo_visita": 90,
     "ciudad": "León",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "León Cathedral",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "The cathedral with the most stained glass in the world",
+    "historia_en": "Built 13th-14th centuries. The purest example of French Gothic in Spain. In the 19th century it threatened to collapse requiring major restoration.",
+    "arquitectura_en": "1,800 m² of stained-glass windows from the 13th to 20th century, the largest surface of Gothic stained glass in the world. Flying buttresses support glass walls reduced to a minimum.",
+    "curiosidades_en": "More stained-glass windows than any other cathedral in the world in proportion to the building's size.",
+    "misterios_en": "Debate about whether the medieval masters knew the structural limits of the building or built beyond them."
   },
   {
     "id": 2210,
     "nombre": "Antiguo Ayuntamiento de León",
-    "coordenadas": { "latitude": 42.5979, "longitude": -5.5719 },
+    "coordenadas": {
+      "latitude": 42.5979,
+      "longitude": -5.5719
+    },
     "categoria": "Monumento",
     "relevancia": 1,
     "descripcion_corta": "Edificio renacentista del siglo XVII que presidió durante siglos la vida política de León, hoy integrado en el conjunto de la Plaza Mayor.",
@@ -2046,12 +3161,23 @@
     "misterios": "Existen documentos que mencionan una sala secreta donde el Concejo de León guardaba sus archivos más importantes. No está claro si esta sala existe todavía o fue eliminada en reformas posteriores.",
     "tiempo_visita": 15,
     "ciudad": "León",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Former Town Hall of León",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "17th-century Renaissance building",
+    "historia_en": "Built in the 17th century in Leonese Herrerian style. Seat of municipal government for centuries.",
+    "arquitectura_en": "Limestone façade with arcades, balcony and central bell gable. Castilian Herrerian style with Renaissance influences.",
+    "curiosidades_en": "Royal decrees were proclaimed from its balconies. The León coat of arms with its rampant lion presides over the façade.",
+    "misterios_en": "Documents mention a secret room where the León Council kept its most important archives. Whether it still exists is unclear."
   },
   {
     "id": 2211,
     "nombre": "Museo Casa Botines Gaudí",
-    "coordenadas": { "latitude": 42.5985, "longitude": -5.5743 },
+    "coordenadas": {
+      "latitude": 42.5985,
+      "longitude": -5.5743
+    },
     "categoria": "Museo",
     "relevancia": 3,
     "descripcion_corta": "Una de las tres grandes obras civiles de Gaudí en España, edificio neogótico de 1892 que hoy alberga un extraordinario museo sobre el propio arquitecto.",
@@ -2061,12 +3187,23 @@
     "misterios": "El hallazgo de los planos ha revelado discrepancias menores entre los planos originales y el edificio construido. Algunos especialistas creen que el contratista modificó pequeños detalles sin el conocimiento de Gaudí. El bajorrelieve de San Jorge, aunque atribuido a Gaudí, no tiene documentación definitiva de su autoría.",
     "tiempo_visita": 75,
     "ciudad": "León",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Casa Botines Gaudí Museum",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "One of Gaudí's three major civic works",
+    "historia_en": "Built 1892-1894. Purchased by Caja España in 1929. In 2017 restored and converted into a museum.",
+    "arquitectura_en": "Neo-Gothic with four cylindrical corner towers in slate, granite façade and visitable basement.",
+    "curiosidades_en": "During the 2017 restoration, Gaudí's original plans were found in a brass tube beneath the Saint George sculpture — the greatest Gaudínian discovery of the 21st century.",
+    "misterios_en": "Minor discrepancies between original plans and the building constructed. The contractor may have modified small details without Gaudí's knowledge."
   },
   {
     "id": 2212,
     "nombre": "Palacio de los Guzmanes",
-    "coordenadas": { "latitude": 42.5986, "longitude": -5.5741 },
+    "coordenadas": {
+      "latitude": 42.5986,
+      "longitude": -5.5741
+    },
     "categoria": "Palacio",
     "relevancia": 2,
     "descripcion_corta": "El palacio renacentista más imponente de León (siglo XVI), sede de la Diputación Provincial, con uno de los patios renacentistas más bellos de España.",
@@ -2076,12 +3213,23 @@
     "misterios": "Existen documentos que mencionan la existencia de una bodega o estancia subterránea bajo el palacio que no aparece en los planos actuales. Algunos historiadores creen que fue sellada en el siglo XIX.",
     "tiempo_visita": 30,
     "ciudad": "León",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Palace of the Guzmanes",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "León's most imposing Renaissance palace (16th century)",
+    "historia_en": "Built 1559-1566 by Rodrigo Gil de Hontañón. Seat of the Provincial Council of León since the 19th century.",
+    "arquitectura_en": "Plateresque-Renaissance limestone façade. Outstanding two-storey interior courtyard with semicircular arch arcades. Corner pinnacles topped with gargoyles.",
+    "curiosidades_en": "The interior courtyard is one of the purest examples of the Renaissance in Castile and León.",
+    "misterios_en": "Documents mention a cellar or underground room beneath the palace that does not appear on current plans. Possibly sealed in the 19th century."
   },
   {
     "id": 2213,
     "nombre": "Calle Ancha de León",
-    "coordenadas": { "latitude": 42.5982, "longitude": -5.5742 },
+    "coordenadas": {
+      "latitude": 42.5982,
+      "longitude": -5.5742
+    },
     "categoria": "Calle",
     "relevancia": 1,
     "descripcion_corta": "El eje comercial peatonal más importante de León, que conecta el casco histórico con el ensanche del siglo XIX, corazón del comercio y el paseo leonés.",
@@ -2091,12 +3239,23 @@
     "misterios": "Bajo la Calle Ancha discurre un colector de aguas del siglo XIX que en algunos tramos permite ver arcos y bóvedas de ladrillo visibles desde las arquetas de mantenimiento.",
     "tiempo_visita": 20,
     "ciudad": "León",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Calle Ancha",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "León's main pedestrian commercial axis",
+    "historia_en": "The axis of León's urban expansion in the 19th century. Its popular name 'Wide Street' refers to its unusual width, conceived as an urban boulevard.",
+    "arquitectura_en": "Pedestrian boulevard with late 19th and early 20th-century eclectic and Modernist buildings.",
+    "curiosidades_en": "The evening stroll along Calle Ancha is a centuries-old Leonese tradition.",
+    "misterios_en": "A 19th-century water collector runs beneath it, with brick arches visible through maintenance manholes."
   },
   {
     "id": 2214,
     "nombre": "Calle Cervantes de León",
-    "coordenadas": { "latitude": 42.5990, "longitude": -5.5720 },
+    "coordenadas": {
+      "latitude": 42.599,
+      "longitude": -5.572
+    },
     "categoria": "Calle",
     "relevancia": 1,
     "descripcion_corta": "Calle del barrio húmedo famosa por su ambiente de tapas y pinchos, corazón gastronómico de León y ruta obligada del turista.",
@@ -2106,12 +3265,23 @@
     "misterios": "Varias tabernas del barrio húmedo tienen sótanos medievales que nunca han sido abiertos al público. En algunos bares se conservan en las paredes lo que parecen inscripciones medievales bajo capas de pintura.",
     "tiempo_visita": 30,
     "ciudad": "León",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Calle Cervantes",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Heart of the tapas district",
+    "historia_en": "Part of León's Barrio Húmedo. The 'wet district' name refers to the Leonese custom of having wine with a free tapa.",
+    "arquitectura_en": "Narrow medieval street with 18th and 19th-century buildings. Some premises preserve historic interiors with wooden tables, barrels and tiles.",
+    "curiosidades_en": "León is one of the few cities in Spain where the tapa is still free with every drink.",
+    "misterios_en": "Several taverns in the Barrio Húmedo have medieval cellars never opened to the public. Medieval inscriptions may lie beneath layers of paint on some walls."
   },
   {
     "id": 2215,
     "nombre": "Basílica de San Isidoro de León",
-    "coordenadas": { "latitude": 42.6010, "longitude": -5.5734 },
+    "coordenadas": {
+      "latitude": 42.601,
+      "longitude": -5.5734
+    },
     "categoria": "Iglesia",
     "relevancia": 3,
     "descripcion_corta": "El Panteón Real, considerado la 'Capilla Sixtina del Románico': frescos del siglo XII perfectamente conservados que hacen de este el conjunto románico más extraordinario de España.",
@@ -2121,12 +3291,23 @@
     "misterios": "La identidad de los pintores que realizaron los frescos del Panteón es completamente desconocida. El cáliz de Doña Urraca sigue siendo objeto de debate científico sobre si puede identificarse con el Santo Grial histórico. En el subsuelo de la basílica existen estructuras de las iglesias anteriores que nunca han sido completamente excavadas.",
     "tiempo_visita": 90,
     "ciudad": "León",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Basílica de San Isidoro de León",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "The Sistine Chapel of the Romanesque",
+    "historia_en": "Roots in the 10th century. Current Romanesque basilica built 11th-12th centuries. The Royal Pantheon houses 23 kings and queens of León and Castile.",
+    "arquitectura_en": "The Royal Pantheon ceiling completely covered in 12th-century frescoes: the full cycle of the life of Christ and the medieval agricultural calendar.",
+    "curiosidades_en": "The Chalice of Doña Urraca (11th century) was identified in 2014 as the possible historical Holy Grail by Spanish researchers.",
+    "misterios_en": "The identity of the Pantheon fresco painters is completely unknown. The Holy Grail identification remains subject of scientific debate."
   },
   {
     "id": 2216,
     "nombre": "Barrio Húmedo de León",
-    "coordenadas": { "latitude": 42.5992, "longitude": -5.5725 },
+    "coordenadas": {
+      "latitude": 42.5992,
+      "longitude": -5.5725
+    },
     "categoria": "Calle",
     "relevancia": 2,
     "descripcion_corta": "El barrio de tapas gratuitas más famoso de España, laberinto de callejuelas medievales con cientos de bares donde cada bebida incluye tapa.",
@@ -2136,12 +3317,23 @@
     "misterios": "Existe una polémica eterna sobre si fue el barrio húmedo el origen de la costumbre de la tapa gratuita en España o si esta práctica tiene raíces más antiguas. Algunos historiadores locales reivindican que la tapa gratuita leonesa es anterior a cualquier otra en la Península.",
     "tiempo_visita": 120,
     "ciudad": "León",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Barrio Húmedo",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Spain's most famous free-tapas district",
+    "historia_en": "More than 200 bars in just a few city blocks. The free tapa system has roots in medieval Leonese tradition of including food with wine.",
+    "arquitectura_en": "Medieval urban ensemble of narrow alleys and small squares. 18th and 19th-century buildings with ground floors converted into traditional bars.",
+    "curiosidades_en": "León is one of the few cities in Spain where the tapa is free. The Thursday-Saturday atmosphere is recognised as one of the best in Spain.",
+    "misterios_en": "Eternal debate about whether the Barrio Húmedo was the origin of the free tapa custom in Spain or whether the practice has older roots."
   },
   {
     "id": 2217,
     "nombre": "Plaza Mayor de León",
-    "coordenadas": { "latitude": 42.5980, "longitude": -5.5714 },
+    "coordenadas": {
+      "latitude": 42.598,
+      "longitude": -5.5714
+    },
     "categoria": "Plaza",
     "relevancia": 2,
     "descripcion_corta": "La plaza porticada barroca del siglo XVII, corazón cívico de León, escenario de mercados, fiestas y la vida popular de la ciudad durante siglos.",
@@ -2151,12 +3343,23 @@
     "misterios": "Bajo la plaza existen restos de la calle medieval que corría por ese espacio antes de la construcción de la plaza barroca. Algunas leyendas locales hablan de un pasadizo que conectaba la plaza con el antiguo palacio real.",
     "tiempo_visita": 30,
     "ciudad": "León",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Plaza Mayor de León",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "León's 17th-century arcaded square",
+    "historia_en": "Built in the 17th century on the old medieval market. Centre of trade, justice and public celebrations for centuries.",
+    "arquitectura_en": "Rectangular arcaded square on all sides with semicircular arch arcades. Two to three-storey buildings with the Town Hall presiding.",
+    "curiosidades_en": "The Festival of San Juan (24 June) turns Plaza Mayor into León's festive epicentre. Wednesday and Saturday market continues.",
+    "misterios_en": "Beneath the square lie remains of the medieval street that preceded the Baroque square. Legends speak of a passage to the old royal palace."
   },
   {
     "id": 2218,
     "nombre": "Plaza del Grano",
-    "coordenadas": { "latitude": 42.5983, "longitude": -5.5702 },
+    "coordenadas": {
+      "latitude": 42.5983,
+      "longitude": -5.5702
+    },
     "categoria": "Plaza",
     "relevancia": 2,
     "descripcion_corta": "La plaza más auténtica y fotogénica de León, medieval con adoquines irregulares, la ermita de la Virgen del Mercado y un ambiente que detiene el tiempo.",
@@ -2166,12 +3369,23 @@
     "misterios": "Bajo la plaza existen, según los arqueólogos, restos de estructuras romanas del campamento de la Legio VII, incluyendo posiblemente parte de la vía pretoria del campamento.",
     "tiempo_visita": 25,
     "ciudad": "León",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Plaza del Grano",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "León's most authentic medieval square",
+    "historia_en": "For centuries the city's grain market. The 12th-century Romanesque chapel of the Virgin of the Market presides over it. A Way of Saint James stopping point.",
+    "arquitectura_en": "Irregular square with unregularised stone cobblestones, 17th and 18th-century buildings with arcades. The irregularity gives it an authenticity contrasting with the imposing Cathedral.",
+    "curiosidades_en": "The irregular cobblestones have been the subject of repeated municipal controversies. The people of León defend them passionately as part of the square's identity.",
+    "misterios_en": "Beneath the square lie remains of Roman structures from the Legio VII camp, possibly the via pretoria."
   },
   {
     "id": 2219,
     "nombre": "Convento de San Marcos de León",
-    "coordenadas": { "latitude": 42.5993, "longitude": -5.5813 },
+    "coordenadas": {
+      "latitude": 42.5993,
+      "longitude": -5.5813
+    },
     "categoria": "Monumento",
     "relevancia": 3,
     "descripcion_corta": "Magna obra del plateresco español (siglo XVI), originalmente convento de la Orden de Santiago, hoy Parador Nacional y Museo Arqueológico Provincial.",
@@ -2181,12 +3395,23 @@
     "misterios": "Se dice que en el sótano del edificio existen celdas de la época en que fue prisión que fueron selladas en el siglo XX y nunca abiertas. El Cristo de San Marcos del museo tiene una historia de procedencia que no ha sido completamente esclarecida.",
     "tiempo_visita": 60,
     "ciudad": "León",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "San Marcos Convent",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Magnificent Spanish Plateresque (16th century)",
+    "historia_en": "Founded in the 12th century as a hospital and convent of the Order of Santiago. Used as barracks and prison in the 19th century. National Parador since 1965.",
+    "arquitectura_en": "The 100-metre Plateresque façade: medallions with portraits of emperors and kings, friezes with vegetal decoration. The longest Plateresque façade in Spain.",
+    "curiosidades_en": "The 100-metre façade is the longest of Spanish Plateresque. The archaeological museum has the unique 12th-century Christ of San Marcos.",
+    "misterios_en": "Sealed cells from when it was used as a prison in the building's basement. The Christ of San Marcos has a provenance history not fully clarified."
   },
   {
     "id": 2220,
     "nombre": "Puente Romano de San Marcos",
-    "coordenadas": { "latitude": 42.5994, "longitude": -5.5820 },
+    "coordenadas": {
+      "latitude": 42.5994,
+      "longitude": -5.582
+    },
     "categoria": "Monumento",
     "relevancia": 2,
     "descripcion_corta": "Puente sobre el río Bernesga que precede al Convento de San Marcos, con arcos medievales sobre pilastras de origen romano.",
@@ -2196,12 +3421,23 @@
     "misterios": "Existen hipótesis de que el puente romano original fue arrasado durante las invasiones musulmanas del siglo VIII y que lo que se llama 'romano' es en realidad medieval. Las excavaciones en el lecho del río para estudiar los cimientos nunca han sido realizadas.",
     "tiempo_visita": 15,
     "ciudad": "León",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "San Marcos Bridge",
+    "ciudad_en": "León",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "Bridge with medieval arches over Roman-origin piers",
+    "historia_en": "Medieval bridge over the Bernesga river. For centuries the only western access to León's centre, a strategic control and toll-collection point.",
+    "arquitectura_en": "Multi-arch bridge with semicircular arches. Length: about 130 metres. Widened in the 20th century for road traffic.",
+    "curiosidades_en": "Pilgrims on the French Way of Saint James cross this bridge as one of the last steps before leaving León heading west.",
+    "misterios_en": "Hypotheses that the original Roman bridge was swept away during the Muslim invasions of the 8th century."
   },
   {
     "id": 2221,
     "nombre": "Torre del Reloj de Ponferrada",
-    "coordenadas": { "latitude": 42.5460, "longitude": -6.5960 },
+    "coordenadas": {
+      "latitude": 42.546,
+      "longitude": -6.596
+    },
     "categoria": "Monumento",
     "relevancia": 1,
     "descripcion_corta": "Torre medieval del siglo XV que fue puerta de acceso al casco histórico de Ponferrada, con el reloj que marca la vida del Bierzo desde hace siglos.",
@@ -2211,12 +3447,23 @@
     "misterios": "Existen planos históricos del siglo XVIII que muestran que la torre formaba parte de un lienzo de muralla que rodeaba el casco histórico, del que no queda ningún otro vestigio.",
     "tiempo_visita": 15,
     "ciudad": "Ponferrada",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Clock Tower of Ponferrada",
+    "ciudad_en": "Ponferrada",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "15th-century medieval tower gateway",
+    "historia_en": "Dates from the 15th century, one of the few medieval structures preserved in Ponferrada's historic centre.",
+    "arquitectura_en": "Square-plan tower in slate and limestone with a semicircular access arch. Clock faces on all four sides. Crenellated top with stepped merlons.",
+    "curiosidades_en": "The main reference point of Ponferrada's historic centre and the quintessential meeting spot.",
+    "misterios_en": "18th-century plans show the tower formed part of a stretch of wall of which no other vestige remains."
   },
   {
     "id": 2222,
     "nombre": "Castillo de los Templarios de Ponferrada",
-    "coordenadas": { "latitude": 42.5476, "longitude": -6.5977 },
+    "coordenadas": {
+      "latitude": 42.5476,
+      "longitude": -6.5977
+    },
     "categoria": "Monumento",
     "relevancia": 3,
     "descripcion_corta": "El castillo templario mejor conservado de España, fortaleza medieval del siglo XII sobre el río Sil, símbolo de El Bierzo y del Camino de Santiago.",
@@ -2226,6 +3473,14 @@
     "misterios": "La Orden del Temple fue acusada de custodiar el Santo Grial y el Arca de la Alianza. Aunque sin prueba alguna, existe la leyenda de que el Castillo de Ponferrada fue uno de los últimos lugares donde se custodiaron los tesoros templarios antes de la disolución de la Orden. Los túneles subterráneos del castillo, parcialmente explorados, no han revelado su extensión total.",
     "tiempo_visita": 90,
     "ciudad": "Ponferrada",
-    "pais": "España"
+    "pais": "España",
+    "nombre_en": "Ponferrada Templar Castle",
+    "ciudad_en": "Ponferrada",
+    "pais_en": "Spain",
+    "descripcion_corta_en": "The best-preserved Templar castle in Spain",
+    "historia_en": "Donated to the Knights Templar in 1178 by King Ferdinand II of León to protect pilgrims on the Way of Saint James. Built 1178-1282.",
+    "arquitectura_en": "Irregular plan, wall perimeter over 500 metres enclosing more than 16,000 m². More than 20 towers. Entry via drawbridge over moat.",
+    "curiosidades_en": "The largest and best-preserved Templar castle in the Iberian Peninsula. Medieval re-enactment shows held in August.",
+    "misterios_en": "Legend that Ponferrada Castle was one of the last places where the Templar treasures were kept before the Order's dissolution. Underground tunnels not fully explored."
   }
 ]

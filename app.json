@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Map Lord",
-    "slug": "map-lord",
+    "slug": "map-lord-v2",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,10 +13,12 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.James.maplord"
     },
     "android": {
       "package": "com.James.maplord",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -28,8 +30,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "54930dc5-fc25-4e05-9b9f-45af8c2ceed1"
+        "projectId": "a1a1e481-107d-4ebd-bcf3-9378fcb1deb8"
       }
-    }
+    },
+    "owner": "jaimedf"
   }
 }

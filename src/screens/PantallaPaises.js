@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
+import { nombrePaisEn, nombreContinenteEn } from '../constants/tourism';
 import PAISES from '../data/paises.json';
 
 const EMOJIS_CUSTOM = ['🌍','🗺️','📍','🏔️','🌊','🏜️','🌋','🏝️','🧭','⛰️','🌿','❄️'];
@@ -43,7 +44,7 @@ export default function PantallaPaises({ continente, onVolver, onSeleccionarPais
               <Text style={s.backT}>←</Text>
             </TouchableOpacity>
             <View style={{ flex: 1 }}>
-              <Text style={s.titulo}>{continente}</Text>
+              <Text style={s.titulo}>{nombreContinenteEn(continente, lang)}</Text>
               <Text style={s.sub}>{paisesFiltrados.length} {t.paises.toLowerCase()}</Text>
             </View>
             <TouchableOpacity style={s.botonAdd} onPress={() => setModalAñadir(true)}>
@@ -56,7 +57,7 @@ export default function PantallaPaises({ continente, onVolver, onSeleccionarPais
         {paisesFiltrados.map(pais => (
           <TouchableOpacity key={pais.id} style={s.fila} onPress={() => onSeleccionarPais(pais)}>
             <Text style={s.filaEmoji}>{pais.emoji}</Text>
-            <Text style={s.filaNombre}>{pais.nombre}</Text>
+            <Text style={s.filaNombre}>{nombrePaisEn(pais.nombre, lang)}</Text>
             <Text style={s.filaArrow}>›</Text>
           </TouchableOpacity>
         ))}

@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet, SafeAreaView, Alert } from 'react-native';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
+import { nombrePaisEn } from '../constants/tourism';
 
 export default function PantallaMapasCiudad({ pais, onVolver, onAbrirMapa, onAñadirMapa }) {
-  const { lang, datosPais, borrarMapa } = useApp();
+  const { lang, ciudadesConMapa, borrarMapa } = useApp();
   const t = useT(lang);
 
-  const datos = datosPais(pais.id);
-  const ciudadesConMapa = datos.ciudades ?? [];
+  const ciudades = ciudadesConMapa(pais.id);
 
   function confirmarBorrar(ciudad) {
     Alert.alert(
@@ -33,14 +33,14 @@ export default function PantallaMapasCiudad({ pais, onVolver, onAbrirMapa, onAñ
             <Text style={s.backT}>← </Text>
           </TouchableOpacity>
           <View style={{ flex: 1 }}>
-            <Text style={s.titulo}>{pais.emoji} {pais.nombre}</Text>
+            <Text style={s.titulo}>{pais.emoji} {nombrePaisEn(pais.nombre, lang)}</Text>
             <Text style={s.sub}>{t.mapasDisp}</Text>
           </View>
         </View>
       </SafeAreaView>
 
       <ScrollView contentContainerStyle={s.cont}>
-        {ciudadesConMapa.map((ciudad, i) => (
+        {ciudades.map((ciudad, i) => (
           <View key={i} style={s.mapaRow}>
             <TouchableOpacity style={s.mapaCard} onPress={() => onAbrirMapa(ciudad, pais)}>
               <View style={s.mapaIcono}>
@@ -48,7 +48,7 @@ export default function PantallaMapasCiudad({ pais, onVolver, onAbrirMapa, onAñ
               </View>
               <View style={s.mapaInfo}>
                 <Text style={s.mapaNombre}>{ciudad}</Text>
-                <Text style={s.mapaSub}>{pais.nombre}</Text>
+                <Text style={s.mapaSub}>{nombrePaisEn(pais.nombre, lang)}</Text>
               </View>
               <Text style={s.mapaArrow}>›</Text>
             </TouchableOpacity>

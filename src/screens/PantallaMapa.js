@@ -6,6 +6,7 @@ import { CATEGORIAS } from '../constants/tourism';
 import PantallaExplorar from './PantallaExplorar';
 import PantallaRutas from './PantallaRutas';
 import PantallaLugares from './PantallaLugares';
+import PantallaDestacados from './PantallaDestacados';
 import NavBarMapa from '../components/NavBarMapa';
 import FichaPOI from '../components/FichaPOI';
 import ModalEditarPOI from '../components/ModalEditarPOI';
@@ -18,10 +19,19 @@ export default function PantallaMapa({ ciudad, pais, onVolver }) {
   const [modal, setModal]               = useState(false);
   const [resumenVisible, setResumenVisible] = useState(false);
   const [poiEditar, setPoiEditar]       = useState(null);
+  // POI pre-rellenado desde Destacados
+  const [poiDesde, setPoiDesde]         = useState(null);
 
   function handleActivarRuta() {
     setTab('explorar');
     setResumenVisible(true);
+  }
+
+  // Cuando el usuario pulsa un lugar en Destacados:
+  // abrimos el formulario de nuevo POI con nombre y coordenadas pre-rellenos
+  function handleAñadirDesdeDestacados({ nombre, coordenadas }) {
+    setPoiDesde({ nombre, coordenadas });
+    setTab('explorar');
   }
 
   return (
@@ -33,12 +43,20 @@ export default function PantallaMapa({ ciudad, pais, onVolver }) {
             pais={pais}
             onAbrirPOI={p => { setPoi(p); setModal(true); }}
             onEditar={p => setPoiEditar(p)}
+            poiPrerellenado={poiDesde}
+            onPoiPrerellenadoUsado={() => setPoiDesde(null)}
           />
         )}
         {tab === 'lugares' && (
           <PantallaLugares
             ciudad={ciudad}
             onAbrirPOI={p => { setPoi(p); setModal(true); }}
+          />
+        )}
+        {tab === 'destacados' && (
+          <PantallaDestacados
+            ciudad={ciudad}
+            onAñadirPOI={handleAñadirDesdeDestacados}
           />
         )}
         {tab === 'rutas' && (
@@ -49,7 +67,7 @@ export default function PantallaMapa({ ciudad, pais, onVolver }) {
         )}
       </View>
 
-      <NavBarMapa tab={tab} onChange={setTab} onVolver={onVolver} t={t} />
+      <NavBarMapa tab={tab} onChange={setTab} onVolver={onVolver} t={t} lang={lang} />
 
       <FichaPOI
         poi={poi}
@@ -91,7 +109,7 @@ export default function PantallaMapa({ ciudad, pais, onVolver }) {
               })}
             </ScrollView>
             <TouchableOpacity style={s.btnCerrar} onPress={() => setResumenVisible(false)}>
-              <Text style={s.btnCerrarT}>Explorar el mapa →</Text>
+              <Text style={s.btnCerrarT}>{lang === 'en' ? 'Explore the map →' : 'Explorar el mapa →'}</Text>
             </TouchableOpacity>
           </View>
         </View>

@@ -1,10 +1,11 @@
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Platform } from 'react-native';
 
-export default function NavBarMapa({ tab, onChange, onVolver, t }) {
+export default function NavBarMapa({ tab, onChange, onVolver, t, lang }) {
   const tabs = [
-    { id: 'explorar', label: t.explorar, emoji: '🗺️' },
-    { id: 'lugares',  label: 'Lugares',  emoji: '📋' },
-    { id: 'rutas',    label: t.rutas,    emoji: '🧭' },
+    { id: 'explorar',    label: t.explorar,                          emoji: '🗺️' },
+    { id: 'lugares',     label: t.lugares,                           emoji: '📋' },
+    { id: 'destacados',  label: lang === 'en' ? 'Top' : 'Top',      emoji: '⭐' },
+    { id: 'rutas',       label: t.rutas,                             emoji: '🧭' },
   ];
 
   return (
@@ -12,7 +13,7 @@ export default function NavBarMapa({ tab, onChange, onVolver, t }) {
       <View style={s.bar}>
         <TouchableOpacity style={s.volverBtn} onPress={onVolver}>
           <Text style={s.volverEmoji}>←</Text>
-          <Text style={s.volverT}>Inicio</Text>
+          <Text style={s.volverT}>{lang === 'en' ? 'Home' : 'Inicio'}</Text>
         </TouchableOpacity>
         <View style={s.tabs}>
           {tabs.map(tb => {
