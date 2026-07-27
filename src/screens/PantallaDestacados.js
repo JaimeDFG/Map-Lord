@@ -215,7 +215,7 @@ export default function PantallaDestacados({ ciudad, onAñadirPOI }) {
         {/* Estado: cargando */}
         {cargando && (
           <View style={s.estado}>
-            <ActivityIndicator size="large" color="#2563eb" style={{ marginBottom: 12 }} />
+            <ActivityIndicator size="large" color="#5c1011" style={{ marginBottom: 12 }} />
             <Text style={s.estadoT}>{textos.cargando}</Text>
           </View>
         )}
@@ -287,16 +287,16 @@ const s = StyleSheet.create({
   titulo:     { fontSize: 20, fontWeight: '800', color: '#1a1a1a' },
   subtitulo:  { fontSize: 13, color: '#888', marginTop: 3 },
   lista:      { padding: 16 },
-  instruccion:{ fontSize: 13, color: '#2563eb', fontWeight: '600', marginBottom: 12, textAlign: 'center' },
+  instruccion:{ fontSize: 13, color: '#5c1011', fontWeight: '600', marginBottom: 12, textAlign: 'center' },
   card:       { backgroundColor: '#fff', borderRadius: 14, padding: 16, marginBottom: 10, flexDirection: 'row', alignItems: 'center', gap: 12, shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 6, shadowOffset: { width: 0, height: 2 }, elevation: 2 },
   cardAñadida:{ backgroundColor: '#f8faf8', opacity: 0.7 },
-  cardNum:    { width: 32, height: 32, borderRadius: 16, backgroundColor: '#2563eb', alignItems: 'center', justifyContent: 'center' },
+  cardNum:    { width: 32, height: 32, borderRadius: 16, backgroundColor: '#5c1011', alignItems: 'center', justifyContent: 'center' },
   cardNumAñadido: { backgroundColor: '#16a34a' },
   cardNumT:   { color: '#fff', fontSize: 15, fontWeight: '800' },
   cardTexto:  { flex: 1 },
   cardNombre: { fontSize: 15, fontWeight: '700', color: '#1a1a1a' },
   cardDist:   { fontSize: 12, color: '#888', marginTop: 2 },
-  cardAdd:    { fontSize: 12, color: '#2563eb', fontWeight: '700' },
+  cardAdd:    { fontSize: 12, color: '#5c1011', fontWeight: '700' },
   cardAddAñadido: { color: '#16a34a' },
   estado:     { alignItems: 'center', paddingTop: 60, paddingHorizontal: 32 },
   estadoEmoji:{ fontSize: 48, marginBottom: 12 },

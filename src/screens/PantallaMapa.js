@@ -6,7 +6,6 @@ import { CATEGORIAS } from '../constants/tourism';
 import PantallaExplorar from './PantallaExplorar';
 import PantallaRutas from './PantallaRutas';
 import PantallaLugares from './PantallaLugares';
-import PantallaDestacados from './PantallaDestacados';
 import NavBarMapa from '../components/NavBarMapa';
 import FichaPOI from '../components/FichaPOI';
 import ModalEditarPOI from '../components/ModalEditarPOI';
@@ -19,19 +18,10 @@ export default function PantallaMapa({ ciudad, pais, onVolver }) {
   const [modal, setModal]               = useState(false);
   const [resumenVisible, setResumenVisible] = useState(false);
   const [poiEditar, setPoiEditar]       = useState(null);
-  // POI pre-rellenado desde Destacados
-  const [poiDesde, setPoiDesde]         = useState(null);
 
   function handleActivarRuta() {
     setTab('explorar');
     setResumenVisible(true);
-  }
-
-  // Cuando el usuario pulsa un lugar en Destacados:
-  // abrimos el formulario de nuevo POI con nombre y coordenadas pre-rellenos
-  function handleAñadirDesdeDestacados({ nombre, coordenadas }) {
-    setPoiDesde({ nombre, coordenadas });
-    setTab('explorar');
   }
 
   return (
@@ -43,20 +33,12 @@ export default function PantallaMapa({ ciudad, pais, onVolver }) {
             pais={pais}
             onAbrirPOI={p => { setPoi(p); setModal(true); }}
             onEditar={p => setPoiEditar(p)}
-            poiPrerellenado={poiDesde}
-            onPoiPrerellenadoUsado={() => setPoiDesde(null)}
           />
         )}
         {tab === 'lugares' && (
           <PantallaLugares
             ciudad={ciudad}
             onAbrirPOI={p => { setPoi(p); setModal(true); }}
-          />
-        )}
-        {tab === 'destacados' && (
-          <PantallaDestacados
-            ciudad={ciudad}
-            onAñadirPOI={handleAñadirDesdeDestacados}
           />
         )}
         {tab === 'rutas' && (
@@ -82,18 +64,17 @@ export default function PantallaMapa({ ciudad, pais, onVolver }) {
         onCerrar={() => setPoiEditar(null)}
       />
 
-      {/* Resumen ruta al activar */}
       <Modal visible={resumenVisible} animationType="slide" transparent>
         <View style={s.modalFondo}>
           <View style={s.modalCont}>
             <View style={s.drag} />
-            <Text style={s.modalTitulo}>🗺️ {t.rutaActiva}</Text>
+            <Text style={s.modalTitulo}>✦ {t.rutaActiva}</Text>
             <Text style={s.modalSub}>
               {rutaActiva?.length} {t.paradas} · {rutaActiva?.reduce((acc, p) => acc + p.tiempo_visita, 0)} {t.min}
             </Text>
             <ScrollView style={s.paradas} nestedScrollEnabled>
               {rutaActiva?.map((p, i) => {
-                const cat = CATEGORIAS[p.categoria] ?? { emoji: '📍', color: '#888' };
+                const cat = CATEGORIAS[p.categoria] ?? { emoji: '✦', color: '#8a7e72' };
                 return (
                   <View key={p.id} style={s.paradaFila}>
                     <View style={s.paradaNum}>
@@ -119,20 +100,20 @@ export default function PantallaMapa({ ciudad, pais, onVolver }) {
 }
 
 const s = StyleSheet.create({
-  root:        { flex: 1, backgroundColor: '#f5f5f5' },
+  root:        { flex: 1, backgroundColor: '#f7f4f0' },
   flex:        { flex: 1 },
-  modalFondo:  { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.5)' },
+  modalFondo:  { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(44,24,16,0.5)' },
   modalCont:   { backgroundColor: '#fff', borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 20, maxHeight: '70%' },
   drag:        { width: 40, height: 4, backgroundColor: '#ddd', borderRadius: 2, alignSelf: 'center', marginBottom: 16 },
-  modalTitulo: { fontSize: 20, fontWeight: '800', color: '#1a1a1a', marginBottom: 4 },
-  modalSub:    { fontSize: 13, color: '#888', marginBottom: 16 },
+  modalTitulo: { fontSize: 20, fontWeight: '700', color: '#2c1810', marginBottom: 4 },
+  modalSub:    { fontSize: 13, color: '#8a7e72', marginBottom: 16 },
   paradas:     { maxHeight: 300, marginBottom: 16 },
-  paradaFila:  { flexDirection: 'row', alignItems: 'center', paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: '#f5f5f5', gap: 10 },
-  paradaNum:   { width: 26, height: 26, borderRadius: 13, backgroundColor: '#2563eb', alignItems: 'center', justifyContent: 'center' },
-  paradaNumT:  { color: '#fff', fontSize: 12, fontWeight: '700' },
+  paradaFila:  { flexDirection: 'row', alignItems: 'center', paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: '#f0eeea', gap: 10 },
+  paradaNum:   { width: 26, height: 26, borderRadius: 13, backgroundColor: '#5c1011', alignItems: 'center', justifyContent: 'center' },
+  paradaNumT:  { color: '#f5e6c8', fontSize: 12, fontWeight: '700' },
   paradaEmoji: { fontSize: 20 },
-  paradaNombre:{ fontSize: 14, fontWeight: '600', color: '#1a1a1a' },
-  paradaSub:   { fontSize: 12, color: '#888' },
-  btnCerrar:   { backgroundColor: '#2563eb', borderRadius: 14, paddingVertical: 14, alignItems: 'center' },
-  btnCerrarT:  { color: '#fff', fontSize: 15, fontWeight: '700' },
+  paradaNombre:{ fontSize: 14, fontWeight: '600', color: '#2c1810' },
+  paradaSub:   { fontSize: 12, color: '#8a7e72' },
+  btnCerrar:   { backgroundColor: '#5c1011', borderRadius: 14, paddingVertical: 14, alignItems: 'center' },
+  btnCerrarT:  { color: '#f5e6c8', fontSize: 15, fontWeight: '700' },
 });

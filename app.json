@@ -6,9 +6,6 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "plugins": [
-      "react-native-maps"
-    ],
     "newArchEnabled": false,
     "splash": {
       "image": "./assets/splash-icon.png",
@@ -29,11 +26,11 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "owner": "jaimedf",
     "extra": {
       "eas": {
-        "projectId": "54930dc5-fc25-4e05-9b9f-45af8c2ceed1"
+        "projectId": "304bb603-58e8-4a02-a33d-63b7d2718382"
       }
-    },
-    "owner": "jaimedf"
+    }
   }
 }

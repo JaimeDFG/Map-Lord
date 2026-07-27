@@ -68,23 +68,23 @@ export default function PantallaMapasCiudad({ pais, onVolver, onAbrirMapa, onAñ
 }
 
 const s = StyleSheet.create({
-  root:       { flex: 1, backgroundColor: '#f8fafc' },
+  root:       { flex: 1, backgroundColor: '#f7f4f0' },
   safe:       { backgroundColor: '#fff' },
   header:     { flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff', paddingHorizontal: 16, paddingVertical: 12, gap: 10, borderBottomWidth: 1, borderBottomColor: '#f0f0f0' },
   back:       { paddingRight: 4 },
-  backT:      { fontSize: 18, color: '#2563eb', fontWeight: '700' },
+  backT:      { fontSize: 18, color: '#5c1011', fontWeight: '700' },
   titulo:     { fontSize: 18, fontWeight: '700', color: '#1a1a1a' },
   sub:        { fontSize: 11, color: '#888' },
   cont:       { padding: 16, gap: 12 },
   mapaRow:    { flexDirection: 'row', alignItems: 'center', gap: 8 },
   mapaCard:   { flex: 1, backgroundColor: '#fff', borderRadius: 16, padding: 16, flexDirection: 'row', alignItems: 'center', gap: 14, shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 6, elevation: 2 },
-  mapaIcono:  { width: 52, height: 52, borderRadius: 14, backgroundColor: '#eff6ff', alignItems: 'center', justifyContent: 'center' },
+  mapaIcono:  { width: 52, height: 52, borderRadius: 14, backgroundColor: '#faf6f0', alignItems: 'center', justifyContent: 'center' },
   mapaInfo:   { flex: 1 },
   mapaNombre: { fontSize: 16, fontWeight: '700', color: '#1a1a1a' },
   mapaSub:    { fontSize: 12, color: '#888', marginTop: 2 },
   mapaArrow:  { fontSize: 22, color: '#ccc' },
   btnBorrar:  { width: 44, height: 44, borderRadius: 14, backgroundColor: '#fee2e2', alignItems: 'center', justifyContent: 'center' },
   btnBorrarT: { fontSize: 18 },
-  añadirCard: { backgroundColor: '#2563eb', borderRadius: 16, padding: 20, alignItems: 'center', marginTop: 4 },
+  añadirCard: { backgroundColor: '#5c1011', borderRadius: 16, padding: 20, alignItems: 'center', marginTop: 4 },
   añadirT:    { fontSize: 16, fontWeight: '700', color: '#fff' },
 });

@@ -40,3 +40,9 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Archivos temporales de Expo
+.expo-web-running.*
+
+# Configuración del editor (IntelliJ/WebStorm)
+.idea/

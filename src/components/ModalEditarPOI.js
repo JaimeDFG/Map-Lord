@@ -1,11 +1,8 @@
 import { useState, useEffect } from 'react';
-import {
-  Modal, View, Text, TextInput, TouchableOpacity,
-  ScrollView, StyleSheet,
-} from 'react-native';
+import { Modal, View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
-import { CATEGORIAS, RELEVANCIA, SECCIONES, labelCategoria } from '../constants/tourism';
+import { CATEGORIAS, RELEVANCIA, labelCategoria } from '../constants/tourism';
 
 export default function ModalEditarPOI({ poi, visible, onCerrar }) {
   const { lang, editarPoi, eliminarPoi } = useApp();
@@ -15,14 +12,11 @@ export default function ModalEditarPOI({ poi, visible, onCerrar }) {
   useEffect(() => {
     if (poi) setForm({
       nombre:           poi.nombre ?? '',
-      descripcion_corta:poi.descripcion_corta ?? '',
+      descripcion:      poi.descripcion ?? poi.descripcion_corta ?? '',
       categoria:        poi.categoria ?? 'Monumento',
-      relevancia:       poi.relevancia ?? 2,
+      prioridad:        poi.prioridad ?? poi.relevancia ?? 2,
       tiempo_visita:    String(poi.tiempo_visita ?? 30),
-      historia:         poi.historia ?? '',
-      arquitectura:     poi.arquitectura ?? '',
-      curiosidades:     poi.curiosidades ?? '',
-      misterios:        poi.misterios ?? '',
+      visitado:         poi.visitado ?? false,
     });
   }, [poi]);
 
@@ -31,7 +25,7 @@ export default function ModalEditarPOI({ poi, visible, onCerrar }) {
   function guardar() {
     editarPoi(poi.id, {
       ...form,
-      relevancia:   parseInt(form.relevancia),
+      prioridad:    parseInt(form.prioridad),
       tiempo_visita:parseInt(form.tiempo_visita) || 30,
     });
     onCerrar();
@@ -51,88 +45,54 @@ export default function ModalEditarPOI({ poi, visible, onCerrar }) {
             <View style={s.drag} />
 
             <View style={s.headerRow}>
-              <Text style={s.titulo}>✏️ {t.editarPunto}</Text>
+              <Text style={s.titulo}>✦ {t.editarPunto}</Text>
               <TouchableOpacity onPress={onCerrar} style={s.cerrar}>
                 <Text style={s.cerrarT}>✕</Text>
               </TouchableOpacity>
             </View>
 
             <Text style={s.label}>{t.nombre} *</Text>
-            <TextInput
-              style={s.input}
-              value={form.nombre}
-              onChangeText={v => set('nombre', v)}
-              placeholder={lang === 'en' ? 'Place name...' : 'Nombre del lugar...'}
-              placeholderTextColor="#bbb"
-            />
+            <TextInput style={s.input} value={form.nombre} onChangeText={v => set('nombre', v)} placeholder={lang === 'en' ? 'Place name...' : 'Nombre del lugar...'} placeholderTextColor="#bbb" />
 
-            <Text style={[s.label, { marginTop: 12 }]}>{lang === 'en' ? 'Short description' : 'Descripción corta'}</Text>
+            <Text style={[s.label, { marginTop: 12 }]}>{lang === 'en' ? 'Description' : 'Descripción'}</Text>
             <TextInput
-              style={s.input}
-              value={form.descripcion_corta}
-              onChangeText={v => set('descripcion_corta', v)}
-              placeholder={lang === 'en' ? 'One descriptive line...' : 'Una línea descriptiva...'}
+              style={[s.input, { minHeight: 80, textAlignVertical: 'top' }]}
+              value={form.descripcion}
+              onChangeText={v => set('descripcion', v)}
+              placeholder={lang === 'en' ? 'Write what you want to remember...' : 'Escribe lo que quieras recordar...'}
               placeholderTextColor="#bbb"
+              multiline
             />
 
             <Text style={[s.label, { marginTop: 12 }]}>{t.categoria}</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 12 }}>
               {Object.keys(CATEGORIAS).map(cat => (
-                <TouchableOpacity
-                  key={cat}
-                  style={[s.chip, form.categoria === cat && s.chipActivo]}
-                  onPress={() => set('categoria', cat)}
-                >
-                  <Text style={[s.chipT, form.categoria === cat && s.chipTActivo]}>
-                    {CATEGORIAS[cat].emoji} {labelCategoria(cat, lang)}
-                  </Text>
+                <TouchableOpacity key={cat} style={[s.chip, form.categoria === cat && s.chipActivo]} onPress={() => set('categoria', cat)}>
+                  <Text style={[s.chipT, form.categoria === cat && s.chipTActivo]}>{CATEGORIAS[cat].emoji} {labelCategoria(cat, lang)}</Text>
                 </TouchableOpacity>
               ))}
             </ScrollView>
 
-            <Text style={s.label}>{lang === 'en' ? 'Relevance' : 'Relevancia'}</Text>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 12 }}>
-              <View style={{ flexDirection: 'row', gap: 8, marginBottom: 12 }}>
-                {relevanciaOpciones.map(r => (
-                  <TouchableOpacity
-                    key={r.v}
-                    style={[s.chip, form.relevancia === r.v && s.chipActivo]}
-                    onPress={() => set('relevancia', r.v)}
-                  >
-                    <Text style={[s.chipT, form.relevancia === r.v && s.chipTActivo]}>
-                      {lang === 'en' ? r.labelEn : r.labelEs}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            </ScrollView>
+            <Text style={s.label}>{lang === 'en' ? 'Priority' : 'Prioridad'}</Text>
+            <View style={{ flexDirection: 'row', gap: 8, marginBottom: 12 }}>
+              {relevanciaOpciones.map(r => (
+                <TouchableOpacity key={r.v} style={[s.chip, form.prioridad === r.v && s.chipActivo]} onPress={() => set('prioridad', r.v)}>
+                  <Text style={[s.chipT, form.prioridad === r.v && s.chipTActivo]}>{lang === 'en' ? r.labelEn : r.labelEs}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
 
             <Text style={s.label}>{lang === 'en' ? 'Visit time (min)' : 'Tiempo de visita (min)'}</Text>
-            <TextInput
-              style={[s.input, { marginBottom: 12 }]}
-              value={form.tiempo_visita}
-              onChangeText={v => set('tiempo_visita', v)}
-              keyboardType="number-pad"
-              placeholder="30"
-              placeholderTextColor="#bbb"
-            />
+            <TextInput style={[s.input, { marginBottom: 12 }]} value={form.tiempo_visita} onChangeText={v => set('tiempo_visita', v)} keyboardType="number-pad" placeholder="30" placeholderTextColor="#bbb" />
 
-            {SECCIONES.map(sec => (
-              <View key={sec.key}>
-                <Text style={[s.label, { marginTop: 8 }]}>
-                  {lang === 'en' ? sec.labelEn : sec.labelEs}
-                  <Text style={{ color: '#bbb', fontWeight: '400' }}> ({t.opcional})</Text>
-                </Text>
-                <TextInput
-                  style={[s.input, { minHeight: 80, textAlignVertical: 'top', marginBottom: 4 }]}
-                  value={form[sec.key]}
-                  onChangeText={v => set(sec.key, v)}
-                  placeholder={`${lang === 'en' ? 'Text about' : 'Texto sobre'} ${lang === 'en' ? sec.labelEn.toLowerCase() : sec.labelEs.toLowerCase()}...`}
-                  placeholderTextColor="#bbb"
-                  multiline
-                />
-              </View>
-            ))}
+            <TouchableOpacity
+              style={[s.toggleVisitado, form.visitado && s.toggleVisitadoActivo]}
+              onPress={() => set('visitado', !form.visitado)}
+            >
+              <Text style={[s.toggleVisitadoT, form.visitado && s.toggleVisitadoTActivo]}>
+                {form.visitado ? `✓ ${t.visitado}` : `○ ${t.marcarVisitado}`}
+              </Text>
+            </TouchableOpacity>
 
             <TouchableOpacity style={s.btnGuardar} onPress={guardar}>
               <Text style={s.btnGuardarT}>{t.guardar}</Text>
@@ -153,21 +113,27 @@ export default function ModalEditarPOI({ poi, visible, onCerrar }) {
 }
 
 const s = StyleSheet.create({
-  fondo:      { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.5)' },
+  fondo:      { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(44,24,16,0.5)' },
   cont:       { backgroundColor: '#fff', borderTopLeftRadius: 24, borderTopRightRadius: 24, paddingHorizontal: 20, paddingTop: 12, maxHeight: '92%' },
   drag:       { width: 40, height: 4, backgroundColor: '#ddd', borderRadius: 2, alignSelf: 'center', marginBottom: 16 },
   headerRow:  { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 },
-  titulo:     { fontSize: 18, fontWeight: '700', color: '#1a1a1a' },
+  titulo:     { fontSize: 18, fontWeight: '700', color: '#2c1810' },
   cerrar:     { backgroundColor: '#f0f0f0', borderRadius: 14, width: 28, height: 28, alignItems: 'center', justifyContent: 'center' },
   cerrarT:    { fontSize: 13, color: '#555' },
-  label:      { fontSize: 11, fontWeight: '700', color: '#888', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 6 },
-  input:      { backgroundColor: '#f5f5f5', borderRadius: 10, paddingHorizontal: 12, paddingVertical: 9, fontSize: 14, color: '#1a1a1a', borderWidth: 1, borderColor: '#e5e7eb', marginBottom: 4 },
+  label:      { fontSize: 11, fontWeight: '700', color: '#8a7e72', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 6 },
+  input:      { backgroundColor: '#f7f4f0', borderRadius: 10, paddingHorizontal: 12, paddingVertical: 9, fontSize: 14, color: '#2c1810', borderWidth: 1, borderColor: '#e8dfd5', marginBottom: 4 },
   chip:       { paddingHorizontal: 12, paddingVertical: 7, borderRadius: 18, backgroundColor: '#f3f4f6', borderWidth: 1, borderColor: '#e5e7eb', marginRight: 8 },
-  chipActivo: { backgroundColor: '#2563eb', borderColor: '#2563eb' },
+  chipActivo: { backgroundColor: '#5c1011', borderColor: '#5c1011' },
   chipT:      { color: '#374151', fontSize: 12, fontWeight: '600' },
-  chipTActivo:{ color: '#fff' },
-  btnGuardar: { backgroundColor: '#2563eb', borderRadius: 14, paddingVertical: 14, alignItems: 'center', marginTop: 20 },
-  btnGuardarT:{ color: '#fff', fontSize: 15, fontWeight: '700' },
+  chipTActivo:{ color: '#f5e6c8' },
+  
+  toggleVisitado:{ backgroundColor: '#f7f4f0', borderRadius: 12, paddingVertical: 12, alignItems: 'center', borderWidth: 1, borderColor: '#e8dfd5', marginBottom: 16 },
+  toggleVisitadoActivo:{ backgroundColor: '#5c1011', borderColor: '#5c1011' },
+  toggleVisitadoT:{ fontSize: 14, fontWeight: '600', color: '#5c1011' },
+  toggleVisitadoTActivo:{ color: '#f5e6c8' },
+  
+  btnGuardar: { backgroundColor: '#5c1011', borderRadius: 14, paddingVertical: 14, alignItems: 'center', marginTop: 20 },
+  btnGuardarT:{ color: '#f5e6c8', fontSize: 15, fontWeight: '700' },
   btnEliminar: { backgroundColor: '#fee2e2', borderRadius: 14, paddingVertical: 14, alignItems: 'center', marginTop: 10, borderWidth: 1, borderColor: '#fecaca' },
-  btnEliminarT: { color: '#dc2626', fontSize: 15, fontWeight: '700' },
+  btnEliminarT: { color: '#b0453e', fontSize: 15, fontWeight: '700' },
 });

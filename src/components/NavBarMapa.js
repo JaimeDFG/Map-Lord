@@ -4,10 +4,9 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 export default function NavBarMapa({ tab, onChange, onVolver, t, lang }) {
   const insets = useSafeAreaInsets();
   const tabs = [
-    { id: 'explorar',    label: t.explorar,                          emoji: '🗺️' },
-    { id: 'lugares',     label: t.lugares,                           emoji: '📋' },
-    { id: 'destacados',  label: lang === 'en' ? 'Top' : 'Top',      emoji: '⭐' },
-    { id: 'rutas',       label: t.rutas,                             emoji: '🧭' },
+    { id: 'explorar', label: t.explorar, emoji: '✦' },
+    { id: 'lugares',  label: t.lugares,  emoji: '✦' },
+    { id: 'rutas',    label: t.rutas,    emoji: '✦' },
   ];
 
   return (
@@ -26,7 +25,7 @@ export default function NavBarMapa({ tab, onChange, onVolver, t, lang }) {
                 style={[s.tab, activo && s.tabActivo]}
                 onPress={() => onChange(tb.id)}
               >
-                <Text style={s.tabEmoji}>{tb.emoji}</Text>
+                <Text style={[s.tabEmoji, activo && s.tabEmojiActivo]}>{tb.emoji}</Text>
                 <Text style={[s.tabLabel, activo && s.tabLabelActivo]}>{tb.label}</Text>
                 {activo && <View style={s.dot} />}
               </TouchableOpacity>
@@ -39,16 +38,17 @@ export default function NavBarMapa({ tab, onChange, onVolver, t, lang }) {
 }
 
 const s = StyleSheet.create({
-  safe:         { backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: '#f0f0f0' },
+  safe:         { backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: '#e8dfd5' },
   bar:          { flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff', paddingTop: 8, paddingBottom: Platform.OS === 'ios' ? 0 : 10, paddingHorizontal: 8 },
   volverBtn:    { alignItems: 'center', paddingHorizontal: 10, paddingVertical: 4 },
-  volverEmoji:  { fontSize: 18, color: '#2563eb', fontWeight: '700' },
-  volverT:      { fontSize: 10, color: '#2563eb', marginTop: 1, fontWeight: '600' },
+  volverEmoji:  { fontSize: 16, color: '#5c1011', fontWeight: '700' },
+  volverT:      { fontSize: 10, color: '#5c1011', marginTop: 1, fontWeight: '600' },
   tabs:         { flex: 1, flexDirection: 'row' },
   tab:          { flex: 1, alignItems: 'center', paddingVertical: 4, position: 'relative' },
   tabActivo:    {},
-  tabEmoji:     { fontSize: 22 },
+  tabEmoji:     { fontSize: 16, color: '#c4bfb7' },
+  tabEmojiActivo:{ color: '#d4a843' },
   tabLabel:     { fontSize: 10, color: '#aaa', marginTop: 2, fontWeight: '500' },
-  tabLabelActivo: { color: '#2563eb', fontWeight: '700' },
-  dot:          { position: 'absolute', bottom: 0, width: 4, height: 4, backgroundColor: '#2563eb', borderRadius: 2 },
+  tabLabelActivo: { color: '#5c1011', fontWeight: '700' },
+  dot:          { position: 'absolute', bottom: 0, width: 4, height: 4, backgroundColor: '#5c1011', borderRadius: 2 },
 });

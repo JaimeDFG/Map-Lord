@@ -1,35 +1,21 @@
-import { useState, useEffect } from 'react';
-import { Modal, View, Text, TouchableOpacity, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
+import { useEffect } from 'react';
+import { Modal, View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
-import { CATEGORIAS, RELEVANCIA, SECCIONES, labelCategoria, labelRelevancia } from '../constants/tourism';
+import { CATEGORIAS, RELEVANCIA, labelCategoria, labelRelevancia } from '../constants/tourism';
 
 export default function FichaPOI({ poi, visible, onCerrar, numeroParada, totalParadas, onEditar }) {
-  const { lang, poisVisitados, togglePoiVisitado } = useApp();
+  const { lang, togglePoiVisitado, poisUsuario } = useApp();
   const t = useT(lang);
-  const [tab, setTab] = useState('historia');
-  const [poiDetalle, setPoiDetalle] = useState(null);
-  const [cargando, setCargando] = useState(false);
 
-  useEffect(() => {
-    if (visible) setTab('historia');
-    if (!visible || !poi) { setPoiDetalle(null); return; }
-  }, [visible, poi?.id, lang]);
+  // Buscar el POI actualizado en el contexto para que el estado de visitado cambie al instante
+  const poiActual = poi ? poisUsuario.find(p => p.id === poi.id) : null;
+  const poiDatos = poiActual ?? poi;
 
-  const poiActivo = poiDetalle ?? poi;
-  const cat = poiActivo ? CATEGORIAS[poiActivo.categoria] : null;
-  const rel = poiActivo ? RELEVANCIA[poiActivo.relevancia] : null;
-
-  // Solo mostrar secciones que tengan contenido
-  const seccionesVisibles = SECCIONES.filter(sec => poi?.[sec.key]?.trim?.());
-  const seccionesAMostrar = seccionesVisibles.length > 0 ? seccionesVisibles : [SECCIONES[0]];
-
-  const labelSec = {
-    historia:     t.historia,
-    arquitectura: t.arquitectura,
-    curiosidades: t.curiosidades,
-    misterios:    t.misterios,
-  };
+  const cat = poiDatos ? CATEGORIAS[poiDatos.categoria] : null;
+  const prio = poiDatos ? (poiDatos.prioridad ?? poiDatos.relevancia ?? 2) : 2;
+  const rel = RELEVANCIA[prio];
+  const visitado = poiDatos ? (poiDatos.visitado ?? false) : false;
 
   return (
     <Modal visible={visible} animationType="slide" transparent>
@@ -38,35 +24,25 @@ export default function FichaPOI({ poi, visible, onCerrar, numeroParada, totalPa
           <View style={s.drag} />
 
           <View style={s.header}>
-            <View style={[s.icono, { backgroundColor: (cat?.color ?? '#888') + '20' }]}>
-              <Text style={{ fontSize: 28 }}>{cat?.emoji ?? '📍'}</Text>
+            <View style={[s.icono, { backgroundColor: (cat?.color ?? '#8a7e72') + '20' }]}>
+              <Text style={{ fontSize: 28 }}>{cat?.emoji ?? '✦'}</Text>
             </View>
             <View style={s.headerTexto}>
               {numeroParada && (
                 <Text style={s.paradaLabel}>{t.parada} {numeroParada} {t.de} {totalParadas}</Text>
               )}
-              <Text style={s.titulo}>{poiActivo?.nombre}</Text>
-              <Text style={s.sub}>{poiActivo?.descripcion_corta}</Text>
+              <Text style={s.titulo}>{poiDatos?.nombre}</Text>
+              <Text style={s.sub}>{poiDatos?.descripcion || poiDatos?.descripcion_corta || ''}</Text>
               <View style={s.badges}>
-                <View style={[s.badge, { backgroundColor: cat?.color ?? '#888' }]}>
-                  <Text style={s.badgeT}>{labelCategoria(poiActivo?.categoria, lang)}</Text>
+                <View style={[s.badge, { backgroundColor: cat?.color ?? '#8a7e72' }]}>
+                  <Text style={s.badgeT}>{labelCategoria(poiDatos?.categoria, lang)}</Text>
                 </View>
-                <View style={[s.badge, { backgroundColor: rel?.color ?? '#888' }]}>
+                <View style={[s.badge, { backgroundColor: rel?.color ?? '#8a7e72' }]}>
                   <Text style={s.badgeT}>{rel?.estrellas} {lang === 'en' ? (rel?.labelEn ?? rel?.label) : rel?.label}</Text>
                 </View>
                 <View style={[s.badge, { backgroundColor: '#444' }]}>
-                  <Text style={s.badgeT}>⏱ {poiActivo?.tiempo_visita} {t.min}</Text>
+                  <Text style={s.badgeT}>⏱ {poiDatos?.tiempo_visita} {t.min}</Text>
                 </View>
-                {poi && (
-                  <TouchableOpacity
-                    style={[s.badge, { backgroundColor: poisVisitados[poiActivo?.id] ? '#16a34a' : '#f3f4f6', borderWidth: 1, borderColor: poisVisitados[poiActivo?.id] ? '#16a34a' : '#e5e7eb' }]}
-                    onPress={() => togglePoiVisitado(poiActivo.id)}
-                  >
-                    <Text style={[s.badgeT, { color: poisVisitados[poiActivo?.id] ? '#fff' : '#555' }]}>
-                      {poisVisitados[poiActivo?.id] ? `✓ ${t.visitado}` : `${t.marcarVisitado}`}
-                    </Text>
-                  </TouchableOpacity>
-                )}
               </View>
             </View>
             <View style={s.headerBotones}>
@@ -81,32 +57,23 @@ export default function FichaPOI({ poi, visible, onCerrar, numeroParada, totalPa
             </View>
           </View>
 
-          {seccionesAMostrar.length > 0 && (
-            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={s.tabs}>
-              {seccionesAMostrar.map(sec => (
-                <TouchableOpacity
-                  key={sec.key}
-                  style={[s.tab, tab === sec.key && s.tabActivo]}
-                  onPress={() => setTab(sec.key)}
-                >
-                  <Text style={[s.tabT, tab === sec.key && s.tabTActivo]}>
-                    {sec.emoji} {labelSec[sec.key]}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </ScrollView>
-          )}
-
-          <ScrollView
-            style={s.cuerpo}
-            showsVerticalScrollIndicator={false}
-            nestedScrollEnabled
-            contentContainerStyle={{ paddingTop: 2, paddingBottom: 30, flexGrow: 1, justifyContent: 'flex-start' }}
+          <TouchableOpacity
+            style={[s.toggleVisitado, visitado && s.toggleVisitadoActivo]}
+            onPress={() => poiDatos && togglePoiVisitado(poiDatos.id)}
           >
+            <Text style={[s.toggleVisitadoT, visitado && s.toggleVisitadoTActivo]}>
+              {visitado ? `✓ ${t.visitado}` : `○ ${t.marcarVisitado}`}
+            </Text>
+          </TouchableOpacity>
+
+          <ScrollView style={s.cuerpo} showsVerticalScrollIndicator={false} nestedScrollEnabled>
+            <Text style={s.descLabel}>{lang === 'en' ? 'Description' : 'Descripción'}</Text>
             <Text style={s.texto}>
-              {poiActivo?.[tab]?.trim()
-                ? poiActivo[tab]
-                : (lang === 'en' ? 'No information added to this point yet.' : 'No se ha añadido información a este punto.')}
+              {poiDatos?.descripcion?.trim()
+                ? poiDatos.descripcion
+                : (poiDatos?.descripcion_corta?.trim()
+                  ? poiDatos.descripcion_corta
+                  : (lang === 'en' ? 'No description added yet.' : 'Aún no se ha añadido descripción.'))}
             </Text>
           </ScrollView>
         </View>
@@ -116,15 +83,15 @@ export default function FichaPOI({ poi, visible, onCerrar, numeroParada, totalPa
 }
 
 const s = StyleSheet.create({
-  fondo:      { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.45)' },
+  fondo:      { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(44,24,16,0.5)' },
   contenido:  { backgroundColor: '#fff', borderTopLeftRadius: 24, borderTopRightRadius: 24, paddingHorizontal: 20, paddingTop: 12, height: '80%' },
   drag:       { width: 40, height: 4, backgroundColor: '#ddd', borderRadius: 2, alignSelf: 'center', marginBottom: 16 },
-  header:     { flexDirection: 'row', alignItems: 'flex-start', marginBottom: 8, gap: 12 },
+  header:     { flexDirection: 'row', alignItems: 'flex-start', marginBottom: 12, gap: 12 },
   icono:      { width: 54, height: 54, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
   headerTexto:{ flex: 1 },
-  paradaLabel:{ fontSize: 11, fontWeight: '700', color: '#2563eb', textTransform: 'uppercase', marginBottom: 2 },
-  titulo:     { fontSize: 18, fontWeight: '700', color: '#1a1a1a' },
-  sub:        { fontSize: 13, color: '#888', marginTop: 2 },
+  paradaLabel:{ fontSize: 11, fontWeight: '700', color: '#5c1011', textTransform: 'uppercase', marginBottom: 2 },
+  titulo:     { fontSize: 18, fontWeight: '700', color: '#2c1810' },
+  sub:        { fontSize: 13, color: '#8a7e72', marginTop: 2 },
   badges:     { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 6 },
   badge:      { paddingHorizontal: 8, paddingVertical: 3, borderRadius: 10 },
   badgeT:     { color: '#fff', fontSize: 11, fontWeight: '600' },
@@ -133,11 +100,11 @@ const s = StyleSheet.create({
   botonEditarT:{ fontSize: 14 },
   cerrar:     { backgroundColor: '#f0f0f0', borderRadius: 14, width: 28, height: 28, alignItems: 'center', justifyContent: 'center' },
   cerrarT:    { fontSize: 13, color: '#555' },
-  tabs:       { marginBottom: 6, flexGrow: 0, flexShrink: 0, height: 38 },
-  tab:        { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20, backgroundColor: '#f0f0f0', marginRight: 8, alignSelf: 'flex-start' },
-  tabActivo:  { backgroundColor: '#1a1a2e' },
-  tabT:       { fontSize: 13, color: '#555' },
-  tabTActivo: { color: '#fff', fontWeight: '600' },
+  toggleVisitado:{ backgroundColor: '#f7f4f0', borderRadius: 12, paddingVertical: 12, alignItems: 'center', borderWidth: 1, borderColor: '#e8dfd5', marginBottom: 12 },
+  toggleVisitadoActivo:{ backgroundColor: '#5c1011', borderColor: '#5c1011' },
+  toggleVisitadoT:{ fontSize: 14, fontWeight: '600', color: '#5c1011' },
+  toggleVisitadoTActivo:{ color: '#f5e6c8' },
   cuerpo:     { flex: 1 },
-  texto:      { fontSize: 15, lineHeight: 24, color: '#333', marginTop: 0, textAlignVertical: 'top' },
+  descLabel:  { fontSize: 11, fontWeight: '700', color: '#8a7e72', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 8 },
+  texto:      { fontSize: 15, lineHeight: 24, color: '#333' },
 });

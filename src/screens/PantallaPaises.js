@@ -107,14 +107,14 @@ export default function PantallaPaises({ continente, onVolver, onSeleccionarPais
 }
 
 const s = StyleSheet.create({
-  root:       { flex: 1, backgroundColor: '#f8fafc' },
+  root:       { flex: 1, backgroundColor: '#f7f4f0' },
   safe:       { backgroundColor: '#fff' },
   header:     { flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff', paddingHorizontal: 16, paddingVertical: 12, gap: 10, borderBottomWidth: 1, borderBottomColor: '#f0f0f0' },
   back:       { paddingRight: 8, paddingVertical: 4 },
-  backT:      { fontSize: 22, color: '#2563eb', fontWeight: '700' },
+  backT:      { fontSize: 22, color: '#5c1011', fontWeight: '700' },
   titulo:     { fontSize: 18, fontWeight: '700', color: '#1a1a1a' },
   sub:        { fontSize: 11, color: '#888' },
-  botonAdd:   { backgroundColor: '#2563eb', width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
+  botonAdd:   { backgroundColor: '#5c1011', width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
   botonAddT:  { color: '#fff', fontSize: 22, fontWeight: '300', lineHeight: 30 },
   lista:      { paddingVertical: 8 },
   fila:       { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 20, paddingVertical: 14, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#f5f5f5' },
@@ -128,11 +128,11 @@ const s = StyleSheet.create({
   label:      { fontSize: 11, fontWeight: '700', color: '#888', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 8 },
   input:      { backgroundColor: '#f5f5f5', borderRadius: 10, paddingHorizontal: 14, paddingVertical: 10, fontSize: 15, color: '#1a1a1a', borderWidth: 1, borderColor: '#e5e7eb', marginBottom: 4 },
   emojiChip:  { width: 44, height: 44, borderRadius: 22, backgroundColor: '#f3f4f6', alignItems: 'center', justifyContent: 'center', marginRight: 8 },
-  emojiChipActivo: { backgroundColor: '#dbeafe', borderWidth: 2, borderColor: '#2563eb' },
-  safeRoot: { flex: 1, backgroundColor: '#f8fafc' },
+  emojiChipActivo: { backgroundColor: '#dbeafe', borderWidth: 2, borderColor: '#5c1011' },
+  safeRoot: { flex: 1, backgroundColor: '#f7f4f0' },
   modalBotones:{ flexDirection: 'row', gap: 10, marginTop: 8 },
   btnCancelar:{ flex: 1, backgroundColor: '#f3f4f6', borderRadius: 12, paddingVertical: 13, alignItems: 'center' },
   btnCancelarT:{ fontSize: 14, fontWeight: '600', color: '#555' },
-  btnGuardar: { flex: 1, backgroundColor: '#2563eb', borderRadius: 12, paddingVertical: 13, alignItems: 'center' },
+  btnGuardar: { flex: 1, backgroundColor: '#5c1011', borderRadius: 12, paddingVertical: 13, alignItems: 'center' },
   btnGuardarT:{ fontSize: 14, fontWeight: '700', color: '#fff' },
 });

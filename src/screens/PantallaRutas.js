@@ -9,7 +9,6 @@ import OsmTileLayer from '../components/OsmTileLayer';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
 import { CATEGORIAS, RELEVANCIA, OPCIONES_TIEMPO, labelCategoria, labelRelevancia } from '../constants/tourism';
-import PUNTOS_BASE from '../data/puntosInteres.json';
 import FichaPOI from '../components/FichaPOI';
 
 function distancia(c1, c2) {
@@ -28,14 +27,10 @@ function generarRuta(minutos, coordInicio, pois) {
     const dmax = cands.reduce((m, p) => Math.max(m, distancia(pos, p.coordenadas)), 1);
     const scored = cands.map(p => {
       const d = distancia(pos, p.coordenadas);
-      const normDist = d / dmax;           // 0=muy cerca, 1=muy lejos
-      const normRel  = (p.relevancia - 1) / 2; // 0=opcional, 1=imprescindible
-
-      // Si está muy cerca (menos de 500m), la distancia pesa 80%
-      // Si está lejos, la relevancia pesa más para no alejarse sin motivo
+      const normDist = d / dmax;
+      const normRel  = (p.relevancia - 1) / 2;
       const pesoDist = d < 500 ? 0.8 : 0.6;
       const pesoRel  = 1 - pesoDist;
-
       return { ...p, score: (1 - normDist) * pesoDist + normRel * pesoRel };
     });
     scored.sort((a, b) => b.score - a.score);
@@ -76,7 +71,7 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
   const t = useT(lang);
   const insets = useSafeAreaInsets();
 
-  const [tab, setTab]                 = useState('crear'); // 'crear' | 'manual' | 'guardadas'
+  const [tab, setTab]                 = useState('crear');
   const [tiempo, setTiempo]           = useState(null);
   const [ruta, setRuta]               = useState(null);
   const [eligiendo, setEligiendo]     = useState(false);
@@ -84,21 +79,17 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
   const [poiFicha, setPoiFicha]       = useState(null);
   const [modalGuardar, setModalGuardar] = useState(false);
   const [nombreRuta, setNombreRuta]   = useState('');
-  // ── Estado rutas manuales
-  const [seleccion, setSeleccion]     = useState(new Set()); // ids seleccionados
-  const [rutaManual, setRutaManual]   = useState(null);      // ruta optimizada
+  const [seleccion, setSeleccion]     = useState(new Set());
+  const [rutaManual, setRutaManual]   = useState(null);
 
-  // POIs filtrados por ciudad (igual que PantallaExplorar)
   const nombreCiudad = ciudad?.nombre?.toLowerCase() ?? 'madrid';
-  const todosLosPois = [...PUNTOS_BASE, ...poisUsuario].filter(p =>
+  const todosLosPois = poisUsuario.filter(p =>
     (p.ciudad ?? 'Madrid').toLowerCase() === nombreCiudad
   );
 
-  // Centro y región del mapa según ciudad activa
   const centro = ciudad?.coordenadas ?? { latitude: 40.4168, longitude: -3.7038 };
   const region = { ...centro, latitudeDelta: 0.04, longitudeDelta: 0.04 };
 
-  // Rutas guardadas filtradas por ciudad actual
   const rutasDeCiudad = rutasGuardadas.filter(r =>
     (r.ciudad ?? '').toLowerCase() === nombreCiudad
   );
@@ -168,7 +159,7 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
                   const cat=CATEGORIAS[poi.categoria]??{color:'#555'};
                   return <Marker key={poi.id} coordinate={poi.coordenadas}><View style={[s.pinNum,{backgroundColor:cat.color}]}><Text style={s.pinNumT}>{i+1}</Text></View></Marker>;
                 })}
-                {ruta && marcador && <Polyline coordinates={[marcador,...ruta.map(p=>p.coordenadas)]} strokeColor="#2563eb" strokeWidth={3} lineDashPattern={[8,4]}/>}
+                {ruta && marcador && <Polyline coordinates={[marcador,...ruta.map(p=>p.coordenadas)]} strokeColor="#5c1011" strokeWidth={3} lineDashPattern={[8,4]}/>}
               </MapView>
               {!eligiendo && marcador && (
                 <TouchableOpacity style={s.cambiarInicio} onPress={()=>{setEligiendo(true);setRuta(null);setMarcador(null);}}>
@@ -218,11 +209,10 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
       {tab === 'manual' && (
         <ScrollView style={s.flex} contentContainerStyle={s.scroll}>
           <Text style={s.secLabel}>{t.seleccionaLugares}</Text>
-          <Text style={[s.secLabel, {marginTop:4, marginBottom:12, textTransform:'none', color:'#2563eb', fontSize:12}]}>
+          <Text style={[s.secLabel, {marginTop:4, marginBottom:12, textTransform:'none', color:'#5c1011', fontSize:12}]}>
             {seleccion.size} {t.lugaresSeleccionados}
           </Text>
 
-          {/* Lista de POIs seleccionables */}
           {todosLosPois.map(poi => {
             const cat = CATEGORIAS[poi.categoria] ?? {emoji:'📍', color:'#888'};
             const sel = seleccion.has(poi.id);
@@ -246,14 +236,13 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
                   <Text style={{fontSize:16}}>{cat.emoji}</Text>
                 </View>
                 <View style={{flex:1}}>
-                  <Text style={[s.poiSelNombre, sel && {color:'#2563eb'}]}>{poi.nombre}</Text>
+                  <Text style={[s.poiSelNombre, sel && {color:'#5c1011'}]}>{poi.nombre}</Text>
                   <Text style={s.poiSelSub}>{labelCategoria(poi.categoria, lang)} · {poi.tiempo_visita} {t.min}</Text>
                 </View>
               </TouchableOpacity>
             );
           })}
 
-          {/* Botón calcular */}
           {seleccion.size >= 2 && !rutaManual && (
             <TouchableOpacity
               style={[s.btnActivar, {marginTop:16}]}
@@ -266,7 +255,6 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
             </TouchableOpacity>
           )}
 
-          {/* Resultado ruta manual */}
           {rutaManual && (
             <View style={[s.rutaCard, {marginTop:16}]}>
               <Text style={s.rutaTitulo}>{t.tuRuta} · {rutaManual.length} {t.lugares}</Text>
@@ -341,7 +329,6 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
         </ScrollView>
       )}
 
-      {/* Modal guardar ruta */}
       <Modal visible={modalGuardar} animationType="slide" transparent>
         <View style={s.modalFondo}>
           <View style={s.modalCont}>
@@ -377,14 +364,14 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
 }
 
 const s = StyleSheet.create({
-  root:     { flex:1, backgroundColor:'#f8fafc' },
+  root:     { flex:1, backgroundColor:'#f7f4f0' },
   flex:     { flex:1 },
   safe:     { backgroundColor:'#fff' },
   header:   { backgroundColor:'#fff', paddingHorizontal:16, paddingVertical:12, borderBottomWidth:1, borderBottomColor:'#f0f0f0' },
   headerTitulo:{ fontSize:18, fontWeight:'700', color:'#1a1a1a', marginBottom:8 },
   tabsHeader:{ flexDirection:'row', gap:8 },
   tabH:     { paddingHorizontal:14, paddingVertical:7, borderRadius:20, backgroundColor:'#f3f4f6' },
-  tabHActivo:{ backgroundColor:'#2563eb' },
+  tabHActivo:{ backgroundColor:'#5c1011' },
   tabHT:    { fontSize:12, fontWeight:'600', color:'#555' },
   tabHTActivo:{ color:'#fff' },
   scroll:   { padding:16 },
@@ -394,10 +381,10 @@ const s = StyleSheet.create({
   btnResetT:{ color:'#dc2626', fontSize:12, fontWeight:'600' },
   opciones: { flexDirection:'row', flexWrap:'wrap', gap:10, marginBottom:20 },
   opcion:   { flex:1, minWidth:'45%', backgroundColor:'#fff', borderRadius:16, padding:14, alignItems:'center', borderWidth:2, borderColor:'#eee', elevation:2 },
-  opcionActiva:{ borderColor:'#2563eb', backgroundColor:'#eff6ff' },
+  opcionActiva:{ borderColor:'#5c1011', backgroundColor:'#faf6f0' },
   opcionEmoji:{ fontSize:24, marginBottom:4 },
   opcionLabel:{ fontSize:13, fontWeight:'600', color:'#444' },
-  opcionLabelActiva:{ color:'#2563eb' },
+  opcionLabelActiva:{ color:'#5c1011' },
   mapaBox:  { borderRadius:16, overflow:'hidden', marginBottom:20, height:240 },
   mapa:     { flex:1 },
   mapaAviso:{ position:'absolute', top:10, left:10, right:10, zIndex:10, backgroundColor:'rgba(37,99,235,0.92)', borderRadius:10, paddingVertical:8, alignItems:'center' },
@@ -406,13 +393,13 @@ const s = StyleSheet.create({
   pinNum:   { width:28, height:28, borderRadius:14, alignItems:'center', justifyContent:'center' },
   pinNumT:  { color:'#fff', fontSize:12, fontWeight:'700' },
   cambiarInicio:{ position:'absolute', bottom:10, left:10, right:10, backgroundColor:'rgba(255,255,255,0.96)', borderRadius:10, paddingVertical:8, alignItems:'center' },
-  cambiarInicioT:{ color:'#2563eb', fontWeight:'700', fontSize:13 },
+  cambiarInicioT:{ color:'#5c1011', fontWeight:'700', fontSize:13 },
   rutaCard: { backgroundColor:'#fff', borderRadius:16, padding:16, elevation:3 },
   rutaTitulo:{ fontSize:16, fontWeight:'700', color:'#1a1a1a', marginBottom:2 },
   rutaSub:  { fontSize:13, color:'#888', marginBottom:14 },
   paso:     { flexDirection:'row', alignItems:'flex-start', marginBottom:14, gap:10 },
   pasoIzq:  { alignItems:'center', width:26 },
-  pasoNum:  { width:26, height:26, borderRadius:13, backgroundColor:'#2563eb', alignItems:'center', justifyContent:'center' },
+  pasoNum:  { width:26, height:26, borderRadius:13, backgroundColor:'#5c1011', alignItems:'center', justifyContent:'center' },
   pasoNumT: { color:'#fff', fontSize:12, fontWeight:'700' },
   pasoLinea:{ width:2, flex:1, minHeight:18, backgroundColor:'#dce8ff', marginTop:2 },
   pasoIcono:{ width:38, height:38, borderRadius:12, alignItems:'center', justifyContent:'center' },
@@ -422,14 +409,14 @@ const s = StyleSheet.create({
   pasoRel:  { fontSize:11, marginTop:1 },
   arrow:    { fontSize:20, color:'#ccc', alignSelf:'center' },
   botonesFinal:{ gap:10, marginTop:16 },
-  btnGuardarRuta:  { backgroundColor: '#f0fdf4', borderRadius: 14, paddingVertical: 14, alignItems: 'center', borderWidth: 1.5, borderColor: '#86efac' },
-  btnGuardarRutaT: { color: '#15803d', fontWeight: '700', fontSize: 15 },
-  btnActivar:  { backgroundColor: '#2563eb', borderRadius: 14, paddingVertical: 14, alignItems: 'center', marginTop: 0 },
+  btnGuardarRuta:  { backgroundColor: '#faf6f0', borderRadius: 14, paddingVertical: 14, alignItems: 'center', borderWidth: 1.5, borderColor: '#d4a843' },
+  btnGuardarRutaT: { color: '#5c1011', fontWeight: '700', fontSize: 15 },
+  btnActivar:  { backgroundColor: '#5c1011', borderRadius: 14, paddingVertical: 14, alignItems: 'center', marginTop: 0 },
   btnActivarT: { color: '#fff', fontSize: 15, fontWeight: '700' },
   rutaGuardadaCard:{ backgroundColor:'#fff', borderRadius:14, padding:14, flexDirection:'row', alignItems:'center', marginBottom:10, elevation:2 },
   rutaGuardadaNombre:{ fontSize:15, fontWeight:'700', color:'#1a1a1a' },
   rutaGuardadaSub:{ fontSize:12, color:'#888', marginTop:2 },
-  btnActivarPeq:{ backgroundColor:'#eff6ff', borderRadius:10, width:36, height:36, alignItems:'center', justifyContent:'center', marginLeft:8 },
+  btnActivarPeq:{ backgroundColor:'#faf6f0', borderRadius:10, width:36, height:36, alignItems:'center', justifyContent:'center', marginLeft:8 },
   btnActivarPeqT:{ fontSize:18 },
   btnBorrar:{ backgroundColor:'#fee2e2', borderRadius:10, width:36, height:36, alignItems:'center', justifyContent:'center', marginLeft:6 },
   btnBorrarT:{ color:'#dc2626', fontWeight:'700' },
@@ -439,15 +426,15 @@ const s = StyleSheet.create({
   drag:     { width:40, height:4, backgroundColor:'#ddd', borderRadius:2, alignSelf:'center', marginBottom:16 },
   modalTitulo:{ fontSize:18, fontWeight:'700', color:'#1a1a1a' },
   input:    { backgroundColor:'#f5f5f5', borderRadius:10, paddingHorizontal:14, paddingVertical:10, fontSize:15, color:'#1a1a1a', borderWidth:1, borderColor:'#e5e7eb' },
-  safeRoot: { flex: 1, backgroundColor: '#f8fafc' },
+  safeRoot: { flex: 1, backgroundColor: '#f7f4f0' },
   modalBotones:{ flexDirection:'row', gap:10, marginTop:16 },
   btnCancelar:{ flex:1, backgroundColor:'#f3f4f6', borderRadius:12, paddingVertical:12, alignItems:'center' },
   btnCancelarT:{ fontSize:14, fontWeight:'600', color:'#555' },
-  btnGuardar:{ flex:1, backgroundColor:'#2563eb', borderRadius:12, paddingVertical:12, alignItems:'center' },
+  btnGuardar:{ flex:1, backgroundColor:'#5c1011', borderRadius:12, paddingVertical:12, alignItems:'center' },
   poiSelRow:      { flexDirection:'row', alignItems:'center', backgroundColor:'#fff', borderRadius:14, padding:12, marginBottom:8, gap:10, borderWidth:1.5, borderColor:'#e5e7eb' },
-  poiSelRowActivo:{ borderColor:'#2563eb', backgroundColor:'#eff6ff' },
+  poiSelRowActivo:{ borderColor:'#5c1011', backgroundColor:'#faf6f0' },
   poiSelCheck:    { width:24, height:24, borderRadius:12, borderWidth:2, borderColor:'#d1d5db', alignItems:'center', justifyContent:'center' },
-  poiSelCheckActivo:{ backgroundColor:'#2563eb', borderColor:'#2563eb' },
+  poiSelCheckActivo:{ backgroundColor:'#5c1011', borderColor:'#5c1011' },
   poiSelIcono:    { width:36, height:36, borderRadius:10, alignItems:'center', justifyContent:'center' },
   poiSelNombre:   { fontSize:14, fontWeight:'600', color:'#1a1a1a' },
   poiSelSub:      { fontSize:12, color:'#888', marginTop:1 },
