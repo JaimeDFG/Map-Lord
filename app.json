@@ -16,7 +16,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.James.maplord",
+      "package": "com.james.maplord",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -26,10 +26,9 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "owner": "jaimedf",
     "extra": {
       "eas": {
-        "projectId": "304bb603-58e8-4a02-a33d-63b7d2718382"
+        "projectId": "ae926b11-34ef-4a70-880f-542de6880690"
       }
     }
   }
