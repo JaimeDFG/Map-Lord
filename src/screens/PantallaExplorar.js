@@ -300,6 +300,7 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
         pais={pais?.nombre ?? 'España'}
         lang={lang}
         onCerrar={() => setModalRecomendaciones(false)}
+        poisExistentes={todosLosPois}
         onAñadir={(lugar) => {
           añadirPoi({
             id: `poi_${Date.now()}`,

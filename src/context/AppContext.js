@@ -1,11 +1,11 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const STORAGE_VIAJES  = 'maplord_viajes_v1';
-const STORAGE_MAPAS   = 'maplord_mapas_v1';
-const STORAGE_POIS    = 'maplord_custom_pois_v1';
-const STORAGE_RUTAS   = 'maplord_rutas_guardadas_v1';
-const STORAGE_LANG    = 'maplord_lang_v1';
+const STORAGE_VIAJES = 'maplord_viajes_v1';
+const STORAGE_MAPAS = 'maplord_mapas_v1';
+const STORAGE_POIS = 'maplord_custom_pois_v1';
+const STORAGE_RUTAS = 'maplord_rutas_guardadas_v1';
+const STORAGE_LANG = 'maplord_lang_v1';
 const STORAGE_VISITADOS = 'maplord_visitados_v1';
 
 const Ctx = createContext(null);
@@ -34,11 +34,11 @@ export function AppProvider({ children }) {
           AsyncStorage.getItem(STORAGE_LANG),
           AsyncStorage.getItem(STORAGE_VISITADOS),
         ]);
-        if (rv)  setViajes(JSON.parse(rv));
-        if (rm)  setMapas(JSON.parse(rm));
-        if (rp)  setPoisUsuario(JSON.parse(rp));
-        if (rr)  setRutasGuardadas(JSON.parse(rr));
-        if (rl)  setLangState(rl);
+        if (rv) setViajes(JSON.parse(rv));
+        if (rm) setMapas(JSON.parse(rm));
+        if (rp) setPoisUsuario(JSON.parse(rp));
+        if (rr) setRutasGuardadas(JSON.parse(rr));
+        if (rl) setLangState(rl);
         if (rvis) setPoisVisitados(JSON.parse(rvis));
       } catch (e) {}
       setVC(true);
@@ -77,20 +77,47 @@ export function AppProvider({ children }) {
       return { ...prev, [id]: { ...a, visitado: !a.visitado } };
     });
   }
-  function añadirCiudadViaje(paisId, ciudad) {
+
+  // AHORA: marca país como visitado automáticamente si añades una ciudad
+  // Y convierte coordenadas a formato {latitude, longitude} para react-native-maps
+  function añadirCiudadViaje(paisId, ciudad, coordenadasRaw = null) {
     setViajes(prev => {
       const a = prev[paisId] ?? { visitado: false, ciudades: [] };
-      if (a.ciudades.includes(ciudad)) return prev;
-      return { ...prev, [paisId]: { ...a, ciudades: [...a.ciudades, ciudad] } };
+      // Normalizamos ciudades existentes
+      const ciudadesNorm = a.ciudades.map(c => typeof c === 'string' ? { nombre: c, coordenadas: null } : c);
+      if (ciudadesNorm.find(c => c.nombre === ciudad)) return prev;
+
+      // Convertimos coordenadas al formato de react-native-maps
+      let coords = null;
+      if (coordenadasRaw) {
+        coords = {
+          latitude: coordenadasRaw.lat ?? coordenadasRaw.latitude ?? 0,
+          longitude: coordenadasRaw.lon ?? coordenadasRaw.longitude ?? 0,
+        };
+      }
+
+      return {
+        ...prev,
+        [paisId]: {
+          ...a,
+          visitado: true, // ← AUTO-MARCAR país como visitado
+          ciudades: [...ciudadesNorm, { nombre: ciudad, coordenadas: coords }]
+        }
+      };
     });
   }
+
   function borrarCiudadViaje(paisId, ciudad) {
     setViajes(prev => {
       const a = prev[paisId];
       if (!a) return prev;
-      return { ...prev, [paisId]: { ...a, ciudades: a.ciudades.filter(c => c !== ciudad) } };
+      return { ...prev, [paisId]: { ...a, ciudades: a.ciudades.filter(c => {
+        const nombre = typeof c === 'string' ? c : c.nombre;
+        return nombre !== ciudad;
+      }) } };
     });
   }
+
   function datosPais(id) {
     return viajes[id] ?? { visitado: false, ciudades: [] };
   }
@@ -157,7 +184,7 @@ export function AppProvider({ children }) {
 
   function togglePoiVisitado(id) {
     setPoisVisitados(prev => ({ ...prev, [id]: !prev[id] }));
-    setPoisUsuario(prev => prev.map(p => 
+    setPoisUsuario(prev => prev.map(p =>
       p.id === id ? { ...p, visitado: !(p.visitado ?? false) } : p
     ));
   }

@@ -145,7 +145,8 @@ const LUGARES_DEMO = {
 };
 
 export function buscarLugaresDemo(ciudad) {
-  const clave = ciudad?.toLowerCase().trim() || '';
+    const clave = ciudad?.toLowerCase().trim();
+    if (!clave) return null;
   // Buscar coincidencia exacta o parcial
   for (const [key, lugares] of Object.entries(LUGARES_DEMO)) {
     if (clave.includes(key) || key.includes(clave)) {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import {
   View, Text, TouchableOpacity, ScrollView, StyleSheet,
   Modal, TextInput,
@@ -9,6 +9,7 @@ import OsmTileLayer from '../components/OsmTileLayer';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
 import { nombrePaisEn, nombreContinenteEn } from '../constants/tourism';
+import { buscarCoordenadasCiudad } from '../services/poiSearch';
 import PAISES from '../data/paises.json';
 
 const CAPITALES = {
@@ -80,160 +81,279 @@ const CAPITALES = {
   VU:{lat:-17.7334,lng:168.321}, WS:{lat:-13.8314,lng:-171.7667},
 };
 
+const CONTINENTES = [
+  { key: 'Europa', emoji: '🌍' },
+  { key: 'América del Norte', emoji: '🌎' },
+  { key: 'América del Sur', emoji: '🌎' },
+  { key: 'Asia', emoji: '🌏' },
+  { key: 'África', emoji: '🌍' },
+  { key: 'Oceanía', emoji: '🌏' },
+];
+
+function coordValida(c) {
+  return c && typeof c.latitude === 'number' && typeof c.longitude === 'number'
+    && !isNaN(c.latitude) && !isNaN(c.longitude);
+}
+
 export default function PantallaPasaporte({ onCerrar }) {
-  const { lang, viajes, togglePaisVisitado, añadirCiudadViaje, borrarCiudadViaje, datosPais } = useApp();
+  const { lang, viajes, togglePaisVisitado, añadirCiudadViaje, borrarCiudadViaje, datosPais, poisUsuario } = useApp();
   const t = useT(lang);
   const insets = useSafeAreaInsets();
 
-  const [vista, setVista]           = useState('lista');
+  const [vista, setVista] = useState('lista');
   const [continente, setContinente] = useState('Europa');
-  const [modalPais, setModalPais]   = useState(null);
-  const [ciudad, setCiudad]         = useState('');
+  const [modalPais, setModalPais] = useState(null);
+  const [ciudad, setCiudad] = useState('');
+  const [modalLista, setModalLista] = useState(null); // 'paises' | 'ciudades' | 'continentes'
 
-  const totalPaises   = Object.values(viajes).filter(p => p?.visitado).length;
+  // ESTADÍSTICAS
+  const totalPaises = Object.values(viajes).filter(p => p?.visitado).length;
   const totalCiudades = Object.values(viajes).reduce((s, p) => s + (p?.ciudades?.length ?? 0), 0);
-  const pct           = Math.round((totalPaises / PAISES.length) * 100);
-  const filtrados     = PAISES.filter(p => p.continente === continente).sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+  const pct = Math.round((totalPaises / PAISES.length) * 100);
+
+  // Continentes visitados
+  const continentesVisitados = useMemo(() => {
+    const set = new Set();
+    for (const p of PAISES) {
+      if (datosPais(p.id).visitado) set.add(p.continente);
+    }
+    return set.size;
+  }, [viajes]);
+
+  const continenteMasVisitado = useMemo(() => {
+    const conts = {};
+    for (const p of PAISES) {
+      if (datosPais(p.id).visitado) {
+        conts[p.continente] = (conts[p.continente] ?? 0) + 1;
+      }
+    }
+    const entries = Object.entries(conts);
+    if (entries.length === 0) return null;
+    return entries.sort((a, b) => b[1] - a[1])[0][0];
+  }, [viajes]);
+
+  const paisMasCiudades = useMemo(() => {
+    let max = 0, paisMax = null;
+    for (const p of PAISES) {
+      const num = datosPais(p.id).ciudades?.length ?? 0;
+      if (num > max) { max = num; paisMax = p; }
+    }
+    return paisMax;
+  }, [viajes]);
+
+  // Todas las ciudades visitadas
+  const todasLasCiudades = useMemo(() => {
+    const lista = [];
+    for (const p of PAISES) {
+      const datos = datosPais(p.id);
+      if (!datos.ciudades) continue;
+      for (const c of datos.ciudades) {
+        const nombre = typeof c === 'string' ? c : c.nombre;
+        const coords = typeof c === 'string' ? null : c.coordenadas;
+        lista.push({ nombre, coords, paisId: p.id, paisNombre: nombrePaisEn(p.nombre, lang), paisEmoji: p.emoji });
+      }
+    }
+    return lista.sort((a, b) => a.paisNombre.localeCompare(b.paisNombre, lang === 'en' ? 'en' : 'es'));
+  }, [viajes, lang]);
+
+  const filtrados = PAISES.filter(p => p.continente === continente).sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
   const visitadosCont = filtrados.filter(p => datosPais(p.id).visitado).length;
   const paisesVisitadosConCoords = PAISES.filter(p => datosPais(p.id).visitado && CAPITALES[p.id]);
 
-  function añadir() {
+  async function añadir() {
     if (!ciudad.trim() || !modalPais) return;
-    añadirCiudadViaje(modalPais.id, ciudad.trim());
+    const coords = await buscarCoordenadasCiudad(ciudad.trim(), modalPais.nombre);
+    añadirCiudadViaje(modalPais.id, ciudad.trim(), coords);
     setCiudad('');
+  }
+
+  // Componente reutilizable: listado de ciudades
+  function CiudadesListado() {
+    if (todasLasCiudades.length === 0) return null;
+    return (
+      <View style={s.ciudadesSection}>
+        <Text style={s.ciudadesSectionTitulo}>🏙️ {lang === 'en' ? 'Cities visited' : 'Ciudades visitadas'} ({todasLasCiudades.length})</Text>
+        {todasLasCiudades.map((c, i) => (
+          <View key={`${c.paisId}-${c.nombre}-${i}`} style={s.ciudadRow}>
+            <Text style={s.ciudadRowEmoji}>{c.paisEmoji}</Text>
+            <View style={s.ciudadRowInfo}>
+              <Text style={s.ciudadRowNombre}>{c.nombre}</Text>
+              <Text style={s.ciudadRowPais}>{c.paisNombre}</Text>
+            </View>
+          </View>
+        ))}
+      </View>
+    );
+  }
+
+  function StatsContent() {
+    return (
+      <View style={{ padding: 16 }}>
+        <View style={s.statsGrid}>
+          <TouchableOpacity style={s.statCardGrid} onPress={() => setModalLista('paises')}>
+            <Text style={s.statEmoji}>🌍</Text>
+            <Text style={s.statNumGrid}>{totalPaises}</Text>
+            <Text style={s.statLabelGrid}>{t.paises}</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={s.statCardGrid} onPress={() => setModalLista('ciudades')}>
+            <Text style={s.statEmoji}>🏙️</Text>
+            <Text style={s.statNumGrid}>{totalCiudades}</Text>
+            <Text style={s.statLabelGrid}>{t.ciudades}</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={s.statCardGrid} onPress={() => setModalLista('continentes')}>
+            <Text style={s.statEmoji}>🌐</Text>
+            <Text style={s.statNumGrid}>{continentesVisitados}</Text>
+            <Text style={s.statLabelGrid}>{lang === 'en' ? 'Continents' : 'Continentes'}</Text>
+          </TouchableOpacity>
+
+          <View style={s.statCardGrid}>
+            <Text style={s.statEmoji}>📊</Text>
+            <Text style={s.statNumGrid}>{`${pct}%`}</Text>
+            <Text style={s.statLabelGrid}>{t.delMundo}</Text>
+          </View>
+
+          <View style={s.statCardGrid}>
+            <Text style={s.statEmoji}>🎯</Text>
+            <Text style={s.statNumGrid}>{`${totalPaises}/${PAISES.length}`}</Text>
+            <Text style={s.statLabelGrid}>{lang === 'en' ? 'Progress' : 'Progreso'}</Text>
+          </View>
+        </View>
+
+        <View style={s.progressBox}>
+          <View style={s.progressBg}><View style={[s.progressFill, { width: `${pct}%` }]} /></View>
+          <Text style={s.progressT}>{totalPaises} {t.de} {PAISES.length} {t.paisesVisitados}</Text>
+        </View>
+
+        <View style={s.extraStatsGrid}>
+          {continenteMasVisitado && (
+            <View style={s.extraStatGrid}>
+              <Text style={s.extraStatEmoji}>🌍</Text>
+              <Text style={s.extraStatLabel}>{lang === 'en' ? 'Top continent' : 'Top continente'}</Text>
+              <Text style={s.extraStatValue}>{nombreContinenteEn(continenteMasVisitado, lang)}</Text>
+            </View>
+          )}
+          {paisMasCiudades && (
+            <View style={s.extraStatGrid}>
+              <Text style={s.extraStatEmoji}>{paisMasCiudades.emoji}</Text>
+              <Text style={s.extraStatLabel}>{lang === 'en' ? 'Most cities' : 'Más ciudades'}</Text>
+              <Text style={s.extraStatValue}>{nombrePaisEn(paisMasCiudades.nombre, lang)}</Text>
+            </View>
+          )}
+        </View>
+
+        <CiudadesListado />
+      </View>
+    );
   }
 
   return (
     <View style={s.root}>
-      <View style={[s.safe, { paddingTop: insets.top }]}>
-        <View style={s.header}>
-          <Text style={s.titulo}>{t.misViajes}</Text>
-          <View style={s.headerBotones}>
-            <TouchableOpacity
-              style={[s.vistaBtn, vista === 'lista' && s.vistaBtnActivo]}
-              onPress={() => setVista('lista')}
-            >
-              <Text style={[s.vistaBtnT, vista === 'lista' && s.vistaBtnTActivo]}>{lang === 'en' ? 'List' : 'Lista'}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[s.vistaBtn, vista === 'mapa' && s.vistaBtnActivo]}
-              onPress={() => setVista('mapa')}
-            >
-              <Text style={[s.vistaBtnT, vista === 'mapa' && s.vistaBtnTActivo]}>{lang === 'en' ? 'Map' : 'Mapa'}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={onCerrar} style={s.cerrar}>
-              <Text style={s.cerrarT}>✕</Text>
-            </TouchableOpacity>
-          </View>
+      <View style={[s.safe, { paddingTop: insets.top, backgroundColor: '#5c1011' }]} />
+      <View style={s.header}>
+        <Text style={s.titulo}> {t.misViajes}</Text>
+        <View style={s.headerBotones}>
+          <TouchableOpacity style={[s.vistaBtn, vista === 'lista' && s.vistaBtnActivo]} onPress={() => setVista('lista')}>
+            <Text style={[s.vistaBtnT, vista === 'lista' && s.vistaBtnTActivo]}>{lang === 'en' ? 'List' : 'Lista'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[s.vistaBtn, vista === 'mapa' && s.vistaBtnActivo]} onPress={() => setVista('mapa')}>
+            <Text style={[s.vistaBtnT, vista === 'mapa' && s.vistaBtnTActivo]}>{lang === 'en' ? 'Map' : 'Mapa'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[s.vistaBtn, vista === 'stats' && s.vistaBtnActivo]} onPress={() => setVista('stats')}>
+            <Text style={[s.vistaBtnT, vista === 'stats' && s.vistaBtnTActivo]}>{lang === 'en' ? 'Stats' : 'Datos'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={onCerrar} style={s.cerrar}><Text style={s.cerrarT}>✕</Text></TouchableOpacity>
         </View>
       </View>
 
-      <View style={s.statsRow}>
-        {[
-          { num: totalPaises,   label: t.paises },
-          { num: totalCiudades, label: t.ciudades },
-          { num: `${pct}%`,     label: t.delMundo },
-        ].map(st => (
-          <View key={st.label} style={s.statCard}>
-            <Text style={s.statNum}>{st.num}</Text>
-            <Text style={s.statLabel}>{st.label}</Text>
-          </View>
-        ))}
-      </View>
+      <ScrollView style={s.flex} contentContainerStyle={{ paddingBottom: 20 }}>
 
-      <View style={s.progressBox}>
-        <View style={s.progressBg}>
-          <View style={[s.progressFill, { width: `${pct}%` }]} />
-        </View>
-        <Text style={s.progressT}>{totalPaises} {t.de} {PAISES.length} {t.paisesVisitados}</Text>
-      </View>
+        {vista === 'stats' && <StatsContent />}
 
-      {vista === 'mapa' && (
-        <View style={{ flex: 1 }}>
-          <MapView
-            style={{ flex: 1 }}
-            initialRegion={{ latitude: 20, longitude: 10, latitudeDelta: 120, longitudeDelta: 120 }}
-            mapType="none"
-          >
-            <OsmTileLayer />
-            {paisesVisitadosConCoords.map(pais => (
-              <Marker
-                key={pais.id}
-                coordinate={{ latitude: CAPITALES[pais.id].lat, longitude: CAPITALES[pais.id].lng }}
-                onPress={() => { setModalPais(pais); setCiudad(''); }}
+        {vista === 'mapa' && (
+          <>
+            <View style={s.mapaBoxFull}>
+              <MapView
+                style={s.mapaFull}
+                initialRegion={{ latitude: 20, longitude: 0, latitudeDelta: 120, longitudeDelta: 120 }}
+                mapType="none"
+                key={`mapa-${Date.now()}`}
               >
-                <Text style={{ fontSize: 24 }}>{pais.emoji}</Text>
-              </Marker>
-            ))}
-          </MapView>
-          {paisesVisitadosConCoords.length === 0 && (
-            <View style={s.mapaVacio}>
-              <Text style={s.mapaVacioT}>{t.marcaPaises}</Text>
+                <OsmTileLayer />
+                {paisesVisitadosConCoords.map(pais => (
+                  <Marker
+                    key={pais.id}
+                    coordinate={{ latitude: CAPITALES[pais.id].lat, longitude: CAPITALES[pais.id].lng }}
+                    onPress={() => { setModalPais(pais); setCiudad(''); }}
+                  >
+                    <View style={s.paisPin}><Text style={{ fontSize: 20 }}>{pais.emoji}</Text></View>
+                  </Marker>
+                ))}
+              </MapView>
+              {paisesVisitadosConCoords.length === 0 && (
+                <View style={s.mapaVacio}><Text style={s.mapaVacioT}>{t.marcaPaises}</Text></View>
+              )}
             </View>
-          )}
-        </View>
-      )}
+            <CiudadesListado />
+          </>
+        )}
 
-      {vista === 'lista' && (
-        <ScrollView style={s.flex} contentContainerStyle={{ paddingBottom: 30 }}>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={s.contTabs}
-          >
-            {['Europa', 'América del Norte', 'América del Sur', 'Asia', 'África', 'Oceanía'].map(c => (
-              <TouchableOpacity
-                key={c}
-                style={[s.contTab, continente === c && s.contTabActivo]}
-                onPress={() => setContinente(c)}
-              >
-                <Text style={[s.contTabT, continente === c && s.contTabTActivo]}>{nombreContinenteEn(c, lang)}</Text>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
+        {vista === 'lista' && (
+          <>
+            {/* Grid 2x3 de continentes */}
+            <View style={s.contGrid}>
+              {CONTINENTES.map(c => {
+                const visitadosEnCont = PAISES.filter(p => p.continente === c.key && datosPais(p.id).visitado).length;
+                const totalEnCont = PAISES.filter(p => p.continente === c.key).length;
+                const activo = continente === c.key;
+                return (
+                  <TouchableOpacity
+                    key={c.key}
+                    style={[s.contCard, activo && s.contCardActivo]}
+                    onPress={() => setContinente(c.key)}
+                  >
+                    <Text style={s.contCardEmoji}>{c.emoji}</Text>
+                    <Text style={[s.contCardNombre, activo && s.contCardNombreActivo]}>{nombreContinenteEn(c.key, lang)}</Text>
+                    <Text style={[s.contCardCount, activo && s.contCardCountActivo]}>{visitadosEnCont}/{totalEnCont}</Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
 
-          <Text style={s.contResumen}>
-            {visitadosCont} {t.de} {filtrados.length} {t.paisesEn} {nombreContinenteEn(continente, lang)}
-          </Text>
+            <Text style={s.contResumen}>{visitadosCont} {t.de} {filtrados.length} {t.paisesEn} {nombreContinenteEn(continente, lang)}</Text>
+            <View style={s.grid}>
+              {filtrados.map(pais => {
+                const d = datosPais(pais.id);
+                return (
+                  <TouchableOpacity key={pais.id} style={[s.paisCard, d.visitado && s.paisCardV]} onPress={() => { setModalPais(pais); setCiudad(''); }}>
+                    <Text style={s.paisEmoji}>{pais.emoji}</Text>
+                    <Text style={[s.paisNombre, d.visitado && s.paisNombreV]}>{nombrePaisEn(pais.nombre, lang)}</Text>
+                    {d.visitado && <View style={s.dot} />}
+                    {d.ciudades.length > 0 && <Text style={s.ciudadesCount}>{d.ciudades.length}</Text>}
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+            <Text style={s.ayuda}>{t.tocaPais}</Text>
+          </>
+        )}
 
-          <View style={s.grid}>
-            {filtrados.map(pais => {
-              const d = datosPais(pais.id);
-              return (
-                <TouchableOpacity
-                  key={pais.id}
-                  style={[s.paisCard, d.visitado && s.paisCardV]}
-                  onPress={() => { setModalPais(pais); setCiudad(''); }}
-                >
-                  <Text style={s.paisEmoji}>{pais.emoji}</Text>
-                  <Text style={[s.paisNombre, d.visitado && s.paisNombreV]} numberOfLines={2}>
-                    {nombrePaisEn(pais.nombre, lang)}
-                  </Text>
-                  {d.visitado && <View style={s.dot} />}
-                  {d.ciudades.length > 0 && (
-                    <Text style={s.ciudadesCount}>{d.ciudades.length}</Text>
-                  )}
-                </TouchableOpacity>
-              );
-            })}
-          </View>
-          <Text style={s.ayuda}>{t.tocaPais}</Text>
-        </ScrollView>
-      )}
+      </ScrollView>
 
       <Modal visible={!!modalPais} animationType="slide" transparent>
         <View style={s.modalFondo}>
           <View style={s.modalCont}>
+            <TouchableOpacity onPress={() => setModalPais(null)} style={s.modalCerrarX}>
+              <Text style={s.modalCerrarXT}>✕</Text>
+            </TouchableOpacity>
+
             <View style={s.drag} />
             <View style={s.modalHeader}>
-              <Text style={{ fontSize: 32 }}>{modalPais?.emoji}</Text>
-              <View style={{ flex: 1, marginLeft: 12 }}>
-                <Text style={s.modalTitulo}>{nombrePaisEn(modalPais?.nombre, lang)}</Text>
+              <View>
+                <Text style={s.modalTitulo}>{modalPais?.emoji} {nombrePaisEn(modalPais?.nombre, lang)}</Text>
                 <Text style={s.modalSub}>{nombreContinenteEn(modalPais?.continente, lang)}</Text>
               </View>
-              <TouchableOpacity onPress={() => setModalPais(null)} style={s.cerrarModal}>
-                <Text style={{ color: '#555' }}>✕</Text>
-              </TouchableOpacity>
             </View>
 
             <TouchableOpacity
@@ -251,94 +371,177 @@ export default function PantallaPasaporte({ onCerrar }) {
             <View style={s.addRow}>
               <TextInput
                 style={s.input}
-                value={ciudad}
-                onChangeText={setCiudad}
                 placeholder={t.nombreCiudadPasaporte}
                 placeholderTextColor="#bbb"
+                value={ciudad}
+                onChangeText={setCiudad}
                 onSubmitEditing={añadir}
-                returnKeyType="done"
               />
-              <TouchableOpacity style={s.addBtn} onPress={añadir}>
-                <Text style={s.addBtnT}>+</Text>
-              </TouchableOpacity>
+              <TouchableOpacity style={s.addBtn} onPress={añadir}><Text style={s.addBtnT}>+</Text></TouchableOpacity>
             </View>
 
-            <ScrollView style={{ maxHeight: 160 }} nestedScrollEnabled>
-              {datosPais(modalPais?.id ?? '').ciudades.map(c => (
-                <View key={c} style={s.ciudadFila}>
-                  <Text style={s.ciudadT}>{c}</Text>
-                  <TouchableOpacity onPress={() => borrarCiudadViaje(modalPais.id, c)}>
+            {datosPais(modalPais?.id ?? '').ciudades.map((c, idx) => {
+              const nombre = typeof c === 'string' ? c : c.nombre;
+              return (
+                <View key={`${nombre}-${idx}`} style={s.ciudadFila}>
+                  <Text style={s.ciudadT}>📍 {nombre}</Text>
+                  <TouchableOpacity onPress={() => borrarCiudadViaje(modalPais.id, nombre)}>
                     <Text style={s.ciudadDel}>✕</Text>
                   </TouchableOpacity>
                 </View>
-              ))}
-              {datosPais(modalPais?.id ?? '').ciudades.length === 0 && (
-                <Text style={{ color: '#ccc', fontSize: 13, paddingVertical: 8 }}>
-                  {t.sinCiudades}
-                </Text>
-              )}
-            </ScrollView>
+              );
+            })}
+
+            {datosPais(modalPais?.id ?? '').ciudades.length === 0 && (
+              <Text style={{ fontSize: 13, color: '#bbb', textAlign: 'center', marginTop: 12 }}>{t.sinCiudades}</Text>
+            )}
           </View>
         </View>
       </Modal>
+
+            {/* Modal de lista (stats clicables) */}
+      <Modal visible={!!modalLista} animationType="slide" transparent>
+        <View style={s.modalFondo}>
+          <View style={s.modalCont}>
+            <TouchableOpacity onPress={() => setModalLista(null)} style={s.modalCerrarX}>
+              <Text style={s.modalCerrarXT}>✕</Text>
+            </TouchableOpacity>
+            <View style={s.drag} />
+
+            {modalLista === 'paises' && (
+              <>
+                <Text style={s.modalTitulo}>🌍 {lang === 'en' ? 'Countries visited' : 'Países visitados'} ({totalPaises})</Text>
+                <ScrollView style={{ maxHeight: 320 }}>
+                  {PAISES.filter(p => datosPais(p.id).visitado).sort((a,b) => nombrePaisEn(a.nombre, lang).localeCompare(nombrePaisEn(b.nombre, lang), lang === 'en' ? 'en' : 'es')).map(p => (
+                    <View key={p.id} style={s.listaFila}>
+                      <Text style={{ fontSize: 18, marginRight: 10 }}>{p.emoji}</Text>
+                      <Text style={s.listaFilaT}>{nombrePaisEn(p.nombre, lang)}</Text>
+                    </View>
+                  ))}
+                </ScrollView>
+              </>
+            )}
+
+            {modalLista === 'ciudades' && (
+              <>
+                <Text style={s.modalTitulo}>🏙️ {lang === 'en' ? 'Cities visited' : 'Ciudades visitadas'} ({totalCiudades})</Text>
+                <ScrollView style={{ maxHeight: 320 }}>
+                  {todasLasCiudades.map((c, i) => (
+                    <View key={`${c.paisId}-${c.nombre}-${i}`} style={s.listaFila}>
+                      <Text style={{ fontSize: 18, marginRight: 10 }}>{c.paisEmoji}</Text>
+                      <View>
+                        <Text style={s.listaFilaT}>{c.nombre}</Text>
+                        <Text style={{ fontSize: 11, color: '#8a7e72' }}>{c.paisNombre}</Text>
+                      </View>
+                    </View>
+                  ))}
+                </ScrollView>
+              </>
+            )}
+
+            {modalLista === 'continentes' && (
+              <>
+                <Text style={s.modalTitulo}>🌐 {lang === 'en' ? 'Continents visited' : 'Continentes visitados'} ({continentesVisitados})</Text>
+                <ScrollView style={{ maxHeight: 320 }}>
+                  {Array.from(new Set(PAISES.filter(p => datosPais(p.id).visitado).map(p => p.continente))).sort().map(cont => (
+                    <View key={cont} style={s.listaFila}>
+                      <Text style={{ fontSize: 18, marginRight: 10 }}>🌍</Text>
+                      <Text style={s.listaFilaT}>{nombreContinenteEn(cont, lang)}</Text>
+                    </View>
+                  ))}
+                </ScrollView>
+              </>
+            )}
+          </View>
+        </View>
+      </Modal>
+
     </View>
   );
 }
 
 const s = StyleSheet.create({
-  root:            { flex: 1, backgroundColor: '#f7f4f0' },
-  flex:            { flex: 1 },
-  safe:            { backgroundColor: '#5c1011' },
-  header:          { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 14 },
-  titulo:          { flex: 1, fontSize: 18, fontWeight: '600', color: '#d4a843' },
-  headerBotones:   { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  vistaBtn:        { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 10, backgroundColor: 'rgba(212,168,67,0.15)' },
-  vistaBtnActivo:  { backgroundColor: '#d4a843' },
-  vistaBtnT:       { fontSize: 12, fontWeight: '500', color: '#f5e6c8' },
-  vistaBtnTActivo: { color: '#5c1011' },
-  cerrar:          { backgroundColor: 'rgba(212,168,67,0.15)', borderRadius: 10, width: 30, height: 30, alignItems: 'center', justifyContent: 'center', marginLeft: 4 },
-  cerrarT:         { fontSize: 14, color: '#f5e6c8' },
-  statsRow:        { flexDirection: 'row', padding: 16, gap: 10 },
-  statCard:        { flex: 1, backgroundColor: '#fff', borderRadius: 12, padding: 14, alignItems: 'center', borderWidth: 1, borderColor: '#e8dfd5' },
-  statNum:         { fontSize: 20, fontWeight: '600', color: '#5c1011' },
-  statLabel:       { fontSize: 11, color: '#8a7e72', marginTop: 2 },
-  progressBox:     { paddingHorizontal: 16, marginBottom: 8 },
-  progressBg:      { height: 6, backgroundColor: '#e5e2dd', borderRadius: 3, overflow: 'hidden' },
-  progressFill:    { height: '100%', backgroundColor: '#d4a843', borderRadius: 3 },
-  progressT:       { fontSize: 11, color: '#8a7e72', marginTop: 6, textAlign: 'center', marginBottom: 8 },
-  mapaVacio:       { position: 'absolute', bottom: 30, left: 20, right: 20, backgroundColor: 'rgba(92,16,17,0.85)', borderRadius: 12, padding: 16, alignItems: 'center' },
-  mapaVacioT:      { color: '#f5e6c8', fontSize: 13, textAlign: 'center', lineHeight: 20 },
-  contTabs:        { paddingHorizontal: 16, gap: 8, paddingBottom: 8, paddingTop: 8 },
-  contTab:         { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 10, backgroundColor: '#fff', borderWidth: 1, borderColor: '#e8dfd5' },
-  contTabActivo:   { backgroundColor: '#5c1011', borderColor: '#5c1011' },
-  contTabT:        { fontSize: 11, fontWeight: '500', color: '#555' },
-  contTabTActivo:  { color: '#f5e6c8' },
-  contResumen:     { paddingHorizontal: 16, marginBottom: 10, fontSize: 12, color: '#aaa' },
-  grid:            { flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: 12, gap: 8 },
-  paisCard:        { width: '30%', backgroundColor: '#fff', borderRadius: 10, padding: 10, alignItems: 'center', borderWidth: 1, borderColor: '#e8dfd5' },
-  paisCardV:       { borderColor: '#5c1011', backgroundColor: '#faf6f0' },
-  paisEmoji:       { fontSize: 22, marginBottom: 3 },
-  paisNombre:      { fontSize: 10, fontWeight: '500', color: '#555', textAlign: 'center' },
-  paisNombreV:     { color: '#2c1810', fontWeight: '600' },
-  dot:             { width: 6, height: 6, borderRadius: 3, backgroundColor: '#d4a843', marginTop: 4 },
-  ciudadesCount:   { fontSize: 10, color: '#5c1011', marginTop: 2, fontWeight: '500' },
-  ayuda:           { fontSize: 11, color: '#bbb', textAlign: 'center', marginTop: 14, paddingHorizontal: 20, paddingBottom: 8 },
-  modalFondo:      { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(44,24,16,0.5)' },
-  modalCont:       { backgroundColor: '#fff', borderTopLeftRadius: 20, borderTopRightRadius: 20, padding: 20, paddingBottom: 36 },
-  drag:            { width: 40, height: 4, backgroundColor: '#ddd', borderRadius: 2, alignSelf: 'center', marginBottom: 16 },
-  modalHeader:     { flexDirection: 'row', alignItems: 'center', marginBottom: 16 },
-  modalTitulo:     { fontSize: 17, fontWeight: '600', color: '#2c1810' },
-  modalSub:        { fontSize: 13, color: '#8a7e72' },
-  cerrarModal:     { backgroundColor: '#f0eeea', borderRadius: 12, width: 28, height: 28, alignItems: 'center', justifyContent: 'center' },
-  toggleBtn:       { backgroundColor: '#faf6f0', borderRadius: 10, paddingVertical: 12, alignItems: 'center', borderWidth: 1, borderColor: '#e8dfd5' },
+  root: { flex: 1, backgroundColor: '#f7f4f0' },
+  flex: { flex: 1 },
+  safe: { backgroundColor: '#5c1011' },
+  header: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 14 },
+  titulo: { flex: 1, fontSize: 18, fontWeight: '600', color: '#d4a843' },
+  headerBotones: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  // BOTONES: inactivo = borde dorado + texto granate. Activo = fondo dorado + texto granate
+  vistaBtn: { paddingHorizontal: 10, paddingVertical: 6, borderRadius: 10, borderWidth: 1.5, borderColor: '#d4a843', backgroundColor: 'transparent' },
+  vistaBtnActivo: { backgroundColor: '#5c1011', borderColor: '#5c1011' },  // ← fondo ROJO activo
+  vistaBtnT: { fontSize: 12, fontWeight: '700', color: '#d4a843' },
+  vistaBtnTActivo: { color: '#f5e6c8' },  // ← mismo color crema, NO cambia
+  cerrar: { borderWidth: 1.5, borderColor: '#d4a843', borderRadius: 10, width: 30, height: 30, alignItems: 'center', justifyContent: 'center', marginLeft: 4 },
+  cerrarT: { fontSize: 14, color: '#d4a843', fontWeight: '700' },
+  // Stats
+  statsGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginBottom: 16 },
+  statCardGrid: { width: '31%', backgroundColor: '#fff', borderRadius: 12, padding: 14, alignItems: 'center', borderWidth: 1, borderColor: '#e8dfd5' },
+  statEmoji: { fontSize: 20, marginBottom: 4 },
+  statNumGrid: { fontSize: 18, fontWeight: '700', color: '#5c1011' },
+  statLabelGrid: { fontSize: 10, color: '#8a7e72', marginTop: 2, textAlign: 'center' },
+  progressBox: { marginBottom: 16 },
+  progressBg: { height: 6, backgroundColor: '#e5e2dd', borderRadius: 3, overflow: 'hidden' },
+  progressFill: { height: '100%', backgroundColor: '#d4a843', borderRadius: 3 },
+  progressT: { fontSize: 11, color: '#8a7e72', marginTop: 6, textAlign: 'center' },
+  extraStatsGrid: { flexDirection: 'row', gap: 10, marginBottom: 16 },
+  extraStatGrid: { flex: 1, backgroundColor: '#fff', borderRadius: 12, padding: 14, alignItems: 'center', borderWidth: 1, borderColor: '#e8dfd5' },
+  extraStatEmoji: { fontSize: 22, marginBottom: 4 },
+  extraStatLabel: { fontSize: 10, color: '#8a7e72', textTransform: 'uppercase', letterSpacing: 0.5 },
+  extraStatValue: { fontSize: 13, fontWeight: '600', color: '#5c1011', marginTop: 2, textAlign: 'center' },
+  // Mapa
+  listaFila: { flexDirection: 'row', alignItems: 'center', paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: '#f0eeea' },
+  listaFilaT: { fontSize: 15, fontWeight: '500', color: '#2c1810' },
+  mapaBoxFull: { marginHorizontal: 16, marginTop: 16, borderRadius: 16, overflow: 'hidden', height: 420 },
+  mapaFull: { flex: 1 },
+  mapaVacio: { position: 'absolute', bottom: 30, left: 20, right: 20, backgroundColor: 'rgba(92,16,17,0.85)', borderRadius: 12, padding: 16, alignItems: 'center' },
+  mapaVacioT: { color: '#f5e6c8', fontSize: 13, textAlign: 'center', lineHeight: 20 },
+  paisPin: { backgroundColor: 'rgba(255,255,255,0.9)', borderRadius: 20, padding: 4, shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 4, elevation: 3 },
+  // Lista - Grid continentes 2x3
+  contGrid: { flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: 16, gap: 10, paddingTop: 16, paddingBottom: 8 },
+  contCard: { width: '31%', backgroundColor: '#fff', borderRadius: 12, padding: 12, alignItems: 'center', borderWidth: 1, borderColor: '#e8dfd5' },
+  contCardActivo: { backgroundColor: '#5c1011', borderColor: '#5c1011' },
+  contCardEmoji: { fontSize: 24, marginBottom: 4 },
+  contCardNombre: { fontSize: 10, fontWeight: '600', color: '#555', textAlign: 'center' },
+  contCardNombreActivo: { color: '#f5e6c8' },
+  contCardCount: { fontSize: 11, color: '#8a7e72', marginTop: 2 },
+  contCardCountActivo: { color: '#d4a843' },
+  contResumen: { paddingHorizontal: 16, marginBottom: 10, fontSize: 12, color: '#aaa' },
+  grid: { flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: 12, gap: 8 },
+  paisCard: { width: '30%', backgroundColor: '#fff', borderRadius: 10, padding: 10, alignItems: 'center', borderWidth: 1, borderColor: '#e8dfd5' },
+  paisCardV: { borderColor: '#5c1011', backgroundColor: '#faf6f0' },
+  paisEmoji: { fontSize: 22, marginBottom: 3 },
+  paisNombre: { fontSize: 10, fontWeight: '500', color: '#555', textAlign: 'center' },
+  paisNombreV: { color: '#2c1810', fontWeight: '600' },
+  dot: { width: 6, height: 6, borderRadius: 3, backgroundColor: '#d4a843', marginTop: 4 },
+  ciudadesCount: { fontSize: 10, color: '#5c1011', marginTop: 2, fontWeight: '500' },
+  ayuda: { fontSize: 11, color: '#bbb', textAlign: 'center', marginTop: 14, paddingHorizontal: 20, paddingBottom: 8 },
+  // Ciudades listado
+  ciudadesSection: { marginHorizontal: 16, marginTop: 16, marginBottom: 20, backgroundColor: '#fff', borderRadius: 16, padding: 16, borderWidth: 1, borderColor: '#e8dfd5' },
+  ciudadesSectionTitulo: { fontSize: 14, fontWeight: '700', color: '#5c1011', marginBottom: 12 },
+  ciudadRow: { flexDirection: 'row', alignItems: 'center', paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: '#f0eeea' },
+  ciudadRowEmoji: { fontSize: 18, marginRight: 10 },
+  ciudadRowInfo: { flex: 1 },
+  ciudadRowNombre: { fontSize: 14, fontWeight: '600', color: '#2c1810' },
+  ciudadRowPais: { fontSize: 11, color: '#8a7e72', marginTop: 1 },
+  // Modal
+  modalFondo: { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(44,24,16,0.5)' },
+  modalCont: { backgroundColor: '#fff', borderTopLeftRadius: 20, borderTopRightRadius: 20, padding: 20, paddingBottom: 36, position: 'relative' },
+  modalCerrarX: { position: 'absolute', top: 16, right: 16, zIndex: 10, backgroundColor: '#f0eeea', borderRadius: 12, width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
+  modalCerrarXT: { fontSize: 14, color: '#555' },
+  drag: { width: 40, height: 4, backgroundColor: '#ddd', borderRadius: 2, alignSelf: 'center', marginBottom: 16 },
+  modalHeader: { marginBottom: 16 },
+  modalTitulo: { fontSize: 17, fontWeight: '600', color: '#2c1810', marginBottom: 18 },
+  modalSub: { fontSize: 13, color: '#8a7e72' },
+  toggleBtn: { backgroundColor: '#faf6f0', borderRadius: 10, paddingVertical: 12, alignItems: 'center', borderWidth: 1, borderColor: '#e8dfd5' },
   toggleBtnActivo: { backgroundColor: '#5c1011', borderColor: '#5c1011' },
-  toggleBtnT:      { fontWeight: '600', fontSize: 13 },
-  secLabel:        { fontSize: 11, fontWeight: '600', color: '#8a7e72', textTransform: 'uppercase', letterSpacing: 0.5 },
-  addRow:          { flexDirection: 'row', gap: 8, marginBottom: 12 },
-  input:           { flex: 1, backgroundColor: '#f7f4f0', borderRadius: 10, paddingHorizontal: 12, paddingVertical: 9, fontSize: 14, color: '#2c1810', borderWidth: 1, borderColor: '#e8dfd5' },
-  addBtn:          { backgroundColor: '#5c1011', borderRadius: 10, width: 44, alignItems: 'center', justifyContent: 'center' },
-  addBtnT:         { color: '#f5e6c8', fontWeight: '700', fontSize: 20 },
-  ciudadFila:      { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: '#f0eeea' },
-  ciudadT:         { fontSize: 14, color: '#333' },
-  ciudadDel:       { fontSize: 14, color: '#ccc', paddingHorizontal: 6 },
+  toggleBtnT: { fontWeight: '600', fontSize: 13 },
+  secLabel: { fontSize: 11, fontWeight: '600', color: '#8a7e72', textTransform: 'uppercase', letterSpacing: 0.5 },
+  addRow: { flexDirection: 'row', gap: 8, marginBottom: 12 },
+  input: { flex: 1, backgroundColor: '#f7f4f0', borderRadius: 10, paddingHorizontal: 12, paddingVertical: 9, fontSize: 14, color: '#2c1810', borderWidth: 1, borderColor: '#e8dfd5' },
+  addBtn: { backgroundColor: '#5c1011', borderRadius: 10, width: 44, alignItems: 'center', justifyContent: 'center' },
+  addBtnT: { color: '#f5e6c8', fontWeight: '700', fontSize: 20 },
+  ciudadFila: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: '#f0eeea' },
+  ciudadT: { fontSize: 14, color: '#333' },
+  ciudadDel: { fontSize: 14, color: '#ccc', paddingHorizontal: 6 },
 });

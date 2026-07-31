@@ -150,7 +150,7 @@ export default function PantallaInicio({
 
       <View style={s.header}>
         <TouchableOpacity onPress={onVolverInicio} style={s.btnBack}>
-          <Text style={s.btnBackT}>← {lang === 'en' ? 'Home' : 'Inicio'}</Text>
+          <Text style={s.btnBackT}> {lang === 'en' ? 'Home' : 'Inicio'}</Text>
         </TouchableOpacity>
         <Text style={s.headerTitulo}>{lang === 'en' ? 'My Maps' : 'Mis Mapas'}</Text>
         <TouchableOpacity
