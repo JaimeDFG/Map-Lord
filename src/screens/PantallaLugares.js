@@ -4,7 +4,7 @@ import {
   Modal, TextInput,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, UrlTile } from 'react-native-maps';
 import OsmTileLayer from '../components/OsmTileLayer';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
@@ -196,7 +196,11 @@ export default function PantallaLugares({ ciudad, onAbrirPOI }) {
               </TouchableOpacity>
             </View>
           </View>
-          <MapView style={{ flex: 1 }} initialRegion={region} mapType="none">
+          <MapView style={{ flex: 1 }} initialRegion={region} >
+            <UrlTile
+               urlTemplate="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+                maximumZ={19}
+              />
             <OsmTileLayer />
             {/* Pins atenuados: los que NO están en el filtro */}
             {poisDeLaCiudad

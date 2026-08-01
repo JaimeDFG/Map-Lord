@@ -4,7 +4,7 @@ import {
   Modal, TextInput,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import MapView, { Marker, Polyline } from 'react-native-maps';
+import MapView, { Marker, Polyline, UrlTile  } from 'react-native-maps';
 import OsmTileLayer from '../components/OsmTileLayer';
 import ModalRecomendaciones from '../components/ModalRecomendaciones';
 import { useApp } from '../context/AppContext';
@@ -168,7 +168,11 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
         </View>
       </View>
 
-      <MapView style={s.mapa} key={`${ciudad?.nombre ?? 'madrid'}_${poisDelMapa.length}`} initialRegion={region} mapType="none" showsUserLocation onPress={handleMapaPress}>
+      <MapView style={s.mapa} key={`${ciudad?.nombre ?? 'madrid'}_${poisDelMapa.length}`} initialRegion={region} showsUserLocation onPress={handleMapaPress}>
+        <UrlTile
+          urlTemplate="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+          maximumZ={19}
+        />
         <OsmTileLayer />
         {rutaActiva && (
           <Polyline coordinates={rutaActiva.map(p => p.coordenadas)} strokeColor="#5c1011" strokeWidth={3} lineDashPattern={[8, 4]} />

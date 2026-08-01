@@ -4,7 +4,7 @@ import {
   Modal, TextInput,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import MapView, { Marker, Polyline } from 'react-native-maps';
+import MapView, { Marker, Polyline, UrlTile } from 'react-native-maps';
 import OsmTileLayer from '../components/OsmTileLayer';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
@@ -350,6 +350,10 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
                 )}
 
                 <MapView style={s.mapa} region={region} onPress={tocarMapa}>
+                  <UrlTile
+                    urlTemplate="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    maximumZ={19}
+                  />
                   <OsmTileLayer />
                   {marcador && (
                     <Marker coordinate={marcador}>
