@@ -4,8 +4,7 @@ import {
   Modal, TextInput,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import MapView, { Marker, UrlTile } from 'react-native-maps';
-import OsmTileLayer from '../components/OsmTileLayer';
+import MapaWeb from '../components/MapaWeb';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
 import { nombrePaisEn, nombreContinenteEn } from '../constants/tourism';
@@ -274,26 +273,27 @@ export default function PantallaPasaporte({ onCerrar }) {
         {vista === 'mapa' && (
           <>
             <View style={s.mapaBoxFull}>
-              <MapView
+              
+                          <MapaWeb
                 style={s.mapaFull}
+                mapKey={`mapa-${Date.now()}`}
                 initialRegion={{ latitude: 20, longitude: 0, latitudeDelta: 120, longitudeDelta: 120 }}
-                key={`mapa-${Date.now()}`}
-              >
-                <UrlTile
-                  urlTemplate="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  maximumZ={19}
-                />
-                <OsmTileLayer />
-                {paisesVisitadosConCoords.map(pais => (
-                  <Marker
-                    key={pais.id}
-                    coordinate={{ latitude: CAPITALES[pais.id].lat, longitude: CAPITALES[pais.id].lng }}
-                    onPress={() => { setModalPais(pais); setCiudad(''); }}
-                  >
-                    <View style={s.paisPin}><Text style={{ fontSize: 20 }}>{pais.emoji}</Text></View>
-                  </Marker>
-                ))}
-              </MapView>
+                onMarkerPress={(id) => {
+                  const pais = PAISES.find(p => p.id === id);
+                  if (pais) { setModalPais(pais); setCiudad(''); }
+                }}
+                markers={paisesVisitadosConCoords.map(pais => ({
+                  latitude: CAPITALES[pais.id].lat,
+                  longitude: CAPITALES[pais.id].lng,
+                  emoji: pais.emoji,
+                  color: 'rgba(255,255,255,0.9)',
+                  size: 36,
+                  fontSize: 20,
+                  borderRadius: 20,
+                  onPressId: pais.id,
+                }))}
+              />
+
               {paisesVisitadosConCoords.length === 0 && (
                 <View style={s.mapaVacio}><Text style={s.mapaVacioT}>{t.marcaPaises}</Text></View>
               )}

@@ -4,8 +4,7 @@ import {
   Modal, TextInput,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import MapView, { Marker, Polyline, UrlTile } from 'react-native-maps';
-import OsmTileLayer from '../components/OsmTileLayer';
+import MapaWeb from '../components/MapaWeb';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
 import { CATEGORIAS, RELEVANCIA, OPCIONES_TIEMPO, labelCategoria, labelRelevancia } from '../constants/tourism';
@@ -196,6 +195,52 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
 
   const tiempoTotal = ruta ? ruta.reduce((a, p) => a + p.tiempo_visita, 0) : 0;
 
+  // ===== MAPA WEB: markers y polylines =====
+  const mapMarkers = [];
+  const mapPolylines = [];
+
+  if (marcador) {
+    mapMarkers.push({
+      latitude: marcador.latitude,
+      longitude: marcador.longitude,
+      emoji: '📍',
+      color: '#fff',
+      size: 36,
+      borderRadius: 20,
+      fontSize: 16,
+      zIndex: 100,
+    });
+  }
+
+  if (ruta) {
+    ruta.forEach((poi, i) => {
+      const cat = CATEGORIAS[poi.categoria] ?? { color: '#555' };
+      mapMarkers.push({
+        latitude: poi.coordenadas.latitude,
+        longitude: poi.coordenadas.longitude,
+        number: i + 1,
+        color: cat.color,
+        textColor: '#fff',
+        size: 28,
+        fontSize: 12,
+        zIndex: 10 + i,
+      });
+    });
+
+    if (marcador) {
+      mapPolylines.push({
+        coordinates: [marcador, ...ruta.map(p => p.coordenadas)],
+        strokeColor: '#5c1011',
+        strokeWidth: 3,
+        dashArray: [8, 4],
+      });
+    }
+  }
+
+  const handleMapaPressWeb = (coord) => {
+    tocarMapa({ nativeEvent: { coordinate: coord } });
+  };
+
   // Componente reutilizable para los filtros
   function FiltrosBlock({
     filtroCat, setFiltroCat,
@@ -349,29 +394,13 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
                   </View>
                 )}
 
-                <MapView style={s.mapa} region={region} onPress={tocarMapa}>
-                  <UrlTile
-                    urlTemplate="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    maximumZ={19}
-                  />
-                  <OsmTileLayer />
-                  {marcador && (
-                    <Marker coordinate={marcador}>
-                      <View style={s.pinInicio}><Text>📍</Text></View>
-                    </Marker>
-                  )}
-                  {ruta && ruta.map((poi, i) => {
-                    const cat = CATEGORIAS[poi.categoria] ?? { color: '#555' };
-                    return (
-                      <Marker key={poi.id} coordinate={poi.coordenadas}>
-                        <View style={[s.pinNum, { backgroundColor: cat.color }]}><Text style={s.pinNumT}>{i + 1}</Text></View>
-                      </Marker>
-                    );
-                  })}
-                  {ruta && marcador && (
-                    <Polyline coordinates={[marcador, ...ruta.map(p => p.coordenadas)]} strokeColor="#5c1011" strokeWidth={3} lineDashPattern={[8, 4]} />
-                  )}
-                </MapView>
+                <MapaWeb
+                  style={s.mapa}
+                  region={region}
+                  onPress={handleMapaPressWeb}
+                  markers={mapMarkers}
+                  polylines={mapPolylines}
+                />
 
                 {!eligiendo && marcador && (
                   <TouchableOpacity style={s.cambiarInicio} onPress={() => { setEligiendo(true); setRuta(null); setMarcador(null); }}>

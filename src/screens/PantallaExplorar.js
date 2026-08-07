@@ -4,8 +4,7 @@ import {
   Modal, TextInput,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import MapView, { Marker, Polyline, UrlTile  } from 'react-native-maps';
-import OsmTileLayer from '../components/OsmTileLayer';
+import MapaWeb from '../components/MapaWeb';
 import ModalRecomendaciones from '../components/ModalRecomendaciones';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
@@ -141,6 +140,82 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
 
   const numParada = poiResumen && rutaActiva ? rutaActiva.findIndex(p => p.id === poiResumen.id) + 1 : null;
 
+  // ===== MAPA WEB: markers y polylines =====
+  const mapMarkers = [];
+  const mapPolylines = [];
+
+  if (marcadorInicio && rutaActiva) {
+    mapMarkers.push({
+      latitude: marcadorInicio.latitude,
+      longitude: marcadorInicio.longitude,
+      emoji: '🚩',
+      color: '#fff',
+      size: 36,
+      borderRadius: 20,
+      fontSize: 18,
+      zIndex: 100,
+    });
+  }
+
+  poisDelMapa
+    .filter(poi => !rutaActiva || rutaActiva.findIndex(p => p.id === poi.id) < 0)
+    .forEach(poi => {
+      const cat = CATEGORIAS[poi.categoria] ?? { emoji: '✦', color: '#8a7e72' };
+      const visitado = poi.visitado ?? false;
+      mapMarkers.push({
+        latitude: poi.coordenadas.latitude,
+        longitude: poi.coordenadas.longitude,
+        emoji: cat.emoji,
+        color: visitado ? '#c4bfb7' : cat.color,
+        opacity: rutaActiva ? 0.35 : 1,
+        size: 35,
+        fontSize: 18,
+        onPressId: poi.id,
+        zIndex: 1,
+      });
+    });
+
+  if (rutaActiva) {
+    rutaActiva.forEach((poi, idx) => {
+      mapMarkers.push({
+        latitude: poi.coordenadas.latitude,
+        longitude: poi.coordenadas.longitude,
+        number: idx + 1,
+        color: '#5c1011',
+        textColor: '#fff',
+        size: 38,
+        fontSize: 13,
+        onPressId: poi.id,
+        zIndex: 10 + idx,
+      });
+    });
+
+    mapPolylines.push({
+      coordinates: rutaActiva.map(p => p.coordenadas),
+      strokeColor: '#5c1011',
+      strokeWidth: 3,
+      dashArray: [8, 4],
+    });
+
+    if (marcadorInicio && rutaActiva.length > 0) {
+      mapPolylines.push({
+        coordinates: [marcadorInicio, rutaActiva[0].coordenadas],
+        strokeColor: '#5c1011',
+        strokeWidth: 3,
+        dashArray: [8, 4],
+      });
+    }
+  }
+
+  const handleMapaPressWeb = (coord) => {
+    handleMapaPress({ nativeEvent: { coordinate: coord } });
+  };
+
+  const handleMarkerPressWeb = (id) => {
+    const poi = poisDelMapa.find(p => p.id === id) || (rutaActiva && rutaActiva.find(p => p.id === id));
+    if (poi) handlePin(poi);
+  };
+
   return (
     <View style={s.root}>
       <View style={[s.safe, { paddingTop: insets.top }]}>
@@ -168,45 +243,15 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
         </View>
       </View>
 
-      <MapView style={s.mapa} key={`${ciudad?.nombre ?? 'madrid'}_${poisDelMapa.length}`} initialRegion={region} showsUserLocation onPress={handleMapaPress}>
-        <UrlTile
-          urlTemplate="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-          maximumZ={19}
-        />
-        <OsmTileLayer />
-        {rutaActiva && (
-          <Polyline coordinates={rutaActiva.map(p => p.coordenadas)} strokeColor="#5c1011" strokeWidth={3} lineDashPattern={[8, 4]} />
-        )}
-        {rutaActiva && marcadorInicio && rutaActiva.length > 0 && (
-          <Polyline coordinates={[marcadorInicio, rutaActiva[0].coordenadas]} strokeColor="#5c1011" strokeWidth={3} lineDashPattern={[8, 4]} />
-        )}
-        {marcadorInicio && rutaActiva && (
-          <Marker coordinate={marcadorInicio}>
-            <View style={s.pinInicio}><Text style={{ fontSize: 18 }}>🚩</Text></View>
-          </Marker>
-        )}
-        {poisDelMapa
-          .filter(poi => !rutaActiva || rutaActiva.findIndex(p => p.id === poi.id) < 0)
-          .map(poi => {
-            const cat = CATEGORIAS[poi.categoria] ?? { emoji: '✦', color: '#8a7e72' };
-            const visitado = poi.visitado ?? false;
-            return (
-              <Marker key={poi.id} coordinate={poi.coordenadas} onPress={() => handlePin(poi)}>
-                <View style={[s.pin, { backgroundColor: visitado ? '#c4bfb7' : cat.color, opacity: rutaActiva ? 0.35 : 1 }]}>
-                  <Text style={s.pinEmoji}>{cat.emoji}</Text>
-                </View>
-              </Marker>
-            );
-          })
-        }
-        {rutaActiva && rutaActiva.map((poi, idx) => {
-          return (
-            <Marker key={`ruta_${poi.id}`} coordinate={poi.coordenadas} onPress={() => handlePin(poi)} zIndex={10 + idx}>
-              <View style={s.pinRuta}><Text style={s.pinNum}>{idx + 1}</Text></View>
-            </Marker>
-          );
-        })}
-      </MapView>
+      <MapaWeb
+        style={s.mapa}
+        mapKey={`${ciudad?.nombre ?? 'madrid'}_${poisDelMapa.length}`}
+        initialRegion={region}
+        onPress={handleMapaPressWeb}
+        onMarkerPress={handleMarkerPressWeb}
+        markers={mapMarkers}
+        polylines={mapPolylines}
+      />
 
       {modoPunto && (
         <View style={s.bannerModo}>

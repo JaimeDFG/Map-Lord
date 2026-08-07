@@ -4,8 +4,7 @@ import {
   Modal, TextInput,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import MapView, { Marker, UrlTile } from 'react-native-maps';
-import OsmTileLayer from '../components/OsmTileLayer';
+import MapaWeb from '../components/MapaWeb';
 import { useApp } from '../context/AppContext';
 import { useT } from '../constants/i18n';
 import FichaPOI from '../components/FichaPOI';
@@ -55,6 +54,46 @@ export default function PantallaLugares({ ciudad, onAbrirPOI }) {
   }
 
   const hayFiltros = categoriaFiltro || relevancisFiltro || soloNoVisitados || busqueda.trim();
+
+  // ===== MAPA WEB: markers =====
+  const mapMarkers = [];
+
+  poisDeLaCiudad
+    .filter(p => !poisFiltrados.find(f => f.id === p.id))
+    .forEach(poi => {
+      const cat = CATEGORIAS[poi.categoria] ?? { color: '#888', emoji: '📍' };
+      mapMarkers.push({
+        latitude: poi.coordenadas.latitude,
+        longitude: poi.coordenadas.longitude,
+        emoji: cat.emoji,
+        color: cat.color,
+        size: 28,
+        fontSize: 10,
+        opacity: 0.3,
+      });
+    });
+
+  poisFiltrados.forEach(poi => {
+    const cat = CATEGORIAS[poi.categoria] ?? { color: '#888', emoji: '📍' };
+    const visitado = poisVisitados[poi.id];
+    mapMarkers.push({
+      latitude: poi.coordenadas.latitude,
+      longitude: poi.coordenadas.longitude,
+      emoji: visitado ? '✓' : cat.emoji,
+      color: cat.color,
+      size: 36,
+      fontSize: 16,
+      borderColor: '#fff',
+      borderWidth: 3,
+      onPressId: poi.id,
+      zIndex: 10,
+    });
+  });
+
+  const handleMarkerPressWeb = (id) => {
+    const poi = poisFiltrados.find(p => p.id === id);
+    if (poi) setPoiEnMapa(poi);
+  };
 
   return (
     <View style={s.root}>
@@ -196,42 +235,12 @@ export default function PantallaLugares({ ciudad, onAbrirPOI }) {
               </TouchableOpacity>
             </View>
           </View>
-          <MapView style={{ flex: 1 }} initialRegion={region} >
-            <UrlTile
-               urlTemplate="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-                maximumZ={19}
-              />
-            <OsmTileLayer />
-            {/* Pins atenuados: los que NO están en el filtro */}
-            {poisDeLaCiudad
-              .filter(p => !poisFiltrados.find(f => f.id === p.id))
-              .map(poi => {
-                const cat = CATEGORIAS[poi.categoria] ?? { color: '#888', emoji: '📍' };
-                return (
-                  <Marker key={poi.id} coordinate={poi.coordenadas}>
-                    <View style={[s.pinAtenuado, { backgroundColor: cat.color }]}>
-                      <Text style={{ fontSize: 10 }}>{cat.emoji}</Text>
-                    </View>
-                  </Marker>
-                );
-              })}
-            {/* Pins destacados: los que SÍ están en el filtro */}
-            {poisFiltrados.map(poi => {
-              const cat = CATEGORIAS[poi.categoria] ?? { color: '#888', emoji: '📍' };
-              const visitado = poisVisitados[poi.id];
-              return (
-                <Marker
-                  key={poi.id}
-                  coordinate={poi.coordenadas}
-                  onPress={() => setPoiEnMapa(poi)}
-                >
-                  <View style={[s.pinDestacado, { backgroundColor: cat.color }]}>
-                    <Text style={{ fontSize: 16 }}>{visitado ? '✓' : cat.emoji}</Text>
-                  </View>
-                </Marker>
-              );
-            })}
-          </MapView>
+          <MapaWeb
+            style={{ flex: 1 }}
+            initialRegion={region}
+            onMarkerPress={handleMarkerPressWeb}
+            markers={mapMarkers}
+          />
           {/* Ficha rápida dentro del mapa filtrado */}
           {poiEnMapa && (
             <View style={s.fichaEnMapa}>
