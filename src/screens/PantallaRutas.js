@@ -125,37 +125,29 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
   const [seleccion, setSeleccion] = useState(new Set());
   const [rutaManual, setRutaManual] = useState(null);
 
-  // Filtros para pestaña CREAR RUTA
   const [filtroCatRuta, setFiltroCatRuta] = useState(new Set());
   const [filtroRelRuta, setFiltroRelRuta] = useState(new Set());
   const [filtroVisitadoRuta, setFiltroVisitadoRuta] = useState('todos');
 
-  // Filtros para pestaña RUTA MANUAL (independientes)
   const [filtroCatManual, setFiltroCatManual] = useState(new Set());
   const [filtroRelManual, setFiltroRelManual] = useState(new Set());
   const [filtroVisitadoManual, setFiltroVisitadoManual] = useState('todos');
 
   const nombreCiudad = ciudad?.nombre?.toLowerCase() ?? 'madrid';
 
-  // POIs base de esta ciudad (sin filtros de categoría/estrellas)
   const poisDeCiudad = useMemo(() => {
     return poisUsuario.filter(p => (p.ciudad ?? 'Madrid').toLowerCase() === nombreCiudad);
   }, [poisUsuario, nombreCiudad]);
 
-  // POIs filtrados para CREAR RUTA
   const todosLosPois = aplicarFiltros(poisDeCiudad, filtroCatRuta, filtroRelRuta, filtroVisitadoRuta);
-
-  // POIs filtrados para RUTA MANUAL
   const todosLosPoisManual = aplicarFiltros(poisDeCiudad, filtroCatManual, filtroRelManual, filtroVisitadoManual);
 
-  // Categorías que REALMENTE existen en esta ciudad (para mostrar solo esas en los filtros)
   const catsDisponibles = useMemo(() => {
     const set = new Set();
     for (const p of poisDeCiudad) set.add(p.categoria);
     return Array.from(set).sort();
   }, [poisDeCiudad]);
 
-  // Relevancias que REALMENTE existen en esta ciudad
   const relsDisponibles = useMemo(() => {
     const set = new Set();
     for (const p of poisDeCiudad) set.add(String(p.prioridad ?? p.relevancia ?? 2));
@@ -241,7 +233,6 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
     tocarMapa({ nativeEvent: { coordinate: coord } });
   };
 
-  // Componente reutilizable para los filtros
   function FiltrosBlock({
     filtroCat, setFiltroCat,
     filtroRel, setFiltroRel,
@@ -342,7 +333,6 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
 
       <ScrollView style={s.flex} contentContainerStyle={{ padding: 16 }}>
 
-        {/* ========== CREAR RUTA ========== */}
         {tab === 'crear' && (
           <>
             <View style={s.seccionRow}>
@@ -359,7 +349,6 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
               ))}
             </View>
 
-            {/* ===== FILTROS CREAR RUTA ===== */}
             {tiempo && (
               <FiltrosBlock
                 filtroCat={filtroCatRuta}
@@ -380,7 +369,6 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
               />
             )}
 
-            {/* ===== MAPA ===== */}
             {tiempo && (
               <View style={s.mapaBox}>
                 {eligiendo && (
@@ -396,6 +384,7 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
 
                 <MapaWeb
                   style={s.mapa}
+                  mapKey={`rutas_${ciudad?.nombre ?? 'madrid'}_${marcador ? '1' : '0'}_${ruta ? ruta.length : 0}_${Date.now()}`}
                   region={region}
                   onPress={handleMapaPressWeb}
                   markers={mapMarkers}
@@ -410,7 +399,6 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
               </View>
             )}
 
-            {/* ===== RESULTADO RUTA ===== */}
             {ruta && (
               <View style={s.rutaCard}>
                 <Text style={s.rutaTitulo}>{t.tuRuta} · {ruta.length} {t.lugares}</Text>
@@ -447,12 +435,10 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
           </>
         )}
 
-        {/* ========== RUTA MANUAL ========== */}
         {tab === 'manual' && (
           <>
             <Text style={s.secLabel}>{t.seleccionaLugares}</Text>
 
-            {/* ===== FILTROS RUTA MANUAL (independientes) ===== */}
             <FiltrosBlock
               filtroCat={filtroCatManual}
               setFiltroCat={setFiltroCatManual}
@@ -543,7 +529,6 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
           </>
         )}
 
-        {/* ========== RUTAS GUARDADAS ========== */}
         {tab === 'guardadas' && (
           <>
             {rutasDeCiudad.length === 0 && (
@@ -568,7 +553,6 @@ export default function PantallaRutas({ ciudad, onActivarRuta }) {
 
       </ScrollView>
 
-      {/* Modal guardar ruta */}
       <Modal visible={modalGuardar} animationType="slide" transparent>
         <View style={s.modalFondo}>
           <View style={s.modalCont}>
@@ -680,7 +664,6 @@ const s = StyleSheet.create({
   poiSelNombre: { fontSize: 14, fontWeight: '600', color: '#1a1a1a' },
   poiSelSub: { fontSize: 12, color: '#888', marginTop: 1 },
   btnGuardarT: { fontSize: 14, fontWeight: '700', color: '#fff' },
-  // FILTROS
   filtrosBox: { backgroundColor: '#faf6f0', borderRadius: 16, padding: 14, marginBottom: 16, borderWidth: 1, borderColor: '#e8dfd5' },
   filtrosHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 10, gap: 8 },
   filtrosEmoji: { fontSize: 16 },

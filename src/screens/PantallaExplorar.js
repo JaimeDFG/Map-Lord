@@ -26,7 +26,6 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
   const [nuevoPunto, setNuevoPunto]       = useState(puntoVacio);
   const [modalRecomendaciones, setModalRecomendaciones] = useState(false);
   
-  // Filtros
   const [filtroCategoria, setFiltroCategoria] = useState(new Set());
   const [filtroPrioridad, setFiltroPrioridad] = useState('todas');
   const [filtroEstado, setFiltroEstado]       = useState('todos');
@@ -49,7 +48,6 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
     (p.ciudad ?? 'Madrid').toLowerCase() === nombreCiudad
   );
 
-  // Aplicar filtros
   const poisFiltrados = poisLocales.filter(p => {
     if (filtroCategoria.size > 0 && !filtroCategoria.has(p.categoria)) return false;
     const prio = p.prioridad ?? p.relevancia ?? 2;
@@ -141,10 +139,15 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
   const numParada = poiResumen && rutaActiva ? rutaActiva.findIndex(p => p.id === poiResumen.id) + 1 : null;
 
   // ===== MAPA WEB: markers y polylines =====
+  // Solo mostrar ruta activa si pertenece a esta ciudad
+  const rutaEnCiudad = rutaActiva?.filter(p => 
+    (p.ciudad ?? 'Madrid').toLowerCase() === nombreCiudad
+  ) || null;
+
   const mapMarkers = [];
   const mapPolylines = [];
 
-  if (marcadorInicio && rutaActiva) {
+  if (marcadorInicio && rutaEnCiudad && rutaEnCiudad.length > 0) {
     mapMarkers.push({
       latitude: marcadorInicio.latitude,
       longitude: marcadorInicio.longitude,
@@ -158,7 +161,7 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
   }
 
   poisDelMapa
-    .filter(poi => !rutaActiva || rutaActiva.findIndex(p => p.id === poi.id) < 0)
+    .filter(poi => !rutaEnCiudad || rutaEnCiudad.findIndex(p => p.id === poi.id) < 0)
     .forEach(poi => {
       const cat = CATEGORIAS[poi.categoria] ?? { emoji: '✦', color: '#8a7e72' };
       const visitado = poi.visitado ?? false;
@@ -167,7 +170,7 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
         longitude: poi.coordenadas.longitude,
         emoji: cat.emoji,
         color: visitado ? '#c4bfb7' : cat.color,
-        opacity: rutaActiva ? 0.35 : 1,
+        opacity: rutaEnCiudad ? 0.35 : 1,
         size: 35,
         fontSize: 18,
         onPressId: poi.id,
@@ -175,8 +178,8 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
       });
     });
 
-  if (rutaActiva) {
-    rutaActiva.forEach((poi, idx) => {
+  if (rutaEnCiudad && rutaEnCiudad.length > 0) {
+    rutaEnCiudad.forEach((poi, idx) => {
       mapMarkers.push({
         latitude: poi.coordenadas.latitude,
         longitude: poi.coordenadas.longitude,
@@ -191,15 +194,15 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
     });
 
     mapPolylines.push({
-      coordinates: rutaActiva.map(p => p.coordenadas),
+      coordinates: rutaEnCiudad.map(p => p.coordenadas),
       strokeColor: '#5c1011',
       strokeWidth: 3,
       dashArray: [8, 4],
     });
 
-    if (marcadorInicio && rutaActiva.length > 0) {
+    if (marcadorInicio && rutaEnCiudad.length > 0) {
       mapPolylines.push({
-        coordinates: [marcadorInicio, rutaActiva[0].coordenadas],
+        coordinates: [marcadorInicio, rutaEnCiudad[0].coordenadas],
         strokeColor: '#5c1011',
         strokeWidth: 3,
         dashArray: [8, 4],
@@ -208,11 +211,12 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
   }
 
   const handleMapaPressWeb = (coord) => {
+    if (!coord || typeof coord.latitude !== 'number' || typeof coord.longitude !== 'number') return;
     handleMapaPress({ nativeEvent: { coordinate: coord } });
   };
 
   const handleMarkerPressWeb = (id) => {
-    const poi = poisDelMapa.find(p => p.id === id) || (rutaActiva && rutaActiva.find(p => p.id === id));
+    const poi = poisDelMapa.find(p => p.id === id) || (rutaEnCiudad && rutaEnCiudad.find(p => p.id === id));
     if (poi) handlePin(poi);
   };
 
@@ -245,7 +249,7 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
 
       <MapaWeb
         style={s.mapa}
-        mapKey={`${ciudad?.nombre ?? 'madrid'}_${poisDelMapa.length}`}
+        mapKey={`explorar_${ciudad?.nombre ?? 'madrid'}_${poisDelMapa.length}_${modoPunto ? '1' : '0'}_${marcadorInicio ? '1' : '0'}_${rutaEnCiudad ? rutaEnCiudad.length : 0}`}
         initialRegion={region}
         onPress={handleMapaPressWeb}
         onMarkerPress={handleMarkerPressWeb}
@@ -280,7 +284,6 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
         </View>
       )}
 
-      {/* Filtros */}
       <View style={s.filtrosBox}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={s.filtrosScroll}>
           <TouchableOpacity style={[s.filtroChip, filtroEstado === 'todos' && s.filtroChipActivo]} onPress={() => setFiltroEstado('todos')}>
@@ -341,9 +344,7 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
           })}
         </ScrollView>
       </View>
-
-
-      <ModalRecomendaciones
+            <ModalRecomendaciones
         visible={modalRecomendaciones}
         ciudad={ciudad?.nombre ?? 'Madrid'}
         pais={pais?.nombre ?? 'España'}
@@ -366,8 +367,6 @@ export default function PantallaExplorar({ ciudad, pais, onAbrirPOI, onEditar, p
         }}
       />
 
-
-      {/* Modal nuevo punto */}
       <Modal visible={modalNuevo} animationType="slide" transparent>
         <View style={s.modalFondo}>
           <ScrollView>

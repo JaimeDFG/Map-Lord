@@ -1,92 +1,50 @@
-import { useState, useEffect, useCallback } from 'react';
-import { View, StyleSheet, BackHandler } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { AppProvider, useApp } from './src/context/AppContext';
-import PantallaInicio from './src/screens/PantallaInicio';
-import PantallaMapa from './src/screens/PantallaMapa';
-import PantallaPasaporte from './src/screens/PantallaPasaporte';
-import { buscarCoordenadas } from './src/data/ciudades';
+import { useFonts, Nunito_400Regular, Nunito_600SemiBold, Nunito_700Bold, Nunito_800ExtraBold } from '@expo-google-fonts/nunito';
 
-function Navegador() {
-  // Historial de pantallas como una pila: el último elemento es la pantalla actual
-  const [pila, setPila] = useState([{ id: 'inicio' }]);
-  const pantalla = pila[pila.length - 1];
+import HomeScreen from './src/screens/HomeScreen';
+import CityRatingScreen from './src/screens/CityRatingScreen';
+import RankingScreen from './src/screens/RankingScreen';
+import FamilyRankingScreen from './src/screens/FamilyRankingScreen';
+import CityDetailScreen from './src/screens/CityDetailScreen';
+import CompareScreen from './src/screens/CompareScreen';
+import { theme } from './src/theme';
 
-  function ir(nuevaPantalla) {
-    setPila(prev => [...prev, nuevaPantalla]);
-  }
-
-  function volver() {
-    setPila(prev => (prev.length > 1 ? prev.slice(0, -1) : prev));
-  }
-
-  // Botón físico "atrás" de Android: si hay más de 1 pantalla en la pila, retrocede
-  // dentro de la app; si estamos en la pantalla raíz, dejamos que el sistema
-  // operativo gestione el cierre de la app de forma normal.
-  useEffect(() => {
-    const onBackPress = () => {
-      if (pila.length > 1) {
-        volver();
-        return true; // evento consumido, no cierra la app
-      }
-      return false; // en la raíz, comportamiento por defecto del sistema
-    };
-    const sub = BackHandler.addEventListener('hardwareBackPress', onBackPress);
-    return () => sub.remove();
-  }, [pila.length]);
-
-  function abrirMapa({ paisId, ciudad, pais }) {
-    const coordenadas = buscarCoordenadas(ciudad) ?? buscarCoordenadas(pais?.capital ?? '') ?? null;
-    ir({ id: 'mapa', paisId, ciudad, pais, coordenadas });
-  }
-
-  if (pantalla.id === 'pasaporte') {
-    return <PantallaPasaporte onCerrar={volver} />;
-  }
-
-  if (pantalla.id === 'mapa') {
-    return (
-      <PantallaMapa
-        pais={pantalla.pais}
-        ciudad={{ nombre: pantalla.ciudad, coordenadas: pantalla.coordenadas }}
-        onVolver={volver}
-      />
-    );
-  }
-
-  if (pantalla.id === 'mapas') {
-    return (
-      <PantallaInicio
-        vistaInicial="mapas"
-        onVolverInicio={volver}
-        onAbrirMapa={abrirMapa}
-        onAbrirPasaporte={() => ir({ id: 'pasaporte' })}
-      />
-    );
-  }
-
-  return (
-    <PantallaInicio
-      vistaInicial="inicio"
-      onAbrirMisMapas={() => ir({ id: 'mapas' })}
-      onAbrirMapa={abrirMapa}
-      onAbrirPasaporte={() => ir({ id: 'pasaporte' })}
-    />
-  );
-}
+const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Nunito_400Regular,
+    Nunito_600SemiBold,
+    Nunito_700Bold,
+    Nunito_800ExtraBold,
+  });
+
+  if (!fontsLoaded) return null;
+
   return (
     <SafeAreaProvider>
-      <AppProvider>
-        <View style={s.root}>
-          <Navegador />
-        </View>
-      </AppProvider>
+      <NavigationContainer>
+        <StatusBar style="light" />
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: { backgroundColor: theme.colors.primaryDark },
+            headerTintColor: '#fff',
+            headerTitleStyle: { fontFamily: theme.fonts.bold, fontSize: 18 },
+            contentStyle: { backgroundColor: theme.colors.background },
+          }}
+        >
+          <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Citydex' }} />
+          <Stack.Screen name="CityRating" component={CityRatingScreen} options={{ title: 'Valorar ciudad' }} />
+          <Stack.Screen name="Ranking" component={RankingScreen} options={{ title: 'Ranking general' }} />
+          <Stack.Screen name="FamilyRanking" component={FamilyRankingScreen} options={{ title: 'Rankings por familia' }} />
+          <Stack.Screen name="CityDetail" component={CityDetailScreen} options={{ title: 'Ficha de ciudad' }} />
+          <Stack.Screen name="Compare" component={CompareScreen} options={{ title: 'Comparador' }} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
-
-const s = StyleSheet.create({
-  root: { flex: 1 },
-});
